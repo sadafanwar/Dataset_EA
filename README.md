@@ -30,20 +30,6 @@ Each row is converted into this format:
   },
   "output": "trace"
 }
-````markdown
-## Pattern 1 Format
-
-Each row is converted into this format:
-
-```json
-{
-  "instruction": "Determine whether the lower-level requirement traces to the higher-level requirement.",
-  "input": {
-    "higher_level_requirement": "...",
-    "lower_level_requirement": "..."
-  },
-  "output": "trace"
-}
 ```
 
 ## Dataset Summary
