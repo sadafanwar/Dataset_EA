@@ -1,0 +1,506 @@
+true_label,predicted_label,raw_model_output
+trace,no_trace,"no_trace
+Label: The implementation of"
+trace,no_trace,"no_trace
+Label: trace"
+no_trace,no_trace,"no_trace
+Explanation: The given requirement"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+
+Label: trace
+The"
+no_trace,no_trace,"no_trace
+Label: The implementation of"
+no_trace,no_trace,"no_trace
+Label: trace"
+trace,no_trace,no_trace
+trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Label: The higher-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+no_trace,no_trace,no_trace
+trace,trace,trace Label: trace
+no_trace,no_trace,no_trace
+no_trace,no_trace,no_trace
+no_trace,trace,trace Label: trace
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The given higher"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+
+Explanation: The given higher"
+trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,trace,trace The higher-level requirement traces the lower
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,trace,trace The higher-level requirement traces the lower
+trace,trace,trace The higher-level requirement traces the lower
+trace,trace,trace The higher-level requirement traces the lower
+trace,trace,trace The higher-level requirement traces the lower
+trace,trace,trace The higher-level requirement traces the lower
+no_trace,no_trace,"no_trace
+Label: trace"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"yes
+Explanation: The higher-level requirement"
+trace,no_trace,"yes
+Explanation: The higher-level requirement"
+trace,trace,yes Label: trace
+trace,trace,trace The higher-level requirement traces the lower
+no_trace,no_trace,no_trace The higher-level requirement traces but
+no_trace,no_trace,"no_trace
+
+The higher-level requirement traces"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,no_trace
+trace,no_trace,no_traceetermine whether the lower-level requirement
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,trace,trace Label: trace
+trace,no_trace,"no_trace
+Label: higher_level_spec"
+trace,trace,trace Label: trace
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,no_trace The given requirement does not trace
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Label: The system shall"
+no_trace,no_trace,"no_trace
+Label: trace_required The"
+no_trace,no_trace,"no_trace
+Label: The system shall"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,no_trace The higher-level requirement traces requiring
+trace,no_trace,"no_trace
+Label: trace"
+trace,no_trace,"no_trace
+Label: trace_trace"
+no_trace,no_trace,"no_trace
+Label: The system shall"
+no_trace,no_trace,"no_trace
+Label: trace_trace"
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+
+Explanation: The given higher"
+trace,trace,"trace
+
+Explanation: The higher-level requirement"
+trace,trace,"trace
+
+Explanation: The higher-level requirement"
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+
+Explanation: The given higher"
+no_trace,no_trace,"no_trace
+
+Explanation: The given higher"
+no_trace,no_trace,no_trace The given requirement does not trace
+no_trace,no_trace,"no_trace
+Label: The trace option"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Label: trace_trace"
+no_trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Label: trace"
+trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+
+The higher-level requirement traces"
+no_trace,no_trace,"no_trace
+Label: trace_trace"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The given higher"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Label: The higher-level"
+no_trace,no_trace,no_trace The given requirement does not trace
+trace,no_trace,no_trace The higher-level requirement traces the
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Label: trace_trace"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Label: trace"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Label: trace_trace"
+trace,trace,trace Label: trace
+no_trace,no_trace,"no_trace
+Label: trace_trace"
+no_trace,no_trace,no_trace The given requirement does not trace
+no_trace,no_trace,no_traceetermine whether the lower-level requirement
+no_trace,no_trace,no_trace The higher-level requirement traces the
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Label: The system shall"
+no_trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Label: trace"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,no_trace Determine whether the lower-level requirement
+no_trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+
+Explanation: The given higher"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Label: The bootstrap monitor"
+no_trace,no_trace,no_trace The higher-level requirement traces a
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Label: trace_trace"
+no_trace,no_trace,no_trace The higher-level requirement (the
+no_trace,no_trace,no_trace
+no_trace,no_trace,no_trace
+no_trace,no_trace,no_traceetermine whether the lower-level requirement
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+trace,trace,trace Label: trace
+no_trace,no_trace,"no_trace
+Label: trace"
+no_trace,no_trace,"no_trace
+Label: trace_trace"
+trace,no_trace,"no_trace
+Label: trace"
+trace,no_trace,"no_trace
+Label: trace_trace"
+trace,no_trace,no_trace Label: trace
+no_trace,no_trace,"no_trace
+Label: trace_trace"
+no_trace,no_trace,"no_trace
+Label: trace_trace"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,trace,trace The higher-level requirement traces the lower
+no_trace,no_trace,"no_trace
+Label: trace_trace"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Label: trace"
+no_trace,no_trace,"no_trace
+Label: The higher-level"
+no_trace,no_trace,"no_trace
+Label: The payload ("
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Label: The system shall"
+no_trace,no_trace,no_trace
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Label: trace_required The"
+no_trace,no_trace,"no_trace
+
+Explanation: The given higher"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Label: trace_trace"
+trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Label: The system shall"
+trace,no_trace,no_trace
+no_trace,no_trace,no_traceetermine whether the lower-level requirement
+no_trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,trace,trace
+no_trace,no_trace,"no_trace
+
+The higher-level requirement traces"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Label: trace"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Label: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,no_trace
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+
+Explanation: The given higher"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Label: The payload ("
+no_trace,no_trace,no_trace
+trace,no_trace,"no_trace
+Label: trace_trace"
+trace,no_trace,"no_trace
+Label: trace"
+trace,no_trace,"no_trace
+Label: trace"
+trace,no_trace,"no_trace
+Label: trace_trace"
+trace,no_trace,"no_trace
+Label: The payload ("
+trace,no_trace,"no_trace
+Label: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,no_trace
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,no_trace
+trace,no_trace,no_trace
+no_trace,trace,trace The higher-level requirement traces the lower
+no_trace,no_trace,"no_trace
+Label: trace"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,trace,yes Label: trace
+trace,trace,trace Label: yes_trace
+no_trace,no_trace,no_trace The higher-level requirement traces the
+no_trace,no_trace,"no_trace
+Label: trace"
+no_trace,no_trace,no_trace
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,no_trace
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The given higher"
+trace,no_trace,no_traceetermine whether the lower-level requirement
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The given higher"
+no_trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+trace,no_trace,"no_trace
+Label: trace_required The"
+no_trace,no_trace,"no_trace
+Label: The task manager"
+no_trace,no_trace,no_traceetermine whether the lower-level requirement
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+Label: trace_trace"
+no_trace,no_trace,no_trace
+trace,no_trace,no_trace
+trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+no_trace,no_trace,no_trace
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,"no_trace
+Explanation: The given requirement"
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"
+no_trace,no_trace,no_trace
+no_trace,no_trace,no_trace
+no_trace,no_trace,no_trace
+no_trace,no_trace,no_trace
+trace,no_trace,no_trace
+trace,no_trace,"no_trace
+Explanation: The higher-level"
+trace,no_trace,no_trace
+no_trace,no_trace,"no_trace
+
+Explanation: The higher-level"

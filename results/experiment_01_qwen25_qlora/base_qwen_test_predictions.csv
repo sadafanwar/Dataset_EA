@@ -1,0 +1,557 @@
+true_label,predicted_label,raw_model_output
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,trace,"trace
+Label: trace The lower-level"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,trace,"trace
+The lower-level requirement is trace"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+You are an AI assistant that"
+trace,trace,"trace
+You are an AI assistant that"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+Label: trace"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+Label: No Trace"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,trace,"trace
+Label: trace The lower-level"
+trace,trace,"trace
+The lower-level requirement traces to"
+trace,trace,"trace
+The lower-level requirement ""A"
+trace,trace,"trace
+The lower-level requirement ""The"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+The lower-level requirement ""A"
+trace,trace,"trace
+The lower-level requirement traces to"
+trace,trace,"trace
+The lower-level requirement traces to"
+trace,trace,"trace
+The lower-level requirement ""The"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+Label: no_trace"
+no_trace,no_trace,"no_trace
+The lower-level requirement does"
+trace,trace,"trace
+The lower-level requirement ""GUI"
+trace,trace,"trace
+The lower-level requirement ""GUI"
+trace,trace,"trace
+The lower-level requirement ""show"
+trace,trace,"trace
+The lower-level requirement ""show"
+no_trace,no_trace,"No_trace
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+The lower-level requirement does"
+no_trace,no_trace,"no_trace
+The lower-level requirement describes"
+trace,no_trace,"no_trace
+Label: No Trace"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+Label: No Trace"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+The lower-level requirement does"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+You are an AI assistant that"
+no_trace,trace,"trace
+You are an AI assistant."
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+Label: No Trace"
+trace,trace,"trace
+You are an AI assistant that"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+The lower-level requirement is a"
+trace,trace,"trace
+The lower-level requirement ""The"
+trace,trace,"trace
+The lower-level requirement ""Persons"
+trace,trace,"trace
+The lower-level requirement traces to"
+trace,trace,"trace
+The lower-level requirement ""A"
+trace,trace,"trace
+The lower-level requirement ""The"
+no_trace,trace,"trace
+The lower-level requirement is a"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+The lower-level requirement is traced"
+trace,no_trace,"no_trace
+The lower-level requirement does"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+The lower-level requirement does"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+The lower-level requirement ""Re"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+You are an AI assistant that"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+You are an AI assistant that"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+trace,trace,"trace
+You are an AI assistant that"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+You are an AI assistant that"
+no_trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,trace,"trace
+The labels for this question are"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,trace,"trace
+The labels are: trace ("
+trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+Label: No Trace"
+trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+
+Explanation: The lower-level"
+trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+
+The lower-level requirement does"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+trace,trace,"trace
+You are an AI assistant that"
+no_trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+The lower-level requirement traces into"
+no_trace,trace,"trace
+The lower-level requirement is trace"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+Label: trace
+Explanation:"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+Label: No Trace"
+trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+You are an AI assistant that"
+trace,trace,"trace
+You are an AI assistant that"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,trace,"trace
+Label: trace
+Explanation:"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+The lower-level requirement does"
+trace,no_trace,"no_trace
+The lower-level requirement is"
+no_trace,trace,"trace
+The lower-level requirement is traced"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+no_trace,trace,"trace
+The lower-level requirement is traced"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+You are an AI assistant that"
+no_trace,trace,"trace
+Label: trace"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+The lower-level requirement does"
+no_trace,no_trace,"no_trace
+The lower-level requirement does"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+The lower-level requirement does"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+Label: no_trace"
+no_trace,no_trace,"no_trace
+
+The lower-level requirement does"
+trace,no_trace,"no_trace
+Label: no_trace -"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+The lower-level requirement does"
+no_trace,no_trace,"no_trace
+
+The lower-level requirement is"
+no_trace,no_trace,"no_trace
+
+The lower-level requirement does"
+trace,no_trace,no_trace
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+Label: trace
+Explanation:"
+trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+Label: trace"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+You are an AI assistant that"
+trace,no_trace,"no_trace
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+
+Explanation: The lower-level"
+trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+The lower-level requirement is trace"
+trace,trace,"trace
+The lower-level requirement is a"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+You are an AI assistant that"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+Label: trace
+Explanation:"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+The lower-level requirement ""bas"
+no_trace,trace,"trace
+The lower-level requirement ""masked"
+no_trace,trace,"trace
+You are an AI assistant that"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+
+Explanation: The lower-level"
+trace,no_trace,"no_trace
+Label: No Trace"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+The lower-level requirement does"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+Label: No Trace -"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+Label: No Trace"
+trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+Label: No Trace"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+Label: trace"
+trace,no_trace,"no_trace
+The labels ""trace"""
+no_trace,no_trace,"no_trace
+Label: No Trace"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,no_trace,"no_trace
+You are an AI assistant"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+Label: trace"
+trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+You are an AI assistant that"
+trace,trace,"trace
+Label: trace"
+no_trace,no_trace,"no_trace
+
+Explanation: The lower-level"
+no_trace,trace,"trace
+Explanation: The lower-level requirement"
+no_trace,trace,"trace
+You are an AI assistant that"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"
+no_trace,no_trace,"no_trace
+You are an AI assistant"
+trace,trace,"trace
+The lower-level requirement traces to"
+trace,no_trace,"no_trace
+The lower-level requirement does"
+trace,trace,"trace
+Label: trace
+Explanation:"
+no_trace,no_trace,"no_trace
+Explanation: The lower-level"

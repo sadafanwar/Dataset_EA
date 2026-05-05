@@ -1,0 +1,3 @@
+stage,model,accuracy,precision_weighted,recall_weighted,f1_weighted
+before_fine_tuning,Base Qwen2.5-0.5B-Instruct,0.6617100371747212,0.6607872962175194,0.6617100371747212,0.6611662316589481
+after_fine_tuning,Fine-tuned Qwen2.5-0.5B + QLoRA,0.620817843866171,0.7122984941668237,0.620817843866171,0.5344302569904638

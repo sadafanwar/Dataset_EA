@@ -1,0 +1,51 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "stage": "before_fine_tuning",
+  "test_file": "data/traceability/test.jsonl",
+  "total_examples": 269,
+  "accuracy": 0.6617100371747212,
+  "precision_weighted": 0.6607872962175194,
+  "recall_weighted": 0.6617100371747212,
+  "f1_weighted": 0.6611662316589481,
+  "labels": [
+    "trace",
+    "no_trace"
+  ],
+  "confusion_matrix": [
+    [
+      70,
+      47
+    ],
+    [
+      44,
+      108
+    ]
+  ],
+  "classification_report": {
+    "trace": {
+      "precision": 0.6140350877192983,
+      "recall": 0.5982905982905983,
+      "f1-score": 0.6060606060606061,
+      "support": 117.0
+    },
+    "no_trace": {
+      "precision": 0.6967741935483871,
+      "recall": 0.7105263157894737,
+      "f1-score": 0.7035830618892508,
+      "support": 152.0
+    },
+    "accuracy": 0.6617100371747212,
+    "macro avg": {
+      "precision": 0.6554046406338427,
+      "recall": 0.6544084570400359,
+      "f1-score": 0.6548218339749284,
+      "support": 269.0
+    },
+    "weighted avg": {
+      "precision": 0.6607872962175194,
+      "recall": 0.6617100371747212,
+      "f1-score": 0.6611662316589481,
+      "support": 269.0
+    }
+  }
+}
