@@ -1,0 +1,71 @@
+# Traceability Fine-Tuning Config
+# Model: Qwen2.5
+# Method: QLoRA
+# Task: binary traceability classification
+
+#model_path: "Qwen/Qwen2.5-1.5B-Instruct"
+model_path: "Qwen/Qwen2.5-0.5B-Instruct"
+
+method: "qlora"
+
+training:
+  learning_rate: 0.0001
+  batch_size: 8
+  gradient_accumulation_steps: 1
+  num_epochs: 2
+  max_steps:
+  warmup_steps: 20
+  max_grad_norm: 1.0
+  weight_decay: 0.01
+  fp16: false
+  bf16: true
+  gradient_checkpointing: true
+
+lora:
+  enabled: true
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+  use_dora: false
+  use_rslora: false
+
+quantization:
+  enabled: true
+  type: "nf4"
+  compute_dtype: "bfloat16"
+  double_quant: true
+
+data:
+  dataset_name: "data/traceability/train.jsonl"
+  dataset_split: "train"
+  max_samples:
+  max_length: 1024
+  num_workers: 0
+
+evaluation:
+  eval_dataset: "data/traceability/validation.jsonl"
+  eval_split: "validation"
+  eval_steps: 50
+  eval_samples: 100
+  compute_perplexity: true
+
+checkpointing:
+  output_dir: "outputs/traceability_qwen25_qlora"
+  save_steps: 100
+  save_total_limit: 2
+  resume_from_checkpoint:
+
+logging:
+  logging_steps: 10
+  log_level: "INFO"
+
+device:
+  device: "cuda"
+
+advanced:
+  seed: 42
