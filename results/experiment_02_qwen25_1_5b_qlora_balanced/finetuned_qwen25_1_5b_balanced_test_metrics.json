@@ -1,0 +1,44 @@
+{
+  "experiment": "experiment_02_qwen25_1_5b_qlora_balanced",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "method": "QLoRA",
+  "training_data": "data/traceability/train_balanced_oversampled.jsonl",
+  "validation_data": "data/traceability/validation.jsonl",
+  "test_file": "data/traceability/test.jsonl",
+  "total_examples": 269,
+  "accuracy": 0.7732342007434945,
+  "precision_weighted": 0.8157029195756642,
+  "recall_weighted": 0.7732342007434945,
+  "f1_weighted": 0.7568664385797861,
+  "trace_precision": 0.9375,
+  "trace_recall": 0.5128205128205128,
+  "trace_f1": 0.6629834254143646,
+  "no_trace_precision": 0.7219512195121951,
+  "no_trace_recall": 0.9736842105263158,
+  "no_trace_f1": 0.8291316526610645,
+  "labels": [
+    "trace",
+    "no_trace"
+  ],
+  "confusion_matrix": [
+    [
+      60,
+      57
+    ],
+    [
+      4,
+      148
+    ]
+  ],
+  "training_summary": {
+    "base_perplexity_before_training": 37.75,
+    "final_validation_perplexity": 9.51,
+    "epochs": 2,
+    "batch_size": 4,
+    "gradient_accumulation_steps": 2,
+    "effective_batch_size": 8,
+    "balanced_train_examples": 1606,
+    "trace_train_examples": 803,
+    "no_trace_train_examples": 803
+  }
+}
