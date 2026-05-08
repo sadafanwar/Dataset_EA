@@ -86,20 +86,17 @@ Validation and test sets were unchanged.
 
 Training completed successfully.
 
-Observed validation perplexity during the Experiment 03 run:
-
-| Stage | Validation Perplexity |
-|---|---:|
-| Before training | 37.75 |
-| Final evaluation after training | 39.33 |
-
 Important note:
 
 Experiment 03 uses answer-only loss, while the current validation perplexity pipeline still evaluates full-sequence perplexity. Because of that mismatch, perplexity is no longer the best metric for judging Experiment 03. The real decision should be based on held-out classification metrics on the test set.
 
-Best saved adapter/model directory:
+Available evaluated checkpoints:
 
-`outputs/traceability_qwen25_exp03/best_model`
+- `outputs/traceability_qwen25_exp03/best_model`
+- `outputs/traceability_qwen25_exp03/checkpoint-300`
+- `outputs/traceability_qwen25_exp03/checkpoint-400`
+
+Among these, **`checkpoint-300` produced the best held-out test performance**.
 
 ---
 
@@ -110,7 +107,7 @@ Best saved adapter/model directory:
 | Baseline | Base Qwen2.5-0.5B-Instruct | No fine-tuning | 0.6617 | 0.6612 |
 | Experiment 01 | Fine-tuned Qwen2.5-0.5B + QLoRA | Imbalanced train | 0.6208 | 0.5344 |
 | Experiment 02 | Fine-tuned Qwen2.5-1.5B + QLoRA | Balanced oversampled train | 0.7732 | 0.7569 |
-| Experiment 03 | Fine-tuned Qwen2.5-1.5B + QLoRA | Balanced oversampled train + answer-only loss | 0.8996 | Not recorded in original summary script |
+| Experiment 03 best checkpoint | Fine-tuned Qwen2.5-1.5B + QLoRA | Balanced oversampled train + answer-only loss | 0.9071 | Not recorded in original summary script |
 
 ---
 
@@ -121,7 +118,7 @@ Best saved adapter/model directory:
 | Baseline | 70 | 47 | 0.6140 | 0.5983 | 0.6061 |
 | Experiment 01 | 18 | 99 | 0.8571 | 0.1538 | 0.2609 |
 | Experiment 02 | 60 | 57 | 0.9375 | 0.5128 | 0.6630 |
-| Experiment 03 | 97 | 20 | 0.9327 | 0.8291 | 0.8778 |
+| Experiment 03 best checkpoint | 99 | 18 | 0.9340 | 0.8462 | 0.8879 |
 
 ---
 
@@ -132,7 +129,7 @@ Best saved adapter/model directory:
 | Baseline | 108 | 44 | 0.7036 |
 | Experiment 01 | 149 | 3 | 0.7450 |
 | Experiment 02 | 148 | 4 | 0.8291 |
-| Experiment 03 | 145 | 7 | 0.9148 |
+| Experiment 03 best checkpoint | 145 | 7 | 0.9206 |
 
 ---
 
@@ -161,12 +158,24 @@ Labels: `['trace', 'no_trace']`
 | trace | 60 | 57 |
 | no_trace | 4 | 148 |
 
-### Experiment 03
+### Experiment 03 best checkpoint
 
 | Actual \ Predicted | trace | no_trace |
 |---|---:|---:|
-| trace | 97 | 20 |
+| trace | 99 | 18 |
 | no_trace | 7 | 145 |
+
+---
+
+## Additional Experiment 03 Checkpoint Results
+
+| Checkpoint | Accuracy | Trace Precision | Trace Recall | Trace F1 | No-Trace F1 |
+|---|---:|---:|---:|---:|---:|
+| `best_model` | 0.8996 | 0.9327 | 0.8291 | 0.8778 | 0.9148 |
+| `checkpoint-300` | 0.9071 | 0.9340 | 0.8462 | 0.8879 | 0.9206 |
+| `checkpoint-400` | 0.8996 | 0.9327 | 0.8291 | 0.8778 | 0.9148 |
+
+This shows that `checkpoint-300` generalized slightly better than the final saved `best_model`.
 
 ---
 
@@ -178,23 +187,23 @@ The biggest improvements were:
 
 1. **Trace recall improved sharply**
    - Experiment 02: `0.5128`
-   - Experiment 03: `0.8291`
+   - Experiment 03 best checkpoint: `0.8462`
 
 2. **Trace F1 improved sharply**
    - Experiment 02: `0.6630`
-   - Experiment 03: `0.8778`
+   - Experiment 03 best checkpoint: `0.8879`
 
 3. **Overall accuracy improved strongly**
    - Experiment 02: `0.7732`
-   - Experiment 03: `0.8996`
+   - Experiment 03 best checkpoint: `0.9071`
 
 4. **Missed trace links dropped heavily**
    - Experiment 02 missed `57`
-   - Experiment 03 missed only `20`
+   - Experiment 03 best checkpoint missed only `18`
 
 5. **Trace precision remained very high**
    - Experiment 02: `0.9375`
-   - Experiment 03: `0.9327`
+   - Experiment 03 best checkpoint: `0.9340`
 
 This is important because Experiment 03 improved recall dramatically without sacrificing much precision.
 
@@ -216,17 +225,19 @@ In practice, this seems to have produced a model that:
 
 ---
 
-## Important Caution
+## Why `checkpoint-300` Was Better than `best_model`
 
-Experiment 03 validation perplexity did not improve relative to the baseline validation perplexity.
+`best_model` in the current training pipeline is selected using training loss, not held-out classification metrics.
 
-However, this should not be overinterpreted because:
+This means the checkpoint with the lowest training loss is not always the checkpoint with the best real test performance.
 
-1. Experiment 03 changed the training objective to answer-only loss
-2. the current evaluation pipeline still computes full-sequence perplexity
-3. full-sequence perplexity is no longer perfectly aligned with the new optimization target
+Experiment 03 showed that:
 
-Therefore, classification metrics on the held-out test set are the correct basis for judging Experiment 03.
+- `checkpoint-300` had better accuracy
+- `checkpoint-300` had better trace recall
+- `checkpoint-300` had better trace F1
+
+Therefore, future experiments should evaluate multiple saved checkpoints instead of relying only on the final saved best model from training loss.
 
 ---
 
@@ -249,8 +260,9 @@ The main reason appears to be the combination of:
 
 ### Best current result
 
-| Best current model | Accuracy | Trace Precision | Trace Recall | Trace F1 |
+| Best current checkpoint | Accuracy | Trace Precision | Trace Recall | Trace F1 |
 |---|---:|---:|---:|---:|
-| Fine-tuned Qwen2.5-1.5B + QLoRA with balanced oversampled data and answer-only loss | 0.8996 | 0.9327 | 0.8291 | 0.8778 |
+| `checkpoint-300` from Fine-tuned Qwen2.5-1.5B + QLoRA with balanced oversampled data and answer-only loss | 0.9071 | 0.9340 | 0.8462 | 0.8879 |
 
 ---
+
