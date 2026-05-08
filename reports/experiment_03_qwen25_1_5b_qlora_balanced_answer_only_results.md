@@ -254,11 +254,3 @@ The main reason appears to be the combination of:
 | Fine-tuned Qwen2.5-1.5B + QLoRA with balanced oversampled data and answer-only loss | 0.8996 | 0.9327 | 0.8291 | 0.8778 |
 
 ---
-
-## Recommended Next Steps
-
-1. Save and keep Experiment 03 as the new baseline.
-2. Evaluate any remaining saved checkpoints such as `checkpoint-300` and `checkpoint-400` for completeness.
-3. Update the validation pipeline so that evaluation is also aligned with answer-only loss.
-4. Try `Qwen2.5-3B-Instruct` with the same balanced + answer-only setup.
-5. Add a dedicated test evaluation script to the repository so future experiments can be compared automatically.
