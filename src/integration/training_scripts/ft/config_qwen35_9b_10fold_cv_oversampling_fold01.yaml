@@ -1,0 +1,67 @@
+# Experiment 04 - Fold 01
+# Pure 10-fold CV setup
+# Qwen3.5-9B + QLoRA + oversampling
+# Fold 01: train on 9 folds, test on held-out fold 01
+
+model_path: "Qwen/Qwen3.5-9B"
+method: "qlora"
+
+training:
+  learning_rate: 0.00005
+  batch_size: 1
+  gradient_accumulation_steps: 8
+  num_epochs: 2
+  max_steps:
+  warmup_steps: 20
+  max_grad_norm: 1.0
+  weight_decay: 0.01
+  fp16: false
+  bf16: true
+  gradient_checkpointing: true
+
+lora:
+  enabled: true
+  r: 16
+  alpha: 32
+  dropout: 0.1
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+
+quantization:
+  enabled: true
+  type: "nf4"
+  compute_dtype: "bfloat16"
+  double_quant: true
+
+data:
+  dataset_name: "data/qwen35_oversampling_10fold_cv/oversampled_folds/fold_01/train_oversampled.jsonl"
+  dataset_split: "train"
+  max_samples:
+  max_length: 1024
+  num_workers: 0
+
+evaluation:
+  eval_dataset: "data/qwen35_oversampling_10fold_cv/folds/fold_01/test.jsonl"
+  eval_split: "train"
+  eval_steps: 50
+  eval_samples: 100
+  compute_perplexity: true
+
+checkpointing:
+  output_dir: "outputs/qwen35_9b_qlora_oversampling_10fold_cv/fold_01"
+  save_steps: 100
+  save_total_limit: 3
+  resume_from_checkpoint:
+
+logging:
+  logging_steps: 10
+  log_level: "INFO"
+
+device:
+  device: "cuda"
+
+advanced:
+  seed: 42
