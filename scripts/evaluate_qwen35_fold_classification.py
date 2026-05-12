@@ -255,8 +255,10 @@ def main():
         "classification_report": report,
     }
 
-    predictions_file = output_dir / "fold_01_predictions.csv"
-    metrics_file = output_dir / "fold_01_metrics.json"
+    fold_name = output_dir.name
+
+    predictions_file = output_dir / f"{fold_name}_predictions.csv"
+    metrics_file = output_dir / f"{fold_name}_metrics.json"
 
     pd.DataFrame(rows).to_csv(predictions_file, index=False)
 
