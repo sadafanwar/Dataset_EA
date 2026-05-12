@@ -241,7 +241,6 @@ class BaseFTTrainer(ABC):
         return loss, metrics
 
 
-    @task(cache_key_fn=lambda *_: "save_checkpoint", cache_policy=NO_CACHE)
     def save_checkpoint(self, output_dir: str):
         """Save model checkpoint to local directory and log to MLflow"""
         import os
