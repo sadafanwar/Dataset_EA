@@ -1,0 +1,163 @@
+{
+  "experiment": "Qwen3.5-9B base model, no fine-tuning, evaluated on same 10 held-out test folds",
+  "folds": [
+    {
+      "fold": "fold_01",
+      "accuracy": 0.6417112299465241,
+      "trace_precision": 1.0,
+      "trace_recall": 0.0945945945945946,
+      "trace_f1": 0.1728395061728395,
+      "no_trace_precision": 0.6277777777777778,
+      "no_trace_recall": 1.0,
+      "no_trace_f1": 0.7713310580204779
+    },
+    {
+      "fold": "fold_02",
+      "accuracy": 0.6432432432432432,
+      "trace_precision": 1.0,
+      "trace_recall": 0.08333333333333333,
+      "trace_f1": 0.15384615384615385,
+      "no_trace_precision": 0.6312849162011173,
+      "no_trace_recall": 1.0,
+      "no_trace_f1": 0.773972602739726
+    },
+    {
+      "fold": "fold_03",
+      "accuracy": 0.6304347826086957,
+      "trace_precision": 1.0,
+      "trace_recall": 0.04225352112676056,
+      "trace_f1": 0.08108108108108109,
+      "no_trace_precision": 0.6243093922651933,
+      "no_trace_recall": 1.0,
+      "no_trace_f1": 0.7687074829931972
+    },
+    {
+      "fold": "fold_04",
+      "accuracy": 0.6630434782608695,
+      "trace_precision": 1.0,
+      "trace_recall": 0.1388888888888889,
+      "trace_f1": 0.24390243902439024,
+      "no_trace_precision": 0.6436781609195402,
+      "no_trace_recall": 1.0,
+      "no_trace_f1": 0.7832167832167832
+    },
+    {
+      "fold": "fold_05",
+      "accuracy": 0.644808743169399,
+      "trace_precision": 1.0,
+      "trace_recall": 0.07142857142857142,
+      "trace_f1": 0.13333333333333333,
+      "no_trace_precision": 0.6348314606741573,
+      "no_trace_recall": 1.0,
+      "no_trace_f1": 0.7766323024054983
+    },
+    {
+      "fold": "fold_06",
+      "accuracy": 0.639344262295082,
+      "trace_precision": 1.0,
+      "trace_recall": 0.05714285714285714,
+      "trace_f1": 0.10810810810810811,
+      "no_trace_precision": 0.6312849162011173,
+      "no_trace_recall": 1.0,
+      "no_trace_f1": 0.773972602739726
+    },
+    {
+      "fold": "fold_07",
+      "accuracy": 0.6310160427807486,
+      "trace_precision": 1.0,
+      "trace_recall": 0.06756756756756757,
+      "trace_f1": 0.12658227848101267,
+      "no_trace_precision": 0.6208791208791209,
+      "no_trace_recall": 1.0,
+      "no_trace_f1": 0.7661016949152543
+    },
+    {
+      "fold": "fold_08",
+      "accuracy": 0.6432432432432432,
+      "trace_precision": 1.0,
+      "trace_recall": 0.08333333333333333,
+      "trace_f1": 0.15384615384615385,
+      "no_trace_precision": 0.6312849162011173,
+      "no_trace_recall": 1.0,
+      "no_trace_f1": 0.773972602739726
+    },
+    {
+      "fold": "fold_09",
+      "accuracy": 0.6538461538461539,
+      "trace_precision": 1.0,
+      "trace_recall": 0.08695652173913043,
+      "trace_f1": 0.16,
+      "no_trace_precision": 0.6420454545454546,
+      "no_trace_recall": 1.0,
+      "no_trace_f1": 0.7820069204152249
+    },
+    {
+      "fold": "fold_10",
+      "accuracy": 0.6304347826086957,
+      "trace_precision": 1.0,
+      "trace_recall": 0.04225352112676056,
+      "trace_f1": 0.08108108108108109,
+      "no_trace_precision": 0.6243093922651933,
+      "no_trace_recall": 1.0,
+      "no_trace_f1": 0.7687074829931972
+    }
+  ],
+  "summary": {
+    "accuracy": {
+      "mean": 0.6421125962002655,
+      "std": 0.010484406721128416,
+      "min": 0.6304347826086957,
+      "max": 0.6630434782608695
+    },
+    "trace_precision": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "trace_recall": {
+      "mean": 0.07677527102817978,
+      "std": 0.028377626460236595,
+      "min": 0.04225352112676056,
+      "max": 0.1388888888888889
+    },
+    "trace_f1": {
+      "mean": 0.14146201349741538,
+      "std": 0.04809788352433852,
+      "min": 0.08108108108108109,
+      "max": 0.24390243902439024
+    },
+    "no_trace_precision": {
+      "mean": 0.631168550792979,
+      "std": 0.007451478103130146,
+      "min": 0.6208791208791209,
+      "max": 0.6436781609195402
+    },
+    "no_trace_recall": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "no_trace_f1": {
+      "mean": 0.7738621533178811,
+      "std": 0.005590955644244481,
+      "min": 0.7661016949152543,
+      "max": 0.7832167832167832
+    }
+  },
+  "summed_confusion_matrix_labels": [
+    "trace",
+    "no_trace"
+  ],
+  "summed_confusion_matrix": [
+    [
+      55,
+      660
+    ],
+    [
+      0,
+      1129
+    ]
+  ]
+}
