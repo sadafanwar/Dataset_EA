@@ -1,0 +1,612 @@
+example_id,true_label,pred_label,raw_prediction,higher_level_requirement,lower_level_requirement
+ex_000018,trace,trace,"trace
+
+The higher-level",The DPU-BOOT CSC shall provide the capability to automatically load a configuration of DPU-RTOS from EEPROM to DRAM and start its execution.,"Startup Sequence On flight, a power cycle can only be effected by the SCU. A watchdog reset could be induced by the DPU FSW due to a detected, unrecoverable error, or it could occur as a by-product of the FSW entering a state in which it fails to strobe the watchdog timer. On boot, the bootstrap tests and clears DRAM, and then proceeds to load the DPU FSW from EEPROM and executes it. The DPU FSW then loads configuration information from EEPROM (which establishes various operational defaults) and spawns the various DPU FSW tasks."
+ex_000029,trace,no_trace,"no_trace
+
+Explanation:",The DPU-BOOT CSC shall attempt to complete its normal execution sequence following detection of any failure.,"DRAM BITPart of the memory is tested in Boot Sequence 1, and part of the memory is tested during Boot Sequence 2. During Boot Sequence 1, ? KB of DRAM is tested before the Bootstrap is copied to this area. During Boot Sequence 2, the remaining memory is tested in ? KB blocks. The DRAM BIT first writes the address of each word in a block to that word in the block. Then the test flushes the cache and reads back the entire block. If a single-bit error occurs on the read-back, the location is read again. If another single-bit error occurs, the test assumes a hard error and marks the whole block bad. If a multiple-bit error occurs, the whole block is marked bad. If the value read back does not match the address, the whole block is marked bad. This same process is repeated with the ones complement of the address. The Bootstrap stores the results of the DRAM BIT in EEPROM as a series of x consecutive y-bit words. Each bit in a result word represents the result of testing a ? KB block of DRAM. These bits are mapped to DRAM by proceeding from least-significant bit (LSb) to most-significant bit (MSb) as the addresses of the memory blocks increase. A set bit indicates that a block of DRAM has failed. A clear bit indicates that a block of DRAM has passed the test."
+ex_000032,trace,no_trace,"no_trace
+
+Higher-level",The DPU-BOOT CSC shall attempt to complete its normal execution sequence following detection of any failure.,Error Detection and Correction CSCThe Error Detection and Correction (EDAC) CSC is a Level 1 reuse component from the SSFF and INSTRUMENT Y projects. The EDAC CSC consists of a set of Interrupt Service Routines (ISRs) and a Memory Scrubber Task. The design of the INSTRUMENT Y EDAC CSC is described in document CIDPSDS-01.The only design change was to add logic to check for excessive external (SCM) EDAC interrupts.
+ex_000047,trace,no_trace,"no_trace
+
+Higher-level",The Bootstrap Monitor of the DPU-BOOT CSC shall output an error message to the RS-232 interface if an incorrect number of command arguments are entered.,"Install Project-Specific Module Error IdentifiersIn order to provide a mechanism by which error numbers can be unique across device drivers and applications, each error number must contain a unique module identifier in the most significant word of the error number. These module identifiers are defined in a VxWorks header file."
+ex_000054,trace,trace,"trace
+
+</think>
+
+The",The DPU-BOOT CSC shall put the processor into diagnostic mode.,"CPU BITThe CPU BIT consists of a series of tests designed to test each of the functional units of the processor. These include test for the Branch-Unit, the Fixed-Point Unit, the Floating-Point Unit, the Interrupt-Unit, and the Timer Unit. Each of these tests consists of executing a few selected instructions from the this functional unit. The General Purpose Registers (GPR), the Segment Registers (SR), the Counter Register (CTR), and the Condition Register are tested for stuck-bits as part of the Branch-Unit test. This is done by writing a 1s pattern (verified by reading it back) and then writing a 0s pattern (verified by reading it back)."
+ex_000056,trace,no_trace,"no_trace
+
+Explanation:",The DPU-BOOT CSC shall put the processor into diagnostic mode.,"Standard I/O InterfaceThe write primitive does not block. The buffer passed to write is written directly to the active portion of the ping pong buffer by the driver. This primitive is valid only in TEST mode. The write call will set errno to S_dci_MODE_ERROR and return ERROR if the driver is in NORMAL mode. In TEST mode, the driver returns the number of bytes written."
+ex_000066,trace,no_trace,"no_trace
+
+Explanation:","The DPU-1553 CSC shall address hardware modules as defined in document 1400, Company X Specification for the Company X Communication/Memory Module.","Memory Upload and Download HandlingData can be upload to several types of locations, including* DRAM* EEPROM* hardware registers, and* EEPROM filesystem.ial D_MEM_DAT_UPLD command specify the target location. If the destination is the EEPROM filesystem, a block number is provided in lieu of a memory address , which is used by the DPU FSW to formulate a filename of the form eefs1:DPU_blk.##, where ## is the block number. In this case, once the entirety of the uploaded data is received by the DPU FSW, the uploaded data is then written to that file in the EEPROM filesystem. If a file already exists with that name, it is overwritten. The EEPROM filesystem can be reinitialized using the command D_MEM_DISK_INIT."
+ex_000073,trace,trace,"trace
+
+</think>
+
+The",The DPU-CCM shall strobe the Watchdog timer by writing to the SCM_WDR at an interval of 1 second.,Watchdog LibraryThis function strobes the system watchdog to prevent a watchdog reset.
+ex_000077,trace,trace,"trace
+
+The higher-level",The DPU-CCM shall provide the capability to echo to the spacecraft each received command from the spacecraft or the ICU.,"Command HandlingCommands are dequeued from the Command Queue and executed by the Command Dispatch Task, ccmCmdTask(). This task blocks on a semaphore which is given by ccmCmdEnq(). The ccmCmdTask() wakes on the semaphore and calls ccmCmdProcess() to process waiting commands. The ccmCmdProcess() function subsequently retrieves waiting commands from the Command Queue and invokes ccmCmdDispatch() to verify the expected length of the command and execute it. If command echo is enabled, ccmCmdDispatch() will call ccmHkMkCmdEcho() to blindly echo the command back to the ground. Counts for both rejected and executed commands are maintained. If the command sent to ccmCmdEnq() is either a 1 Hz Clock Time message or an Attitude message from the spacecraft, the command will not be forwarded to the Command Queue, but instead will be executed directly while still in interrupt context. Attitude messages are forwarded to dpaCommandSend(), while the 1 Hz Clock Time messages parameters are passed to tisTimeSync() in order to synchronize the current time. Any other non DPU or spacecraft observatory messages are quietly discarded without reporting an error.In order to guarantee that ccmCmdTask() task reports in with the CCM Control Task periodically in absence of a ground command, the semaphore has a timeout value of 20 seconds. If the semaphore times out, the task will verify no commands are on the Command Queue, and then report in to the CCM Control Task by calling ccmTaskReport()."
+ex_000078,trace,no_trace,"no_trace
+
+Explanation:",The DPU-CCM shall provide the capability to echo to the spacecraft each received command from the spacecraft or the ICU.,"Time SynchronizationThe interface with the spacecraft as described in document 1143-EI-S19121 specifies that the spacecraft will provide a Clock Message to each Instrument at a 1 Hz rate. The Clock Message contains both two values: a value representing the current spacecraft time, and a value representing the delta from the spacecraft time and the Univeral Time (UT), based on an epoch of TBD."
+ex_000090,trace,no_trace,"no_trace
+
+Explanation:",The DPU-CCM shall quietly discard any unrecognized observatory messages (I.e. messages which do not have a DPU command APID).,"Data ProcessingWhen the DCX CSC compresses a data package, the given APID is incremented by one. If the compressed copy of data is larger than original data set, the original data set will be forwarded to the SCUI CSC, an event S_dcx_UNC_USED is enqueued to ccmErrEnq(), and the APID is not incremented. In this way, the ground systems can discern compressed packets from non-compressed packets."
+ex_000104,trace,trace,"trace
+
+Normalize the following",The DPU-CCM shall collect DPU_HK and forward it to the DPU-SCUI.,"Error Collection and ReportingThe DPU-CCM CSC provides a centralized error reporting interface, ccmErrEnq(), that other FSW tasks use to report errors. Each time it wakes, ccmTask() checks to see if it is time to form an error/event packet for transmission to the ground. If so, ccmTask() calls ccmHkMkError() to actually create the packet and forward it to DPU-SCUI for transmission to the ground."
+ex_000115,trace,trace,"trace
+
+The higher-level",The DPU-CCM shall process real-time non-deferred commands within B ms of receipt from the ICU or the SCU.,"Command and Control CSCThe Command and Control (CCM) CSC is a Level 2 reuse component from the INSTRUMENT Y project. The Command and Control CSC includes the following components:* A Control Task, ccmCtrlTask(), which initializes the DPU FSW and spawns other tasks at bootup, schedules the production of DPU housekeeping data packets, monitors the execution of other tasks, and schedules the execution of other periodic tasks such as the heartbeat message and the watchdog strobe; and* A Command Dispatch Task, ccmCmdTask(), which receives and dispatches real-time commands received from the SCU or the ICU.Major data structures include:* A Static Data table that keeps track of the operational state. Data included in this table includes housekeeping production rates, CCM specific flags, and the number of commands executed.* A Command Queue into which commands are placed when they arrive, via interrupt, from the ICU or the SCU.* An Error/Event Queue which accumulates error and event codes which are reported by the DPU FSW. These error and event codes are removed from the queue and placed into a telemetry packet at a given interval and included in DPU housekeeping data.DPUSDS5.12.1.1.1Flight Software InitializationThe Command and Control CSC is initialized by spawning the CCM Control Task, ccmCtrlTask(), from the operating system startup task, usrRoot(). After the task is spawned it calls a function, ccmInit(), which creates the error/event queue, instantiates needed semaphores and installs various ISRs. Finally, it spawns the remaining tasks which comprise the DPU FSW. When the CCM Control Task starts up, it reads DPU configuration startup defaults from the SYSTEM_CONFIG_AREA in EEPROM. If the SYSTEM_CONFIG_AREA checksum is bad, hard-coded defaults are used. The CCM Control Task initializes the remaining CSCs by calling the applicable initialization function, or if the CSC has an associated task, by spawning the task using the VxWorks function, taskSpawn(). When the CCM Control Task initializes a CSC, it passes the startup defaults read from EEPROM as parameters to the task initialization function. In addition to its task initialization activities, ccmInit(), also initializes the command length verification table by calling ccmCmdLengthInit(). The command processor uses the created table to verify expected command lengths for newly received commands."
+ex_000132,trace,no_trace,"no_trace
+
+Explanation:","The DPU-CCM shall, in rejecting a command, report an error in DPU_HK indicating the byte-code of the command being rejected in the LSB of the errno as described in 03691-DPUSDP-01.","Error RecoveryExcept for the modification described in Sections 5.2.3.6, no further modifications to the existing task error-handling mechanisms are required. VxWorks? uses a global mechanism for returning status codes when errors occur. This is accomplished by using the task variable, errno (stored in the task control block). Most VxWorks? functions return a STATUS value. This value can either be OK or ERROR. If a function returns ERROR, then the errno variable must indicate a specific error code."
+ex_000136,trace,no_trace,"no_trace
+
+Higher-level",The DPU-CCM shall use DPU-EEPRM to access the EEPROM.,Real-Time Clock InterfaceThe Real-Time Clock (RTC) Registers of the RAD6000 are special-purpose registers not normally accessible to C language programs. Some assembler wrapper functions provide access to these.
+ex_000147,trace,trace,"trace
+
+</think>
+
+The",The DPU-TMALI shall allocate a ring buffer of size specified by TMALI_BUFFER_SIZE provided during initialization for storing incoming frames of data. The default buffer size shall be 15 MB.,"Public FunctionsThis task initializes the TMALI CSC and then continues to read data from the DCI and store it in the TMALI buffer each time the DCI driver signals that data is available in the Ping-Pong buffer. The availability of data in the DCI Ping-Pong buffer is signaled to the tmaliTask using a semaphore. Unless a fatal error is detected during initialization this task will never terminate.The specified 3 parameters specify the size of the TMALI queue and the initial parameters for the DCI, if the specified values are outside the allowed range default values will be used.The specified QueueSize is the allocated buffersize (in 4 byte EVENTS), the ring buffer is full when QueueSize-1 EVENTS are stored in the buffer."
+ex_000152,trace,trace,"trace
+
+Explanation: The",The DPU-TMALI shall configure the DCI interface data timeout at startup as specified by TMALI_TIMEOUT provided during initialization. The default value shall be N milliseconds and shall be capable of being modified dynamically.,"Public FunctionsThis routine provides a means to set the bit arrangement used by the DCI. When bSpecialArrangement is TRUE, the DCI is set to special bit arrangement mode, otherwise the default mode of no rearrangement is set."
+ex_000159,trace,trace,"trace
+
+</think>
+
+The",The DPU-TMALI shall install a callback routine to respond to the DCI Error Interrupt.,Install Exception HandlersThis routine installs a hook routine for the Memory Error Interrupt. The hook routine will be called from the interrupt context. This function returns OK always.
+ex_000188,trace,no_trace,"no_trace
+
+Explanation:","The DPU-SCUI shall compute a CHKS16 for telecommands received from the SCU. If the CHKS16 does not match the value included in the telecommand, an error will be reported to DPU-CCM. If the checksum computes correctly, the command will be forwarded to DPU-CCM for execution.",SCU Interface CSCThis CSC performs rate-buffering of the downlink telemetry to the SCU according to a commandable parameter. The rate at which the SCU polls the DPU is also commandable. The CSC installs an ISR to collect telecommands from the SCU via the MIL STD 1553B Interface.
+ex_000204,trace,trace,"trace
+
+</think>
+
+The","The DPU-TIS shall provide the capability for an application program to set the value of the SC_TIME register(s) on the SCM and enable the 1PPS clock jam register, if automatic time synchronization is enabled.","Time Interface ConfigurationThe TIS CSC utilizes the manual jam bit in the DCI CSR to indicate whether automatic time synchronization is enabled or disabled. If automatic time synchronization is enabled, and a command is issued to manually jam the DPU clock, the command will be rejected - see tisTimeSet()."
+ex_000228,trace,trace,"trace
+
+The higher-level","The DPU-ICUI shall check the length of a received DPU_CMD against the message length determined by the Inter-Block Gap. If the received value does not match, then the command will be discarded, and an error will be enqueued to DPU-CCM, and a NAK message transmitted to the ICU within a second.","Receiving Commands from the ICUThe interface to the ICU is via a synchronous serial interface (SSI) bus, which utilizes an inter-block gap (IBG) to delineate complete messages from one another. The DPU hardware produces an interrupt when it detects an IBG, and the SSI Driver provides a mechanism by which an application can install an interrupt hook routine to respond to an IBG interrupt. Upon initialization, the ICUI CSC installs a hook routine into the SSI Driver called icuiCommandReceiveISR(), which verifies the checksum of an incoming command, transmits an ACK/NAK message to the ICU, and then enqueues the command for later processing by calling ccmCmdEnq()."
+ex_000232,trace,trace,"trace
+
+The higher-level",The DPU-ICUI shall use DPU-SSI to communicate with the SSI Interface.,"Receiving Commands from the ICUThe interface to the ICU is via a synchronous serial interface (SSI) bus, which utilizes an inter-block gap (IBG) to delineate complete messages from one another. The DPU hardware produces an interrupt when it detects an IBG, and the SSI Driver provides a mechanism by which an application can install an interrupt hook routine to respond to an IBG interrupt. Upon initialization, the ICUI CSC installs a hook routine into the SSI Driver called icuiCommandReceiveISR(), which verifies the checksum of an incoming command, transmits an ACK/NAK message to the ICU, and then enqueues the command for later processing by calling ccmCmdEnq()."
+ex_000238,trace,trace,"trace
+
+</think>
+
+The","The DPU-ICUI shall install an ISR to be invoked on the SSI receiver interblock gap interrupt, for the receiving and processing of commands from the ICU.","Public FunctionsThis routine is called by the MIL-STD-1553 Command ISR and the SSI Interface ISR any time a command arrives from the SCU or the ICU, to enqueue the command and to wakeup the CCM Command Dispatch Task so that the command can be executed."
+ex_000242,trace,trace,"trace
+
+Higher-level requirement","The DPU-ICUI shall install an ISR to be invoked on the SSI receiver interblock gap interrupt, for the receiving and processing of commands from the ICU.","Public FunctionsThis routine initializes the interface to the ICU. This routine opens SSI Driver port, installs the SSI interface interrupt callbacks, and enables Transmit Message Mode in the SSI Driver."
+ex_000253,trace,no_trace,"no_trace
+
+Explanation:",The raw event list engineering mode shall collect events for transmission to the ground.,"Data ProcessingData requiring compression is received via the dcxEnq() function, which has an API definition which matches the scuiEnq() API. The DCX CSC handles the PKG_CTRL flags as described below:* PKG_COMPRESS this flag is set to indicate if the package is actually compressed.* PKG_PRIORITY_HIGH this flag is ignored by the DCX CSC but is forwarded to the SCUI CSC.* PKG_SEGMENT this flag is ignored by the DCX CSC but is forwarded to the SCUI CSC.PKG_CHECKSUM if set, the dcxEnq() function will compute a checksum which is appended to the data, and then the flag is negated. The checksum will be compressed with the rest of the data, so that when the data is decompressed on the ground, the checksum can be recomputed and compared to provide a good indication of whether the decompressed copy of the data matches the original data set."
+ex_000272,trace,trace,"trace
+
+</think>
+
+The",The DPU-DPA shall be capable of collecting detector events over the full FOV.,Intensifier Characteristics (IC) Engineering ModeThe purpose of Intensifier Characteristics Engineering Mode is to assess detector health and performance. Detector events produced in Full Frame High Resolution detector format are collected and histogrammed for a commanded integration time to produce a pulse-height histogram.
+ex_000276,trace,trace,"trace
+
+</think>
+
+The","There DPU-DPA shall have three science modes, X, Y mode, and X/Y mode.","Instrument Y ProcessingThe Instrument Y Processor Task will perform tracking by breaking the exposure up into 10-second sub-exposures which are shifted and added into a final histogrammed Instrument Y. Tracking is performed by choosing guide stars from the first 10-second Instrument Y of an exposure. Then in each subsequent Instrument Y, these guide stars are found and the drift is determined by comparing the two Instrument Ys. The Instrument Y is then shifted by the determined drift and added to the previous Instrument Ys in the accumulation buffer."
+ex_000279,trace,no_trace,"no_trace
+
+Higher-level",The image mode shall shift successive frames according to the calculated spacecraft drift and co-add the frame into an accumulated image.,"Data Transfer to QueueDuring initialization, the TMALI CSC installs an ISR hook routine, tmaliTransferToQueueISR(), into the DCI Driver which is invoked when:* the DCI interface reaches the programmed frame limit in the Ping-Pong buffer, or* the DCI interface detects a data receipt timeout."
+ex_000299,trace,trace,"trace
+
+</think>
+
+The",The DPU-RTOS shall provide a function to allow an application program to read from the Real-Time Clock registers on the RAD6000SC CPU Module.,Real-Time Clock InterfaceThe Real-Time Clock (RTC) Registers of the RAD6000 are special-purpose registers not normally accessible to C language programs. Some assembler wrapper functions provide access to these.
+ex_000305,trace,no_trace,"no_trace
+
+Explanation:",The DPU-RTOS shall install an hook routine which is invoked on system exception which shall attempt to record the interrupt vector to the LAST_BOOT_IVEC location in EEPROM prior to reboot.,"Install Exception Handlers The RSC processor also generates an external interrupt for the Power Fail Interrupt. The RSCVME Board Support Package of VxWorks? does not directly support access to this interrupt. Some custom routines must be provided to access this interrupt. These functions are described below, and are contained in sysLibSup.c."
+ex_000312,trace,no_trace,"no_trace
+
+Explanation:",The DPU-BIT shall test the Error Detection and Correction (EDAC) on the Company X Communication/Memory Module by reading preprogrammed error locations in PROM.,"DRAM BITPart of the memory is tested in Boot Sequence 1, and part of the memory is tested during Boot Sequence 2. During Boot Sequence 1, ? KB of DRAM is tested before the Bootstrap is copied to this area. During Boot Sequence 2, the remaining memory is tested in ? KB blocks. The DRAM BIT first writes the address of each word in a block to that word in the block. Then the test flushes the cache and reads back the entire block. If a single-bit error occurs on the read-back, the location is read again. If another single-bit error occurs, the test assumes a hard error and marks the whole block bad. If a multiple-bit error occurs, the whole block is marked bad. If the value read back does not match the address, the whole block is marked bad. This same process is repeated with the ones complement of the address. The Bootstrap stores the results of the DRAM BIT in EEPROM as a series of x consecutive y-bit words. Each bit in a result word represents the result of testing a ? KB block of DRAM. These bits are mapped to DRAM by proceeding from least-significant bit (LSb) to most-significant bit (MSb) as the addresses of the memory blocks increase. A set bit indicates that a block of DRAM has failed. A clear bit indicates that a block of DRAM has passed the test."
+ex_000315,trace,trace,"trace
+
+The higher-level",The DPU-BIT shall report errors that occur during tests as failures in the test results.,"DRAM BITPart of the memory is tested in Boot Sequence 1, and part of the memory is tested during Boot Sequence 2. During Boot Sequence 1, ? KB of DRAM is tested before the Bootstrap is copied to this area. During Boot Sequence 2, the remaining memory is tested in ? KB blocks. The DRAM BIT first writes the address of each word in a block to that word in the block. Then the test flushes the cache and reads back the entire block. If a single-bit error occurs on the read-back, the location is read again. If another single-bit error occurs, the test assumes a hard error and marks the whole block bad. If a multiple-bit error occurs, the whole block is marked bad. If the value read back does not match the address, the whole block is marked bad. This same process is repeated with the ones complement of the address. The Bootstrap stores the results of the DRAM BIT in EEPROM as a series of x consecutive y-bit words. Each bit in a result word represents the result of testing a ? KB block of DRAM. These bits are mapped to DRAM by proceeding from least-significant bit (LSb) to most-significant bit (MSb) as the addresses of the memory blocks increase. A set bit indicates that a block of DRAM has failed. A clear bit indicates that a block of DRAM has passed the test."
+ex_000321,trace,trace,"trace
+
+</think>
+
+The",The DPU-ADC shall create a fixed analog conversion scan list containing the A DPU analog values (active values plus one ground reference value).,"Performing Analog-to-Digital ConversionsThe ADC Driver maintains an array of ADC_LIST_ENTRY data structures which contain the hardware multiplexer setup information for each of the x analog inputs, and the current value (ADC_VALUE) of each analog input. To update a single value in the list, an application must call the update function adcUpdateNext(). The ADC hardware only has a single A/D channel, and so to perform an A/D conversion the hardware requires a multiplexer setup and corresponding settle time, as well as the normal A/D conversion time. Therefore, it takes two calls to adcUpdateNext() to update a single value in the list. To keep the driver simple and to avoid embedding hard waits in the driver, the application is required to implement the setup and conversion time by spacing successive calls to the adcUpdateNext() function appropriately."
+ex_000357,trace,no_trace,"no_trace
+
+Explanation:",The DPU-DCI shall write to the DCI Memory in B-bit words only.,"Standard I/O Interface The write primitive does not block. The write() primitive is managed by the tyLib function, tyWrite() when the driver is not in BGTX Message Mode. The size of the Tx ring buffer is specified in the call to ssiDevCreate() as part of the device instantiation. This routine returns either the number of bytes written, or ERROR."
+ex_000369,trace,trace,"trace
+
+Explanation: The",All searchable product-specific metadata in MODIS standard products shall be formatted as specified in DID 311.,"Shall create ECS_standard_global_metadata and MODISL1A_specific_global_metadata for each completed Level1A_data product, using Level0_open_metadata and selected metadata contained in MODIS_scan."
+ex_000378,trace,trace,"trace
+
+The higher-level",Each Software process shall handle input data sets with the following error attributes: Corrupted data as indicated by Quality Assurance (QA) flags also located within the file.,Shall Abort_current_packet_processing if the calculated packet checksum is not the same as the packet_checksum in the MODIS_pkt.
+ex_000393,trace,trace,"trace
+
+Higher-level requirement","Maintain task properties; Edit and update task properties including start and end date, name, or progress(% complete).",GUI should able to provide ability to change task name.
+ex_000403,trace,trace,"trace
+
+</think>
+
+The","Handle Milestones; A milestone is a special task. Whereas a task typically has a timeframe specified (the time needed to complete the task), a milestone is typically an event. For example, the release date of a software is an event rather than a timeframe.",Milestone should be displayed visually differently from regular tasks.
+ex_000412,trace,trace,"trace
+
+The higher-level",Delete Resources (person); Delete a person and all its associated information such as dependencies to all tasks the person is supposed to work on.,"When a resource is removed, all the tasks where the resource is assigned need to be updated."
+ex_000419,trace,no_trace,"no_trace
+
+Explanation:","Add/Remove Task links; Tasks can be linked with one another to indicate the sequence in which they have to be performed. For example, if there is a link from task 1 to task 2 then task 2 can only be started after task 1 is completed. The start date of task 2 must thus be after the end date of task 1.",The start and end dates for the graph can be either flexible or rigid for the purpose of adjusting and fixing potential collisions.
+ex_000424,trace,trace,"trace
+
+The higher-level",Add/Remove Resources to Tasks Dependencies;Dependencies between tasks and resources indicate the resources who are supposed to complete a task. Each task could be worked on by multiple persons and each person could work on multiple tasks. Dependencies may also be annotated to capture how many hours each person is supposed to work on a task on a daily basis.,A GUI class of task property provides interface and functions to add and remove human resource assignments.
+ex_000433,trace,trace,"trace
+
+The higher-level",Change Task Begin/End Times automatically with dependency changes;The start or end date should be changed automatically if links among tasks are changed,"A collection of dependency class is used to manage dependencies. It contains objects of dependency classes and provides functions to create, delete, and get dependencies."
+ex_000438,trace,trace,"trace
+
+Explanation: The",Change Task Begin/End Times automatically with dependency changes; The start or end date should be changed automatically if one of its subtasks changes.,Application needs to keep track of task's begin and end times.
+ex_000451,trace,trace,"trace
+
+Explanation: The","Show Resource Utilization (underused or overused person);Tasks may be assigned to persons and it should be indicated if a person receives more tasks than he/she is able to handle (e.g., the person hours per task for all tasks exceeds the allowed 8 hours a day) or if the person is not available due to holidays or vacation days. it should also be indicated if the person is under-utilized in that he/she is working less than the 8 hours a day.",GUI needs to provide ability to assign persons to tasks.
+ex_000467,trace,trace,"trace
+
+Higher-level requirement","Utility and application level functionality of WARC Tools shall be made available to end users as command line tools, extensions to existing tools, and simple web applications for accessing WARC content.","A set of command line tools incorporating libwarc shall perform migration of ""wget"" archives to WARC-records."
+ex_000476,trace,trace,"trace
+
+Higher-level requirement","The library and each tool or extension shall be documented for developers and end users, using man pages and other common document forms.",Libwarc shall be shipped with a developer guide and useful examples.
+ex_000484,trace,trace,"trace
+
+</think>
+
+The",Library functionality shall have APIs and dynamic language bindings to be made available as software libraries for developers.,"Libwarc shall provide interfaces to SWIG wrappers to allow dynamic language bindings (Python, Ruby, Perl, Lua ...)"
+ex_000488,trace,trace,"trace
+
+</think>
+
+The","Web server plug-ins shall conform to the Apache 'mod' API and shall operate correctly with both Apache and Lighttp servers and shall be compatible with appropriate web sever programming standards, such as WSGI in Python and the Servlet API in Java.",Libwarc shall be incorporated within a Lighttp module to enable all actions specified in SRS 34-36 to be executed within lighttp.
+ex_000500,trace,trace,"trace
+
+Higher-level requirement",An interface implementation may be made for Python to allow the library to be used natively by Python programmers requiring no knowledge of the internal implementation of libwarc or C.,A Python interface to libwarc shall be implemented using the SWIG wrapper
+ex_000503,trace,trace,"trace
+
+</think>
+
+The",An interface implementation shall be made for Java to allow the library to be used natively by Java programmers requiring no knowledge of the internal implementation of libwarc or C.,"Libwarc and the bindings to its functionality shall enable the use of libwarc's iterators described in SRS 16-20 to be used within various dynamic languages and in Java v1.4 and earlier, using metaphors and paradigms familiar to those languages."
+ex_000505,trace,trace,"trace
+
+</think>
+
+The","The functionality of the library shall be exposed in such a way as to fit the metaphors and paradigms of the specific implementation languages (C, Java, Python).","Python scripts shall be implemented incorporating libwarc, and making all of the functionality of libwarc and API available in Python."
+ex_000511,trace,trace,"trace
+
+</think>
+
+The","The functionality of the library shall be exposed in such a way as to fit the metaphors and paradigms of the specific implementation languages (C, Java, Python).","Libwarc and the bindings to its functionality shall enable the use of libwarc's iterators described in SRS 16-20 to be used within Java v1.5 and and later, using Java's new container iterators, such as ""for"" and ""foreach""."
+ex_000516,trace,trace,"trace
+
+</think>
+
+The",Any software tool or application based on libwarc shall require just a single header file.,"The universal header ""warc.h"" shall ensure that deprecated function calls and changes to the library are notified at compile time."
+ex_000526,trace,trace,"trace
+
+</think>
+
+The","For each type of WARC-record, a set of functions shall be made available to create/modify the records properties.","The attributes of each WARC-record, as per the ISO standard specification, shall have a corresponding attribute in its peer C class."
+ex_000553,trace,trace,"trace
+
+Higher-level requirement",Dynamic memory management shall be hidden inside libwarc,"Libwarc shall not use file to memory mapping technology, instead libwarc will explicitly allocate memory as needed."
+ex_000558,trace,trace,"trace
+
+Higher-level requirement","WARC files shall be validated using a command line tool, ""w-validator"", which will enable validation or rejection of WARC files.",A command line tool shall be implemented utilising libwarc to check the consistency of WARC-records and their conformance to the WARC ISO standard.
+ex_000563,trace,trace,"trace
+
+</think>
+
+The",WARC Browser shall support a proxy-style interface,SRS 38 -A web proxy interface shall be implemented that allows the user to set their web browser proxy to the one provided by the interface and thereby ensure all content is delivered from the archive and not from the live web.
+ex_000564,trace,trace,"trace
+
+Higher-level requirement",An Apache and Lighttp plug-in shall provide access to the libwarc API and WARC Browser over http,Libwarc shall be incorporated within an Apache module to enable all actions specified in SRS 34-36 to be executed within Apache.
+ex_000574,trace,trace,"trace
+
+Higher-level requirement","It shall be possible to collect arbitrary web content, such as html files, images etc. (for example from a web server document root directory), and write the data to WARC files","A set of command line tools and an API incorporating libwarc shall enable the collection of online documents, such as html and embedded files, etc., and write them to valid WARC- records."
+ex_000600,trace,trace,"trace
+
+The higher-level",Fluid Subsystem: Pump The pump moves fluid at specified rate primes itself announces if priming fails indicates when it's too hot and halts pumping when commanded,basal infusion flow tolerance. The pump shall deliver basal infusion at the prescribed basal rate within a basal infusion flow tolerance of Fbasal tol = 0.5 ml/hr of the prescribed basal rate
+ex_000615,trace,trace,"trace
+
+The higher-level",Operation Subsystem: Operation Thread The operation thread performs primary pump operation control,halt pumping. The mechanical pump shall halt pumping when commanded or caused in response to an alarm condition (at end of pump stoke?)
+ex_000619,trace,no_trace,"no_trace
+
+Explanation:",Operation Subsystem: Operation Thread The operation thread performs primary pump operation control,prescription confirmation. Required when changing prescription during infusion
+ex_000630,trace,trace,"trace
+
+The higher-level",Power Subsystem:Power Control Switches between battery-backup and mains supply and detects anomalies like voltage out-of-range,remaining battery accuracy. The estimate of remaining battery energy must be accurate to within Xbtty = 25%
+ex_000634,trace,no_trace,"no_trace
+
+Explanation:",Safety Subsystem: Alarm Thread The alarm thread (within the alarm process) evaluates fault signals to determine whether the infusion rate should be changed issues alarm and warning signals to be sounded and displayed by the control panel and creates fault entries to be stored in the fault log,basal over-infusion alarm. IF delivered basal flow rate exceeds the prescribed basal rate setting by more than its allowered tolerance over a period of more than 5 minutes or immediately if the pump goes into free flow the pump shall issue a basal-overinfusion alarm. (EC3.2.7)
+ex_000645,trace,trace,"trace
+
+</think>
+
+The",Safety Subsystem: Fault Logger The fault logger records all errors that are detected. As such it is pure hardware that does not depend on thread execution. It also maintains a hardware real-time clock used for timestamps,time stamp. Each log entry shall have a time stamp with its time of occurrence
+ex_000666,trace,no_trace,"no_trace
+
+Explanation:",The system shall allow infinite hierarchies of subclasses to be created in the User Hierarchy Class structure,The system shall provide the ability to present a list of tasks by user or user role
+ex_000670,trace,no_trace,"no_trace
+
+Explanation:",The system shall allow other VistA applications to access the user class file to determine the role of an employee,The system will provide secure remote access to patient data without the need to pre-load an application
+ex_000671,trace,trace,"trace
+
+The higher-level",The system shall allow other VistA applications to access the user class file to determine the role of an employee,If role-based access control (RBAC) is supported
+ex_000680,trace,trace,"trace
+
+The higher-level",The system shall display a box listing possible matches if CPRS finds more than one patient with the same last name and same last four digits of the social security numbers,The system shall provide the ability to send a query to coordinate patient identification
+ex_000681,trace,trace,"trace
+
+The higher-level",The system shall display a message indicating the patient?s ability to pay for medical services must be evaluated,The system shall have the ability to provide assistance with selecting an appropriate CPT Evaluation and Management billing code based on codified clinical information in the encounter
+ex_000692,trace,trace,"trace
+
+Higher-level requirement",The system shall include Standard Laboratory and Medication orderable files,The system shall provide a means to document a description of a medication and medication purpose when the medication name is unknown
+ex_000708,trace,trace,"trace
+
+The higher-level",The system shall include the ability to print prescriptions for signature and fax prescriptions to a local pharmacy with an electronic signature,The system shall provide the ability to identify pharmacies that can receive prescriptions electronically
+ex_000718,trace,trace,"trace
+
+The higher-level",The system shall indicate problems with inactive codes have the ?#? symbol in the status column,The system shall provide the ability to display inactive and/or resolved problems
+ex_000730,trace,trace,"trace
+
+</think>
+
+trace",The system shall provide a way to limit the users or sites that have access to remote retrievable data,The HIE shall have remote access controls
+ex_000732,trace,no_trace,"no_trace
+
+Explanation:",The system shall provide an open source integration platform to build interfaces to Billing/Practice Management systems,The system shall provide the ability to receive
+ex_000746,trace,no_trace,"no_trace
+
+Explanation:",The system shall support the requirements for codified data specified by the DOQ-IT quality improvement measures,The system shall provide an administrative function allowing an administrator to set rules for data retention
+ex_000766,no_trace,no_trace,"no_trace
+
+Explanation:",Delete Resources (person); Delete a person and all its associated information such as dependencies to all tasks the person is supposed to work on.,For each order type
+ex_000776,no_trace,no_trace,"no_trace
+
+Explanation:","Each software process shall be able to process input data sets with the following nominal attributes: Time transitions, including Greenwich Meridian crossing, leap year, beginning of the year, beginning of the millennium, and/or startof data collection not on a granule boundary. Terminator crossing , International Date Line crossing, and/or Earth pole within a granule. Day, Night, or mixed mode data.",Libwarc shall be shipped with a manual and build scripts
+ex_000783,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-SSI shall provide the capability for an application program to install a callback routine to respond to the receive IBG Interrupt.,The system shall provide the ability to customize clinical templates
+ex_000792,no_trace,no_trace,"no_trace
+
+Higher-level","WARC extensions help content will be provided each of the commands ""curl"", ""wget"", and ""httrack""",The task manager class uses an object of dependency collection class to manage dependencies.
+ex_000814,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-ADC shall read from the SCM registers in B-bit words only.,The system shall capture demographic information as part of the patient record. Demographic information
+ex_000839,no_trace,no_trace,"no_trace
+
+Explanation:",Operation Subsystem: Control Panel The control panel combines a touch panel with a speaker by which a clinician can enter and confirm configuration and see and hear alarms and warnings. is used by an authorized clinician to start and stop infusion displays the prescription read from the drug container by the scanner for confirmation or rejection. displays the PCA pump's status. allows request of a bolus by a clinician. allows entry of the clinician requested bolus duration displays alarm and warning indications sounds alerts for alarm and warning indications allows alarm inactivation displays if and how alarms are currently inactivated,Shall write Read_packet_log_msgs to Log_messages when errors occur in the Read_MODIS_packet process.
+ex_000856,no_trace,no_trace,"no_trace
+
+Explanation:",WARC Browser shall provide an API that allows browsing of WARC files and associated CDX files via an HTTP server,To remove tasks as subtasks GanttTree2 class calls a method which dedent selected task nodes in GUI so that they will not be subtasks of their original parents tasks. An object of a class is used to remove relationship between selected tasks and their original parents and add relationship between selected tasks and their new parents.
+ex_000860,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-RTOS shall install an hook routine which is invoked on system exception which shall attempt to record the interrupt vector to the LAST_BOOT_IVEC location in EEPROM prior to reboot.,"The attributes of each WARC-record, as per the ISO standard specification, shall have a corresponding attribute in its peer C class."
+ex_000867,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-DPA shall provide a task heartbeat to DPU-CCM.,The system shall enforce a limit of (configurable) consecutive invalid access attempts by a user
+ex_000877,no_trace,no_trace,"no_trace
+
+The higher",The system shall support the requirements for codified data specified by the DOQ-IT quality improvement measures,The system shall update the appropriate medication list with the prescribed medications
+ex_000893,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-CCM shall provide a mechanism for other CSCs to report errors for inclusion in the DPU_HK.,"A set of command line tools and an API incorporating libwarc shall enable the collection of online documents, such as html and embedded files, etc., and write them to valid WARC- records."
+ex_000902,no_trace,no_trace,"no_trace
+
+Higher-level",The system shall require a user to review and sign changed if a user has just entered orders or documents that are unsigned,The human resource class can have multiple objects of resource assignments which assigns this resource to tasks. The class provides function to get the list of these objects.
+ex_000908,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-BOOT CSC shall create a record of the CPU BIT in the SYSTEM_BLOCK.,remaining battery minutes. The user interface must show that the PCA pump is working on battery backup and an estimate of the number of minutes of battery-powered infusion remain
+ex_000913,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-CCM shall collect DPU_HK and forward it to the DPU-SCUI.,bolus over-infusion alarm. If delivered patient-requested bolus flow rate exceeds the prescribed patient-requested bolus rate setting by more than its allowed tolerance over a period of more than 1 minute or immediately if the pump goes into free flow the pump shall issue a bolus over-infusion alarm. (EC 3.2.7)
+ex_000919,no_trace,no_trace,"no_trace
+
+Explanation:","The DPU-RTOS shall exclude failed DRAM from the system memory pool based on the contents of the BIT_DRAM results in the SYSTEM_BLOCK. The system memory table does not include the Interrupt Vector Table (IVT), nor the text and data segment.","Memory Upload and Download HandlingIf more than 65535 bytes need to be uploaded, the upload file must be broken up into multiple smaller files, each less than or equal to 65535 bytes, and then each of the virtual uploads should be sent in series. Because of the sequence numbers, the DPU FSW can receive individual upload commands out of sequence. There is no time limit for the accomplishment of a single virtual upload, and so a long upload can continue across ground contacts. If an upload is in progress, the last sequence number can be sent to the DPU FSW and it will report the list of missing sequence numbers via event number S_ccm_MISSING_SEQNO. If an upload is in progress and needs to be cancelled, it can be discarded by issuing the D_MEM_DAT_CNCL command."
+ex_000929,no_trace,no_trace,"no_trace
+
+Explanation:",Libwarc shall use disk-based working memory,The system shall provide the ability to link procedure data with patient diagnosis
+ex_000931,no_trace,no_trace,"no_trace
+
+Explanation:",Change Task Begin/End Times automatically with dependency changes;The start or end date should be changed automatically if links among tasks are changed,Raw Event List (RE) Engineering ModeThe purpose of Raw Event List Engineering Mode is to diagnose problems with the detector. Detector events produced in a given detector mode are collected over a commanded integration time and transmitted to the ground as a list of raw events.
+ex_000935,no_trace,no_trace,"no_trace
+
+Explanation:",Change Task Begin/End Times manually with user changes; Change the start or end date either by editing its properties or by dragging-and-dropping the bar in the GUI.,basal under-infusion warning. If delivered basal flow rate is less than the prescribed basal rate setting by more than its allowed tolerance over a period of more than 5 minutes or immediately if the flow stops the pump shall issue a basal under-infusion warning. (EC3.2.8)
+ex_000939,no_trace,no_trace,"no_trace
+
+Higher-level",Iterators can use exact pattern search or regex expressions,Install Exception HandlersThis routine is a default interrupt handler and is installed into element six (6) of the system interrupt table.
+ex_000957,no_trace,no_trace,"no_trace
+
+Explanation:","Add/Remove Task links; Tasks can be linked with one another to indicate the sequence in which they have to be performed. For example, if there is a link from task 1 to task 2 then task 2 can only be started after task 1 is completed. The start date of task 2 must thus be after the end date of task 1.","Public FunctionsThis function gets the frame depth of the Ping-Pong buffers used by the DCI CSC. The frame depth determines how many frames are read into the selected Ping-Pong buffer before interrupting. The initial value for the frame depth setting is determined by the parameter provided when stating the tmaliTask. The returned value is the current active value, this may differ from the last commanded value as the commanded value only takes effect when data is transferred from the hardware Ping-Pong buffer to the TMALI queue (in response to a frame or timeout interrupt, see section 5.13.2.3)."
+ex_000973,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-TMALI shall provide TMALI_HK to the DPU-CCM on request.,Milestone is a task with no duration. It has only time point of occurrence.
+ex_000986,no_trace,no_trace,"no_trace
+
+Explanation:","The DPU-SCUI shall cancel the write to each subaddress if the SCU fails to read a pending STPDU after a timeout specified by a value calculated based on the SCU_POLL_RATE parameter provided during initialization, shall record new data to those subaddresses, and report an error to the DPU-CCM. The SCU_POLL RATE parameter shall have a default setting of J ms and shall be capable of being modified dynamically.","Time SynchronizationThe interface with the spacecraft as described in document 1143-EI-S19121 specifies that the spacecraft will provide a Clock Message to each Instrument at a 1 Hz rate. The Clock Message contains both two values: a value representing the current spacecraft time, and a value representing the delta from the spacecraft time and the Univeral Time (UT), based on an epoch of TBD."
+ex_000988,no_trace,no_trace,"no_trace
+
+Explanation:",The DPU-BIT shall report errors that occur during tests as failures in the test results.,Watchdog LibraryThe DPU contains a hardware watchdog which must be strobed periodically in order to prevent a DPU reboot.
+ex_000994,no_trace,no_trace,"no_trace
+
+Explanation:",The system shall support audit capability,"Time SynchronizationThe interface with the spacecraft as described in document 1143-EI-S19121 specifies that the spacecraft will provide a Clock Message to each Instrument at a 1 Hz rate. The Clock Message contains both two values: a value representing the current spacecraft time, and a value representing the delta from the spacecraft time and the Univeral Time (UT), based on an epoch of TBD."
+ex_001013,no_trace,no_trace,"no_trace
+
+Higher-level",A Python interface shall be implemented,stop infusion. Upon the clinician's pressing of the stop button prescribed infusion shall halt
+ex_001022,no_trace,no_trace,"no_trace
+
+Explanation:",The DPU-DPA shall be capable of collecting detector events over the full FOV.,"Performing Analog-to-Digital ConversionsThe ADC Driver maintains an array of ADC_LIST_ENTRY data structures which contain the hardware multiplexer setup information for each of the x analog inputs, and the current value (ADC_VALUE) of each analog input. To update a single value in the list, an application must call the update function adcUpdateNext(). The ADC hardware only has a single A/D channel, and so to perform an A/D conversion the hardware requires a multiplexer setup and corresponding settle time, as well as the normal A/D conversion time. Therefore, it takes two calls to adcUpdateNext() to update a single value in the list. To keep the driver simple and to avoid embedding hard waits in the driver, the application is required to implement the setup and conversion time by spacing successive calls to the adcUpdateNext() function appropriately."
+ex_001034,no_trace,no_trace,"no_trace
+
+Higher-level","The DPU-DPA shall command DPU-TMALI to reorder EVENT data bits as a function of the Detector Electronics Output Format (Science Mode 3, Full-Frame High Res), and the commanded DPU science or engineering mode.","The universal header ""warc.h"" shall ensure compatibility between all versions of libwarc."
+ex_001049,no_trace,no_trace,"no_trace
+
+Explanation:",The DPU-BOOT CSC shall enable EDAC on the SCM.,"InitializationThe TMALI CSC is initialized by spawning the tmaliTask() with the startup default parameters. This task will allocate memory for the TMALI_EVENT_QUEUE, install DCI ISRs, initialize static variables and data structures, and then enter an end-less loop in which it transfers the data from the DCI to the TMALI queue, throttled by the semaphore semDciWait."
+ex_001054,no_trace,no_trace,"no_trace
+
+Explanation:",The DPU-SSI shall provide the capability for an application to determine the number of bytes in a message received from the ICU.,"InitializationThe DPU-BIT should be initialized every time the DPU boots. The startup task, usrRoot() should call bitPart1() before initializing the device drivers and bitPart2() after initializing EDAC and the device drivers."
+ex_001063,no_trace,no_trace,"no_trace
+
+Explanation:",Operation Subsystem: Operation Thread The operation thread performs primary pump operation control,"Time Interface ConfigurationThe TIS CSC utilizes the manual jam bit in the DCI CSR to indicate whether automatic time synchronization is enabled or disabled. If automatic time synchronization is enabled, and a command is issued to manually jam the DPU clock, the command will be rejected - see tisTimeSet()."
+ex_001064,no_trace,no_trace,"no_trace
+
+Explanation:",The functionality of the library shall be exposed in such a way as to fit the metaphors and paradigms of the implementation language,"interrupt service routine (ISR)The DPU responds to interrupts via an interrupt service routine (ISR). VME interrupts are prioritized; however the DPU does not allow nested interrupts, and so any interrupts which occur while servicing another interrupt will pend until the current ISR has returned."
+ex_001073,no_trace,trace,"trace
+
+Higher-level requirement","It shall be possible to collect arbitrary web content, such as html files, images etc. (for example from a web server document root directory), and write the data to WARC files","Libwarc binary modules, ready to use binary commands and libraries (both static and shared), compiled with generic optimisation flags, shall be released also"
+ex_001075,no_trace,no_trace,"no_trace
+
+Explanation:",The DPU-SCUI shall rate-buffer the delivery of STPDUs to the SCU according to the SCU_BUFFER_RATE parameter provided during initialization. The default value shall provide data to the SCU at a rate of X Kbps and shall be capable of being modified dynamically.,"The payload (or the WARC-record document itself) are stored on disk, to avoid using memory heap, even for small objects."
+ex_001088,no_trace,no_trace,"no_trace
+
+Explanation:",An independent Java implementation of libwarc may be implemented,"Startup Sequence On flight, a power cycle can only be effected by the SCU. A watchdog reset could be induced by the DPU FSW due to a detected, unrecoverable error, or it could occur as a by-product of the FSW entering a state in which it fails to strobe the watchdog timer. On boot, the bootstrap tests and clears DRAM, and then proceeds to load the DPU FSW from EEPROM and executes it. The DPU FSW then loads configuration information from EEPROM (which establishes various operational defaults) and spawns the various DPU FSW tasks."
+ex_001094,no_trace,no_trace,"no_trace
+
+Higher-level","The DPU-ICUI shall install an ISR to be invoked on the SSI receiver interblock gap interrupt, for the receiving and processing of commands from the ICU.",fault log. The PCA pump shall maintain an electronic fault log to record each fault condition and the associated alarm and/or alert issued
+ex_001096,no_trace,no_trace,"no_trace
+
+Explanation:",The system shall allow users to enter time in several different formats,The system shall provide for the ability to identify patients by status e.g. active
+ex_001109,no_trace,no_trace,"no_trace
+
+Higher-level",Each Software process shall handle input data sets with the following error attributes: Corrupted data as indicated by Quality Assurance (QA) flags also located within the file.,"The universal header ""warc.h"" shall ensure that deprecated function calls and changes to the library are notified at compile time."
+ex_001122,no_trace,no_trace,"no_trace
+
+Explanation:","The DPU-CCM shall produce DPU_HK at a commandable rate, with a default of 10 seconds.","Error Collection and ReportingIn order to insure that error counts are not lost due to rollover, ccmErrEnq(), checks to insure that the count for a given error has not gone above 250 in one high rate housekeeping reporting period. If the error count exceeds 250 for a particular reporting period, ccmErrEnq() will enqueue S_ccm_ERR_REPEAT error with the current error count and will clear its error tracking mechanism."
+ex_001124,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-CCM shall provide the capability to echo to the spacecraft each received command from the spacecraft or the ICU.,pump case. The PCA pump case must be at least difficult to breech as its tamper-resistant door. Breaking the case shall not be easier to access the drug reservoir than breeching the door
+ex_001139,no_trace,no_trace,"no_trace
+
+Higher-level",WARC v0.17 shall be the baseline version of the WARC standard used in this project.,The system shall provide the ability for a clinician to save frequently used
+ex_001144,no_trace,no_trace,"no_trace
+
+Higher-level","Libwarc shall provide a plug-in interface to enable use of alternative compression libraries, such as ""gzip2"", ""7zip"", etc.",The manager of task hierarchy provides a method to move a task node to a specific position.
+ex_001182,no_trace,no_trace,"no_trace
+
+Higher-level",The system shall allow document types to inherit authorizations from a higher level when using classes to assign roles,"Data Transfer to QueueDuring initialization, the TMALI CSC installs an ISR hook routine, tmaliTransferToQueueISR(), into the DCI Driver which is invoked when:* the DCI interface reaches the programmed frame limit in the Ping-Pong buffer, or* the DCI interface detects a data receipt timeout."
+ex_001185,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-DCI shall write to the DCI Memory in B-bit words only.,Real-Time Clock InterfaceThe Real-Time Clock (RTC) Registers of the RAD6000 are special-purpose registers not normally accessible to C language programs. Some assembler wrapper functions provide access to these.
+ex_001194,no_trace,no_trace,"no_trace
+
+Explanation:",The DPU-TMALI shall place the starting address of the event ring buffer in TMALI_HK.,"Standard I/O InterfaceThe read() primitive does not block. A read is performed on the active portion of the H/W ping pong buffer using the RAD 6000 move-multiple instruction, referred to here after as a block move. For optimum performance, the block move is implemented in assembler. The number of bytes read is returned to the caller."
+ex_001196,no_trace,no_trace,"no_trace
+
+Explanation:",Libwarc shall provide a MIMES iterator to handle MIME-types payloads,"Event ProcessingThe Event Processor Task, after receiving a Mode command from the ICU, configures the DPU DCI hardware, responds to the ICU with a Mode Ready message then receives detector events by calling functions tmaliWait() and tmaliNextEvent(). The Event Processor Task will collect detector events for the time period specified in the Mode command then issue a Mode Complete message to the ICU. After issuing the Mode Complete message, the Event Processor Task will enter the Idle state."
+ex_001197,no_trace,no_trace,"no_trace
+
+Explanation:",The system shall support audit capability,square bolus under-infusion warning. If delivered clinician-requested bolus flow rate is less than the calculated square bolus rate by more than its allowed tolerance over a period of more than 5 minutes or immediately if the flow stops the pump shall issue a square bolus under-infusion warning. (EC3.2.8)
+ex_001198,no_trace,no_trace,"no_trace
+
+Explanation:","Add/Remove Task links; Tasks can be linked with one another to indicate the sequence in which they have to be performed. For example, if there is a link from task 1 to task 2 then task 2 can only be started after task 1 is completed. The start date of task 2 must thus be after the end date of task 1.","Install Exception Handlers The RSC processor also generates an external interrupt for the Power Fail Interrupt. The RSCVME Board Support Package of VxWorks? does not directly support access to this interrupt. Some custom routines must be provided to access this interrupt. These functions are described below, and are contained in sysLibSup.c."
+ex_001203,no_trace,no_trace,"no_trace
+
+Higher-level","The DPU-CCM shall collect a TASK_HBEAT from DPU-SCUI, DPU-CCM, DPU-DCX, DPU-TMALI, and DPU-DPA . Non-responsive tasks will be reported in DPU_HK.",Each WARC-record shall be accessible via a peer C class of the same name.
+ex_001221,no_trace,no_trace,"no_trace
+
+Higher-level","The DPU-DPA shall transition MODE based on the protocol specified in document DPUICD-01, section 2.2",User interface should be able to provide an ability to specify whether a specific task in a milestone.
+ex_001224,no_trace,no_trace,"no_trace
+
+Explanation:",The DPU-CCM shall use DPU-ICUI to communicate with the ICU.,The system will provide secure remote access to patient data without the need to pre-load an application
+ex_001230,no_trace,no_trace,"no_trace
+
+Explanation:",It shall be possible to walk a curl directory and write the data to WARC files,Any operations on WARC-records shall be possible using functions accepting the abstract handle as an argument.
+ex_001248,no_trace,no_trace,"no_trace
+
+Higher-level",The system shall provide a platform for building interfaces to external lab services enabling automated order entry and results reporting,"It shall be possible to create a WARC-record using a constructor, which will returns an abstract handle to data representing the WARC-record."
+ex_001251,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-DPA will complete the exposure in the time specified by the MODE command - even if it's required to truncate the final tracking frame.,The system shall provide the ability to display non-numeric current and historical test results as textual data
+ex_001259,no_trace,no_trace,"no_trace
+
+Higher-level","The DPU-DCI shall read from the DCI Memory in B-bit words only, using the load multiple/store multiple instructions.",The system shall have the ability to provide access to patient-specific test and procedure instructions that can be customized by the physician or health organization these instructions are to be given to the patient. These instructions may reside within the system or be provided through links to external sources
+ex_001275,no_trace,no_trace,"no_trace
+
+Explanation:","The functionality of the library shall be exposed in such a way as to fit the metaphors and paradigms of the specific implementation languages (C, Java, Python).",pump drug. The mechanical pump shall pump drug at precribed flow rates for basal bolus and KVO infusion when commanded
+ex_001283,no_trace,no_trace,"no_trace
+
+Explanation:",Change Task Begin/End Times automatically with dependency changes; The start or end date should be changed automatically if one of its subtasks changes.,GUI needs to provide ability to show is a person is underutilized and overbooked.
+ex_001314,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-DCI shall provide the capability for an application program to reset the DCI by writing to the DCI Reset Register.,The system shall provide the ability to create and assign tasks by user or user role
+ex_001319,no_trace,no_trace,"no_trace
+
+Higher-level","The DPU-CCM shall monitor the status of DPU-SCUI, DPU-CCM, DPU-DCX, DPU-TMALI, and DPU-DPA by examining their TASK_INFO and report this information in DPU_HK.",The system shall provide the ability to configure orders within order sets with default order details
+ex_001320,no_trace,no_trace,"no_trace
+
+Higher-level","Add/Remove Tasks as Subtasks;A task can be made a subtask of another. For example, task 1.1 is a subtask of task 1.","The interfaces in libwarc shall ensure that any changes to the library, will not affect any tool or application based on libwarc."
+ex_001337,no_trace,no_trace,"no_trace
+
+Higher-level","WARC extensions shall be released as a patch to each of the commands ""curl"", ""wget"", and ""httrack"" projects",Watchdog LibraryThis function strobes the system watchdog to prevent a watchdog reset.
+ex_001339,no_trace,no_trace,"no_trace
+
+Explanation:",The DPU-SSI shall provide the capability for an application to determine the number of bytes in a message received from the ICU.,max dose warning. Clinician commanded bolus shall be halted when continuinh to infuse prescribed VTBI will exceed hard limits retrieved from the drug library for the volume of drug infused over a period of time. Pump rate shall be reduced to KVO and a max dose warning be issued
+ex_001357,no_trace,no_trace,"no_trace
+
+Explanation:",It shall be possible to walk a wget mirror and write the data to WARC files,The system shall provide the ability to customize clinical templates
+ex_001358,no_trace,no_trace,"no_trace
+
+Higher-level",The system shall stored the names of users who view remote data in the remote site's database,The human resource class provides a function to change the availability of the person based on holidays.
+ex_001362,no_trace,no_trace,"no_trace
+
+Explanation:","It shall be possible to identify and validate WARC files using ""Jhove""",Libwarc shall be implemented to WARC v0.17.
+ex_001372,no_trace,no_trace,"no_trace
+
+Higher-level","WARC extensions help content will be provided each of the commands ""curl"", ""wget"", and ""httrack""","Data Processing Algorithm CSCThe DPA CSC includes the following components:* Event Processor Task communicates with the ICU, creates event list data products, creates Tracking Instrument Ys in the Ping/Pong buffers, creates the Finding Chart, performs the Engineering Modes, generates housekeeping data, creates the Event Frame, Ping and Pong buffers, and provides a task heartbeat to the CCM task."
+ex_001378,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU compression software shall forward compressed data to DPU-SCUI.,The L1A/Geolocation software shall use all applicable mandatory SDPTK routines and any additional SDPTK routines that are useful.
+ex_001395,no_trace,no_trace,"no_trace
+
+Higher-level","The library and each tool or extension shall be documented for developers and end users, using man pages and other common document forms.","Time Interface ConfigurationThe TIS CSC provides three functions for use by the CCM command dispatcher to control these values:* tis1ppsSet() select active A PPS signal,* tisSyncModeSet() set whether manual clock jamming is enabled, and tisTimeSet() manually jam a value into the DPU clock."
+ex_001404,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-SSI shall provide the capability for an application program to install a callback routine to respond to the receive IBG Interrupt.,WARC files in various test-states shall be provided that test the Jhove deliverables
+ex_001417,no_trace,no_trace,"no_trace
+
+Explanation:",The WARC Tools shall be implemented as a C library,"Memory Upload and Download HandlingIf more than 65535 bytes need to be uploaded, the upload file must be broken up into multiple smaller files, each less than or equal to 65535 bytes, and then each of the virtual uploads should be sent in series. Because of the sequence numbers, the DPU FSW can receive individual upload commands out of sequence. There is no time limit for the accomplishment of a single virtual upload, and so a long upload can continue across ground contacts. If an upload is in progress, the last sequence number can be sent to the DPU FSW and it will report the list of missing sequence numbers via event number S_ccm_MISSING_SEQNO. If an upload is in progress and needs to be cancelled, it can be discarded by issuing the D_MEM_DAT_CNCL command."
+ex_001432,no_trace,no_trace,"no_trace
+
+Explanation:","The DPU-DPA shall collect event mode data, preserving the time and spatial resolution in the specified event window.","Full-Frame (FF) Engineering ModeThe purpose of Full-Frame Engineering Mode is to monitor the health of the detector to locate hot spots and dead pixels. Detector events produced in Full Frame High Resolution detector format are received and histogrammed for a commanded integration time. The entire Instrument Y is transmitted to the ground. This mode can use high resolution (all pixels) or low resolution imaging (BxB , DxD pixel binning)."
+ex_001447,no_trace,no_trace,"no_trace
+
+Higher-level","Web server plug-ins shall conform to the Apache 'mod' API and shall operate correctly with both Apache and Lighttp servers and shall be compatible with appropriate web sever programming standards, such as WSGI in Python and the Servlet API in Java.",Libwarc's generic iterators may be customised for different purposes via callback handlers (i.e. hooks)
+ex_001450,no_trace,no_trace,"no_trace
+
+Higher-level","The DPU-CCM shall, in rejecting a command, report an error in DPU_HK indicating the byte-code of the command being rejected in the LSB of the errno as described in 03691-DPUSDP-01.",Milestone is a task with no duration. It has only time point of occurrence.
+ex_001458,no_trace,no_trace,"no_trace
+
+Explanation:","The functionality of the library shall be exposed in such a way as to fit the metaphors and paradigms of the specific implementation languages (C, Java, Python).",device parameters. The PCA pump shall use a physician's prescriptions as device parameters
+ex_001476,no_trace,no_trace,"no_trace
+
+Explanation:",The centroid confirmation engineering mode shall produce a PROD_CENTROID_CONF. This mode shall divide a full frame image into a certain regions. Each region shall be processed to form an 8x8 confirmation image. The certain confirmation images shall be sent to the solid state recorder as one data product.,The system shall relate medication allergies to medications to facilitate allergy checking decision support for medication orders
+ex_001496,no_trace,no_trace,"no_trace
+
+Higher-level","The channel boundary engineering mode shall create an array of look-up table (LUT) channel boundaries, PROD_CHAN_BOUND, from a flat field, and PROD_MN_DATA, using the algorithm described in Appendix C.",log retention. Information in event and Fault Logs shall be retained for at least ?log= 1000 hours after the PCA pump is turned-off and unplugged
+ex_001500,no_trace,no_trace,"no_trace
+
+Explanation:",Delete Resources (person); Delete a person and all its associated information such as dependencies to all tasks the person is supposed to work on.,Intensifier Characteristics (IC) Engineering ModeThe purpose of Intensifier Characteristics Engineering Mode is to assess detector health and performance. Detector events produced in Full Frame High Resolution detector format are collected and histogrammed for a commanded integration time to produce a pulse-height histogram.
+ex_001504,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-BOOT CSC shall log detected BIT failures to the SYSTEM_BLOCK.,"Only essential external libraries shall be used in libwarc, such as Gzip compression and wide characters encoding libraries."
+ex_001518,no_trace,no_trace,"no_trace
+
+Explanation:","The DPU-SCUI shall cancel the write to each subaddress if the SCU fails to read a pending STPDU after a timeout specified by a value calculated based on the SCU_POLL_RATE parameter provided during initialization, shall record new data to those subaddresses, and report an error to the DPU-CCM. The SCU_POLL RATE parameter shall have a default setting of J ms and shall be capable of being modified dynamically.",Event ProcessingThe Event Processor Task is also responsible for creating the Finding Chart. The Create Finding Chart Algorithm will use the Choose Guide Stars Algorithm to find the brightest stars in the finding chart Instrument Y. The parameterized finding chart will be created by listing the X & Y detector location of each star along with a CxC pixel matrix around the star location of the intensities. The Event Processor Task will create the necessary housekeeping for the DPA.
+ex_001540,no_trace,no_trace,"no_trace
+
+Explanation:",The DPU-RTOS shall include the capability to dynamically load object modules from the EEPROM.,"Telescope Module Access Library and Interface CSCThe TMALI CSC includes the following components:* A queue, TMALI_EVENT_QUEUE, implemented using a ring buffer, which contains the detector events which have been received over the data capture interface from the DCI Driver, but which have not yet been retrieved by the DPA CSC;* An API which facilitates the retrieval of detector events from the queue by the DPA CSC. The API consists of the tmaliNextEvent() and tmaliWait() functions.* An set of API functions used by the DPA CSC to configure the DCI interface, including tmaliBitArrangementSet(), tmaliDciFrameDepthGet(), tmaliDciFrameDepthSet(), tmaliDciWindowSet(), tmaliDataTimeoutSet(), and tmaliDataTimeoutGet().* An API housekeeping function, tmaliHkGet(), which gathers CSC housekeeping data at the request of the Command and Control Task.* The task tmaliTask() and an ISR tmaliTransferToQueueISR() work together via a semaphore to synchronize the transfer of data from the DCI to the queueAn error handling ISR, tmaliDciErrorReportedISR(), is installed as a hook routine to the DCI Driver, and is used to keep track of the number of errors reported by the DCI driver."
+ex_001550,no_trace,no_trace,"no_trace
+
+Explanation:",The system shall capture history of received immunizations,InitializationThe TIS CSC is initialized by calling the tisInit() function. The TIS CSC does not have an associated operating system task. The TIS CSC will initialize the DPU hardware to perform or not perform automatic time synchronization with the spacecraft as indicated by an initialization parameter passed to the tisInit() function. There are two 1 PPS signals between the DPU and the Spacecraft (a primary and alternate); the TIS CSC will select the active 1 PPS signal according to the parameter passed to the tisInit() function.
+ex_001552,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-CCM shall forward CLK_MSGs to the DPU-TIS for processing immediately upon receipt (I.e. shall not enqueue the message to the command dispatcher queue).,A GUI class of human resource load distribution uses objects of a load distribution class to capture the hours each person is supposed to work.
+ex_001559,no_trace,no_trace,"no_trace
+
+Explanation:",WARC Browser shall support a proxy-style interface,"Public FunctionsThis routine provides a means for the CCM task to send the Stop Mode command from the ICU to the DPA software. The Stop Mode command shall be used to command the DPU to immediately stop processing events, complete the current data product, purge events from the DPU hardware, and enter Idle Mode. The data product will include the actual exposure time and the number of frames. In response to this command, the DPU shall issue a Mode Complete command to the ICU after finishing the before-mentioned tasks."
+ex_001577,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-SCUI shall receive command messages in the form of Telecommand Packets from the SCU and make them available to the DPU-CCM.,battery failure alarm. The PCA pump shall detect battery failure and issue a battery failure alarm
+ex_001585,no_trace,no_trace,"no_trace
+
+Higher-level",A Jhove plugin module and an output handler shall be made available for WARC files,pump overheated alarm. If the pump gets overheated to more than Tpoh = 55 C the pump shall issue a pump overloaded alarm
+ex_001616,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-DCI shall provide the capability for an application program to reset the DCI by writing to the DCI Reset Register.,A GUI class of task property provides interface and functions to add and remove dependencies by using an object of the dependency collection.
+ex_001633,no_trace,no_trace,"no_trace
+
+Higher-level","The Bootstrap Monitor of the DPU-BOOT CSC shall provide the capability to read from Dynamic Random Access Memory (DRAM), the VME bus, and the Input/Output Channel Controller (IOCC) on command.",Libwarc shall be incorporated within a Lighttp module to enable all actions specified in SRS 34-36 to be executed within lighttp.
+ex_001636,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-CCM shall notify the ICU upon completion of boot and flight software initialization.,"The payload (or the WARC-record document itself) are stored on disk, to avoid using memory heap, even for small objects."
+ex_001645,no_trace,no_trace,"no_trace
+
+Higher-level",ARC to WARC conversions made by arc2warc shall be carried out according to a specification in a configuration file,"The code and documentation of libwarc shall be licensed to the community using an IIPC approved license, such as Apache 2.0 or BSD licence"
+ex_001653,no_trace,no_trace,"no_trace
+
+Explanation:",The system shall require handwritten signatures for outpatient medication orders of schedule 2 and schedule 2n controlled substances due to DEA policy,"To delete a task from the Calendar the GanttProject class call delete method and supplied TaskId paramenter. The adjustment of allocated resources and links to other tasks takes place through interfacing with the following classes DefaultMutableTreeNode, GanttTreeTableNode, TaskNode, and AdjustTaskBoundsAlgorithm."
+ex_001654,no_trace,no_trace,"no_trace
+
+Higher-level","The DPU-1553 CSC shall address hardware modules as defined in document 1400, Company X Specification for the Company X Communication/Memory Module.","The code and documentation of libwarc shall be licensed to the community using an IIPC approved license, such as Apache 2.0 or BSD licence"
+ex_001655,no_trace,trace,"trace
+
+The higher-level",Safety Subsystem: Alarm Thread The alarm thread (within the alarm process) evaluates fault signals to determine whether the infusion rate should be changed issues alarm and warning signals to be sounded and displayed by the control panel and creates fault entries to be stored in the fault log,low-battery warning. If the estimated battery life remaining is less than ?lba = 3 minutes the pump shall issue a low-battery warning
+ex_001664,no_trace,trace,"trace
+
+</think>
+
+trace",The DPU-DCI shall provide an application program with the ability to read and write the hardware ping-pong buffers when in Test Mode.,"Public FunctionsThis function gets the frame depth of the Ping-Pong buffers used by the DCI CSC. The frame depth determines how many frames are read into the selected Ping-Pong buffer before interrupting. The initial value for the frame depth setting is determined by the parameter provided when stating the tmaliTask. The returned value is the current active value, this may differ from the last commanded value as the commanded value only takes effect when data is transferred from the hardware Ping-Pong buffer to the TMALI queue (in response to a frame or timeout interrupt, see section 5.13.2.3)."
+ex_001666,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-EDAC shall contain a background task which walks DRAM to trip single-bit errors (SBEs).,Hardware InterfacesThe DCI Driver CSC accesses each of the registers on the Company X Communications module using D16 VME access mode. Reads from DCI memory are performed in VME D32 mode via a special assembly language routine which uses the lwm/stm instructions to minimize the transfer time.
+ex_001667,no_trace,no_trace,"no_trace
+
+Explanation:","The DPU-BOOT CSC shall create a record of failed DRAM blocks, BIT_DRAM, in the SYSTEM_BLOCK.","Error Collection and ReportingIn order to insure that error counts are not lost due to rollover, ccmErrEnq(), checks to insure that the count for a given error has not gone above 250 in one high rate housekeeping reporting period. If the error count exceeds 250 for a particular reporting period, ccmErrEnq() will enqueue S_ccm_ERR_REPEAT error with the current error count and will clear its error tracking mechanism."
+ex_001675,no_trace,no_trace,"no_trace
+
+Higher-level",The Bootstrap Monitor of the DPU-BOOT CSC shall validate commands entered for syntax and number of arguments.,occlusion alarm. When an occlusion alarm occurs the pump shall be stopped immediately without completing the current pump stroke
+ex_001680,no_trace,no_trace,"no_trace
+
+Explanation:",The DPU-DPA shall be capable of providing DPA_HK on request.,bolus over-infusion alarm. If delivered patient-requested bolus flow rate exceeds the prescribed patient-requested bolus rate setting by more than its allowed tolerance over a period of more than 1 minute or immediately if the pump goes into free flow the pump shall issue a bolus over-infusion alarm. (EC 3.2.7)
+ex_001702,no_trace,no_trace,"no_trace
+
+Explanation:",Libwarc shall provide a records iterator to handle WARC-type records,"The human resource class contains name, phone, email, and holidays. The class provides functions to set and get these properties. A class is used to represent the holidays. There can be multiple holidays."
+ex_001704,no_trace,no_trace,"no_trace
+
+Explanation:",The DPU-DCI shall provide an application program with the ability to read and write the hardware ping-pong buffers when in Test Mode.,The system shall provide the ability to accept
+ex_001725,no_trace,no_trace,"no_trace
+
+Explanation:",The WARC Tools shall be implemented as a C library,"Standard I/O InterfaceThe read() primitive does not block. The read() primitive is implemented by simply passing its parameters to the tyLib function tyRead().The size of the Rx ring buffer is specified in the call to ssiDevCreate() as part of the device instantiation.This routine returns either the number of bytes read, or ERROR."
+ex_001730,no_trace,no_trace,"no_trace
+
+Explanation:",The system shall integrate all components of the patient record to provide comprehensive and intelligent clinical information access and reporting,square bolus under-infusion warning. If delivered clinician-requested bolus flow rate is less than the calculated square bolus rate by more than its allowed tolerance over a period of more than 5 minutes or immediately if the flow stops the pump shall issue a square bolus under-infusion warning. (EC3.2.8)
+ex_001733,no_trace,no_trace,"no_trace
+
+Explanation:",The DPU-DCI shall provide the capability for an application program to install a callback routine to respond to the DCI Error Interrupt (INTERR_EN).,power and battery failure. Because with either working battery or power supply can operate the pump if the battery failure alarm and either the voltage out-o-range or the power supply failure alarms the the pump rate will be off otherwise the pump rate will continue at its previous value
+ex_001750,no_trace,no_trace,"no_trace
+
+Higher-level",The system shall provide a way for user to quickly click on the specifications that he or she wants for each order placed,Watchdog LibraryThis function strobes the system watchdog to prevent a watchdog reset.
+ex_001753,no_trace,no_trace,"no_trace
+
+Explanation:",The functionality of the library shall be exposed in such a way as to fit the metaphors and paradigms of the implementation language,A dependency class contains a dependant task and a dependee task. It provides functions to get the dependant task and the dependee task. The dependency class also contains constraint to show the constraint of the dependency.
+ex_001758,no_trace,no_trace,"no_trace
+
+Explanation:","Libwarc shall enable combinations of iterators to be used, i.e. composite iterators",The system shall provide the ability to customize clinical templates
+ex_001762,no_trace,no_trace,"no_trace
+
+Explanation:",The DPU-SCUI shall report errors to the DPU-CCM for inclusion in the DPU Housekeeping information.,The system shall relate medication allergies to medications to facilitate allergy checking decision support for medication orders
+ex_001763,no_trace,no_trace,"no_trace
+
+Higher-level","The DPU-BOOT CSC shall complete Stage 1 BIT, and load DPU-RTOS in less than A seconds following a hardware reset if CTS is not asserted.",Using GUI user should be able to change the length of a task via date picker control.
+ex_001778,no_trace,no_trace,"no_trace
+
+Explanation:",The system shall require a user to review and sign changed if a user has just entered orders or documents that are unsigned,"CPU BITThe CPU BIT consists of a series of tests designed to test each of the functional units of the processor. These include test for the Branch-Unit, the Fixed-Point Unit, the Floating-Point Unit, the Interrupt-Unit, and the Timer Unit. Each of these tests consists of executing a few selected instructions from the this functional unit. The General Purpose Registers (GPR), the Segment Registers (SR), the Counter Register (CTR), and the Condition Register are tested for stuck-bits as part of the Branch-Unit test. This is done by writing a 1s pattern (verified by reading it back) and then writing a 0s pattern (verified by reading it back)."
+ex_001812,no_trace,no_trace,"no_trace
+
+Higher-level",Each MODIS Standard Product shall contain ECS core metadata with the content and format specified in DID 311.,A GUI class of task property provides interface and functions to add and remove human resource assignments.
+ex_001818,no_trace,no_trace,"no_trace
+
+Explanation:","The DPU-DPA shall collect event mode data, preserving the time and spatial resolution in the specified event window.",The system shall provide the ability to create prescription or other medication orders with sufficient information for correct filling and dispensing by a pharmacy
+ex_001823,no_trace,no_trace,"no_trace
+
+Explanation:",The final WARC API shall be coded in C with minimum dependencies or external libraries (e.g. GZIP). It must not include any assembly code.,"Channel Boundary (CB) Engineering ModeThe purpose of Channel Boundary Mode is to derive the optimum channel boundary settings from a flat field. Detector events produced in the M,N detector mode are collected and histogrammed for a commanded integration time. The pseudo Instrument Y is transmitted to the ground. Channel boundaries are derived from the Instrument Y and transmitted to the ICU and the ground. Channel boundaries are sent by the ICU to the BPE and used in the detector event centroiding process."
+ex_001832,no_trace,no_trace,"no_trace
+
+Higher-level","The Bootstrap Monitor of the DPU-BOOT CSC shall provide the capability to read from Dynamic Random Access Memory (DRAM), the VME bus, and the Input/Output Channel Controller (IOCC) on command.",Telescope Module Access Library and Interface CSCThe Telescope Module Access Library and Interface (TMALI) CSC manages the detector event queue and provides an API for the retrieval of detector events from that queue to the data processing algorithms.
+ex_001845,no_trace,no_trace,"no_trace
+
+Explanation:","The DPU-CCM shall, in rejecting a command, report an error in DPU_HK indicating the byte-code of the command being rejected in the LSB of the errno as described in 03691-DPUSDP-01.","Performing Analog-to-Digital ConversionsThe ADC Driver maintains an array of ADC_LIST_ENTRY data structures which contain the hardware multiplexer setup information for each of the x analog inputs, and the current value (ADC_VALUE) of each analog input. To update a single value in the list, an application must call the update function adcUpdateNext(). The ADC hardware only has a single A/D channel, and so to perform an A/D conversion the hardware requires a multiplexer setup and corresponding settle time, as well as the normal A/D conversion time. Therefore, it takes two calls to adcUpdateNext() to update a single value in the list. To keep the driver simple and to avoid embedding hard waits in the driver, the application is required to implement the setup and conversion time by spacing successive calls to the adcUpdateNext() function appropriately."
+ex_001872,no_trace,no_trace,"no_trace
+
+Higher-level",The DPU-BOOT CSC shall read from EEPROM in 32-bit words only.,The system shall provide the ability to send data to register a patient in a clinical trial

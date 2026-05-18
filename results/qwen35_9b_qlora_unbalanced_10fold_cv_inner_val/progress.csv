@@ -1,0 +1,11 @@
+fold,status,start_time_utc,end_time_utc,duration_minutes,metrics_path
+fold_01,completed,2026-05-18T09:03:06.852914+00:00,2026-05-18T09:32:29.945554+00:00,29.385,results/qwen35_9b_qlora_unbalanced_10fold_cv_inner_val/fold_01/fold_01_metrics.json
+fold_02,completed,2026-05-18T09:32:29.946001+00:00,2026-05-18T10:01:59.089479+00:00,29.486,results/qwen35_9b_qlora_unbalanced_10fold_cv_inner_val/fold_02/fold_02_metrics.json
+fold_03,completed,2026-05-18T10:01:59.089758+00:00,2026-05-18T10:31:28.790551+00:00,29.495,results/qwen35_9b_qlora_unbalanced_10fold_cv_inner_val/fold_03/fold_03_metrics.json
+fold_04,completed,2026-05-18T10:31:28.791656+00:00,2026-05-18T11:04:20.764017+00:00,32.866,results/qwen35_9b_qlora_unbalanced_10fold_cv_inner_val/fold_04/fold_04_metrics.json
+fold_05,completed,2026-05-18T11:04:20.764530+00:00,2026-05-18T11:34:08.306170+00:00,29.792,results/qwen35_9b_qlora_unbalanced_10fold_cv_inner_val/fold_05/fold_05_metrics.json
+fold_06,completed,2026-05-18T11:34:08.307515+00:00,2026-05-18T12:04:44.791313+00:00,30.608,results/qwen35_9b_qlora_unbalanced_10fold_cv_inner_val/fold_06/fold_06_metrics.json
+fold_07,completed,2026-05-18T12:04:44.793215+00:00,2026-05-18T12:37:49.382575+00:00,33.076,results/qwen35_9b_qlora_unbalanced_10fold_cv_inner_val/fold_07/fold_07_metrics.json
+fold_08,completed,2026-05-18T12:37:49.384647+00:00,2026-05-18T13:07:25.483543+00:00,29.602,results/qwen35_9b_qlora_unbalanced_10fold_cv_inner_val/fold_08/fold_08_metrics.json
+fold_09,completed,2026-05-18T13:07:25.484837+00:00,2026-05-18T13:37:07.953077+00:00,29.708,results/qwen35_9b_qlora_unbalanced_10fold_cv_inner_val/fold_09/fold_09_metrics.json
+fold_10,failed,2026-05-18T13:37:07.954337+00:00,2026-05-18T14:06:11.118895+00:00,29.053,results/qwen35_9b_qlora_unbalanced_10fold_cv_inner_val/fold_10/fold_10_metrics.json
