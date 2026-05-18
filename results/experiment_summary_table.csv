@@ -1,0 +1,4 @@
+experiment_id,experiment,accuracy,trace_precision,trace_recall,trace_f1,no_trace_precision,no_trace_recall,no_trace_f1,comment,summary_file
+E0,Base Qwen3.5-9B / No Fine-tuning,0.6421,1.0,0.0768,0.1415,0.6312,1.0,0.7739,Weak baseline. Mostly predicts no_trace and misses most trace links.,results/qwen35_9b_base_10fold_cv_no_ft/qwen35_9b_base_10fold_cv_no_ft_summary.json
+E1,Qwen3.5-9B QLoRA + Oversampling,0.8998,0.9158,0.8283,0.8683,0.8931,0.9478,0.9191,Strong result. Best trace precision and no-trace F1.,results/qwen35_9b_qlora_oversampling_10fold_cv_inner_val/qwen35_9b_qlora_10fold_cv_summary.json
+E2,Qwen3.5-9B QLoRA + Undersampling,0.8982,0.886,0.8588,0.8703,0.9089,0.9248,0.9161,Strong result. Best trace recall and slightly best trace F1.,results/qwen35_9b_qlora_undersampling_10fold_cv_inner_val/qwen35_9b_qlora_undersampling_10fold_cv_summary.json
