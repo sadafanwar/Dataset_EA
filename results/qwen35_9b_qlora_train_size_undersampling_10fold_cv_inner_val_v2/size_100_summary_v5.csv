@@ -1,0 +1,2 @@
+train_size,accuracy_mean,trace_precision_mean,trace_recall_mean,trace_f1_mean,no_trace_precision_mean,no_trace_recall_mean,no_trace_f1_mean,accuracy_std,trace_precision_std,trace_recall_std,trace_f1_std,no_trace_precision_std,no_trace_recall_std,no_trace_f1_std
+100,0.6651,1.0,0.1652,0.2803,0.6416,1.0,0.7816,0.0216,0.0,0.0532,0.0779,0.0151,0.0,0.0112
