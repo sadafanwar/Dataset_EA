@@ -14,7 +14,7 @@ def replace_yaml_value(text, key, value):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--fold", type=int, required=True)
-    parser.add_argument("--train_size", required=True, choices=["100", "200", "300", "full"])
+    parser.add_argument("--train_size", required=True, choices=["100", "200", "300", "500", "full"])
     args = parser.parse_args()
 
     fold_name = f"fold_{args.fold:02d}"
