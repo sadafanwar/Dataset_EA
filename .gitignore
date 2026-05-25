@@ -18,3 +18,7 @@ checkpoints/
 .DS_Store
 Thumbs.db
 .vscode/
+# Experiment debugging/backups
+*.bak*
+*_badparser_*
+results/*badparser*
