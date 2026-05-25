@@ -22,3 +22,16 @@ Thumbs.db
 *.bak*
 *_badparser_*
 results/*badparser*
+
+# Generated undersampled train-size data subsets
+data/qwen35_oversampling_10fold_cv/inner_splits/*/train_size_*_undersampled.jsonl
+
+# Legacy/debug train-size experiment scripts
+scripts/create_qwen35_train_size_undersampling_config.py
+scripts/evaluate_qwen35_fold_classification_forced_choice_v4.py
+scripts/evaluate_qwen35_fold_classification_strict_v2.py
+scripts/evaluate_qwen35_fold_classification_strict_v3.py
+scripts/run_qwen35_train_size_undersampling_10fold_cv_tracked.py
+
+# Legacy non-v2 train-size configs
+src/integration/training_scripts/ft/config_qwen35_9b_train_size_undersampling_size_*.yaml
