@@ -1,0 +1,3 @@
+method,accuracy,trace_precision,trace_recall,trace_f1,no_trace_precision,no_trace_recall,no_trace_f1,valid_predictions,invalid_predictions,total_records,confusion_matrix
+five_shot,0.83,0.9459459459459459,0.7,0.8045977011494253,0.7619047619047619,0.96,0.8495575221238938,100,0,100,"[[35, 15], [2, 48]]"
+ten_shot,0.7,0.9166666666666666,0.44,0.5945945945945946,0.631578947368421,0.96,0.7619047619047619,100,0,100,"[[22, 28], [2, 48]]"

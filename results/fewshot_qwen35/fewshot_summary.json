@@ -1,0 +1,48 @@
+[
+  {
+    "method": "five_shot",
+    "accuracy": 0.83,
+    "trace_precision": 0.9459459459459459,
+    "trace_recall": 0.7,
+    "trace_f1": 0.8045977011494253,
+    "no_trace_precision": 0.7619047619047619,
+    "no_trace_recall": 0.96,
+    "no_trace_f1": 0.8495575221238938,
+    "valid_predictions": 100,
+    "invalid_predictions": 0,
+    "total_records": 100,
+    "confusion_matrix": [
+      [
+        35,
+        15
+      ],
+      [
+        2,
+        48
+      ]
+    ]
+  },
+  {
+    "method": "ten_shot",
+    "accuracy": 0.7,
+    "trace_precision": 0.9166666666666666,
+    "trace_recall": 0.44,
+    "trace_f1": 0.5945945945945946,
+    "no_trace_precision": 0.631578947368421,
+    "no_trace_recall": 0.96,
+    "no_trace_f1": 0.7619047619047619,
+    "valid_predictions": 100,
+    "invalid_predictions": 0,
+    "total_records": 100,
+    "confusion_matrix": [
+      [
+        22,
+        28
+      ],
+      [
+        2,
+        48
+      ]
+    ]
+  }
+]
