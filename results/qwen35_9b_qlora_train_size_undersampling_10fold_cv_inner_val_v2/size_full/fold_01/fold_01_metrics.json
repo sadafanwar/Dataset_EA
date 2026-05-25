@@ -1,0 +1,30 @@
+{
+  "total_records": 189,
+  "valid_predictions": 189,
+  "invalid_predictions": 0,
+  "accuracy": 0.6878306878306878,
+  "trace_precision": 1.0,
+  "trace_recall": 0.2236842105263158,
+  "trace_f1": 0.3655913978494624,
+  "trace_support": 76,
+  "no_trace_precision": 0.6569767441860465,
+  "no_trace_recall": 1.0,
+  "no_trace_f1": 0.7929824561403509,
+  "no_trace_support": 113,
+  "confusion_matrix_labels": [
+    "trace",
+    "no_trace"
+  ],
+  "confusion_matrix": [
+    [
+      17,
+      59
+    ],
+    [
+      0,
+      113
+    ]
+  ],
+  "evaluation_method": "forced_choice_label_scoring_training_matched_prompt",
+  "note": "Forced-choice evaluation using the exact prompt prefix used during fine-tuning: instruction + higher-level requirement + lower-level requirement + Answer:. Candidate labels trace and no_trace are scored by average negative log-likelihood."
+}
