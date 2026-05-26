@@ -5,7 +5,7 @@
 Model: Qwen/Qwen3.5-9B  
 Fine-tuning: No  
 LoRA / QLoRA adapter: No  
-Mode: few-shot prompting with generation-based prediction  
+Mode: prompt-based classification with generation-based prediction  
 
 ## Source dataset
 
@@ -13,33 +13,41 @@ Mode: few-shot prompting with generation-based prediction
 
 ## Created data files
 
-- `data/fewshot_qwen35/example_bank.jsonl`
-- `data/fewshot_qwen35/test_100.jsonl`
+- `data/fewshot_qwen35/zero_shot_examples.jsonl`
 - `data/fewshot_qwen35/five_shot_examples.jsonl`
 - `data/fewshot_qwen35/ten_shot_examples.jsonl`
+- `data/fewshot_qwen35/test_100.jsonl`
+
+No `example_bank.jsonl` is used.
 
 ## Setup
 
 Seed: 42  
 Test set: 100 balanced examples, 50 trace + 50 no_trace  
-5-shot: 3 trace + 2 no_trace examples  
-10-shot: 5 trace + 5 no_trace examples  
 
-## Prediction
+Prompt settings:
 
-Generation-based prediction.
+- 0-shot: instructions only, no examples
+- 5-shot: instructions + 5 examples
+  - 3 trace
+  - 2 no_trace
+- 10-shot: instructions + 10 examples
+  - 5 trace
+  - 5 no_trace
 
-Generation settings:
+The 5-shot and 10-shot examples are disjoint.
+Prompt examples do not overlap with the test set.
+
+## Prediction settings
 
 - max_new_tokens: 8
 - do_sample: False
-- temperature: not sampled / deterministic generation
+- temperature: deterministic generation; sampling disabled
 
 ## Labels
 
 - `trace`
 - `no_trace`
 
-## Notes
-
-This experiment does not train or fine-tune the model. The examples are included only inside the prompt.
+This experiment does not train or fine-tune the model.
+The examples are included only inside the prompt.
