@@ -1,0 +1,302 @@
+example_id,gold_label,pred_label,raw_prediction,shot_setting,run,seed,prompt_tokens,prompt_truncated,higher_level_requirement,lower_level_requirement
+line_1,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,634,False,The DPU-TMALI shall install a callback routine to respond to the DCI Error Interrupt.,Install Exception HandlersThis routine installs a hook routine for the Memory Error Interrupt. The hook routine will be called from the interrupt context. This function returns OK always.
+line_2,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,647,False,The system shall allow infinite hierarchies of subclasses to be created in the User Hierarchy Class structure,The system shall provide the ability to export structured data which removes those identifiers listed in the HIPAA definition of a limited dataset. This export on hardcopy and electronic output shall leave the actual PHI data unmodified in the original record
+line_3,trace,trace,"trace
+
+Here is the classification for the",five_shot,9,9,643,False,Fluid Subsystem: Pump The pump moves fluid at specified rate primes itself announces if priming fails indicates when it's too hot and halts pumping when commanded,pump overheated alarm. If the pump gets overheated to more than Tpoh = 55 C the pump shall issue a pump overloaded alarm
+line_4,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,628,False,The DPU-DPA shall be capable of providing DPA_HK on request.,"A collection of dependency class is used to manage dependencies. It contains objects of dependency classes and provides functions to create, delete, and get dependencies."
+line_5,trace,trace,"trace
+
+Here is the analysis:",five_shot,9,9,691,False,"The DPU-CCM shall spawn tasks for DPU-CCM, DPU-DPA, DPU-DCX, DPU-SCUI, and DPU-TMALI at bootup.","Public FunctionsThis routine is spawned by the Command and Control Task to initialize and execute the SCU Interface Data Processor Task. This task initializes the SCUI CSC and then enters an infinite loop to process telemetry and produce STPDUs. Once initialized, the task is awakened by a semaphore given when the SCU writes the telemetry done subaddress."
+line_6,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,663,False,"The DPU-DPA shall collect event mode data, preserving the time and spatial resolution in the specified event window.",Public FunctionsThis routine provides a means for the CCM task to send the XRT Position command from the ICU to the DPA software. The XRT Position command shall be used to command the DPU to update the position and window parameters that it uses to spatially filter event data.
+line_7,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,625,False,The DPU-DPA shall be able to perform tracking based on data collected from the detector by calculating the spacecraft drift using successive tracking frames using the algorithm described in Appendix C.,User should be able to create milestones.
+line_8,trace,trace,"trace
+
+Here is the classification of the",five_shot,9,9,634,False,"WARC Tools shall be highly portable, running on a range of Linux/Unix platforms and XP as a minimum, together with man pages, build and installation guides, developer guides, etc.",Libwarc shall be shipped with a developer guide and useful examples.
+line_9,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,697,False,Safety Subsystem: Pump Fault Manager The pump fault manager determines if the measured upstream and downstream flow rates are within tolerance of the speci ed rate and aggregates other pump fault indications into a combined pump fault indication,"Standard I/O Interface The write primitive does not block. The write() primitive is managed by the tyLib function, tyWrite() when the driver is not in BGTX Message Mode. The size of the Tx ring buffer is specified in the call to ssiDevCreate() as part of the device instantiation. This routine returns either the number of bytes written, or ERROR."
+line_10,trace,trace,"trace
+
+Here is the analysis of the",five_shot,9,9,1107,False,"The DPU-CCM shall spawn tasks for DPU-CCM, DPU-DPA, DPU-DCX, DPU-SCUI, and DPU-TMALI at bootup.","Command and Control CSCThe Command and Control (CCM) CSC is a Level 2 reuse component from the INSTRUMENT Y project. The Command and Control CSC includes the following components:* A Control Task, ccmCtrlTask(), which initializes the DPU FSW and spawns other tasks at bootup, schedules the production of DPU housekeeping data packets, monitors the execution of other tasks, and schedules the execution of other periodic tasks such as the heartbeat message and the watchdog strobe; and* A Command Dispatch Task, ccmCmdTask(), which receives and dispatches real-time commands received from the SCU or the ICU.Major data structures include:* A Static Data table that keeps track of the operational state. Data included in this table includes housekeeping production rates, CCM specific flags, and the number of commands executed.* A Command Queue into which commands are placed when they arrive, via interrupt, from the ICU or the SCU.* An Error/Event Queue which accumulates error and event codes which are reported by the DPU FSW. These error and event codes are removed from the queue and placed into a telemetry packet at a given interval and included in DPU housekeeping data.DPUSDS5.12.1.1.1Flight Software InitializationThe Command and Control CSC is initialized by spawning the CCM Control Task, ccmCtrlTask(), from the operating system startup task, usrRoot(). After the task is spawned it calls a function, ccmInit(), which creates the error/event queue, instantiates needed semaphores and installs various ISRs. Finally, it spawns the remaining tasks which comprise the DPU FSW. When the CCM Control Task starts up, it reads DPU configuration startup defaults from the SYSTEM_CONFIG_AREA in EEPROM. If the SYSTEM_CONFIG_AREA checksum is bad, hard-coded defaults are used. The CCM Control Task initializes the remaining CSCs by calling the applicable initialization function, or if the CSC has an associated task, by spawning the task using the VxWorks function, taskSpawn(). When the CCM Control Task initializes a CSC, it passes the startup defaults read from EEPROM as parameters to the task initialization function. In addition to its task initialization activities, ccmInit(), also initializes the command length verification table by calling ccmCmdLengthInit(). The command processor uses the created table to verify expected command lengths for newly received commands."
+line_11,no_trace,no_trace,"no_trace
+
+Here is the analysis of",five_shot,9,9,885,False,"At startup, the DPU-RTOS shall execute the BIT device RAM tests (cold boot only), install device drivers, execute the BIT driver loopback tests (cold boot only), and then spawn the application flight software.","Sending Messages to the ICUSome special processing and checking is required in this function to handle the transmission of the ACK/NAK message. When a command arrives from the ICU, the icuiCmdReceiveISR() will verify the message checksum and then send an ACK/NAK message to the ICU. It is possible that an application is in the midst of sending a message to the ICU at the time a command interrupt occurs. However, since it is not possible for an ISR to take a semaphore, an additional mechanism is required in order to provide mutual exclusion between a task an the ISR. To accommodate this problem, the icuiEnq() function first determines whether it is being invoked from interrupt context. If so, it then tests the value of a static variable, icuiEnqBusy. If the variable is set, the function will save the given ACK/NAK message parameters in static variables and return. If the variable is not set, the function will continue as normal (avoiding the semTake() and semGive() calls). In normal execution, the icuiEnqBusy variable is set on entry and negated on exit, after which the static variables containing the ACK/NAK message parameters will be checked to determine whether an ACK/NAK is pending."
+line_12,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,733,False,"The DPU-ICUI shall format messages according to DPUICD-01, Section 3.1","Transmitting Telemetry to the SpacecraftThe SCUI CSC receives telemetry as input Data Packages via queues populated by other tasksthe Science Data Processing Task, the Data Compression Task, and the Command and Control Task. The SCUI CSC has a High Priority Queue and a Low Priority Queue. The two queues are implemented in an identical manner with the exception that the scuiTask() gives processing preference to the High Priority Queue. The purpose of the High Priority Queue is to provide a means by which the Parameterized Finding Chart and DPU housekeeping can be transmitted to the SCU ahead of the potentially large amounts of buffered science data."
+line_13,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,697,False,The DPU-ADC shall write to the SCM registers in B-bit words only.,"Error Collection and ReportingThe DPU-CCM CSC provides a centralized error reporting interface, ccmErrEnq(), that other FSW tasks use to report errors. Each time it wakes, ccmTask() checks to see if it is time to form an error/event packet for transmission to the ground. If so, ccmTask() calls ccmHkMkError() to actually create the packet and forward it to DPU-SCUI for transmission to the ground."
+line_14,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,674,False,"The DPU-ICUI shall compute a CHKS_16 for DPU_CMDs received from the ICU. If the expected checksum is not computed, the command will be discarded, an error will be enqueued to DPU-CCM, and a NAK message transmitted to the ICU within a second.","It shall be possible to perform read operations (read from offset, filters, etc.) on WARCrecords from a remote location via http."
+line_15,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,621,False,The DPU-BOOT CSC shall log detected BIT failures to the SYSTEM_BLOCK.,"Only essential external libraries shall be used in libwarc, such as Gzip compression and wide characters encoding libraries."
+line_16,trace,trace,"trace
+
+Here is the reasoning for the",five_shot,9,9,638,False,Change Task Begin/End Times automatically with dependency changes;The start or end date should be changed automatically if links among tasks are changed,A class is used to represent the constraint that the start date of the dependee task should not be earlier than the end date of the dependent task.
+line_17,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,651,False,The DPU-SSI shall write to the SSI registers in 16-bit words only.,Public FunctionsThis routine provides a means for the CCM task to get the housekeeping info from the DPA software. The CCM task will call this function and pass a pointer to the location that DPA is to store its housekeeping.
+line_18,trace,trace,"trace
+
+Based on the analysis of the",five_shot,9,9,794,False,"The DPU-ICUI shall check the length of a received DPU_CMD against the message length determined by the Inter-Block Gap. If the received value does not match, then the command will be discarded, and an error will be enqueued to DPU-CCM, and a NAK message transmitted to the ICU within a second.","Receiving Commands from the ICUThe interface to the ICU is via a synchronous serial interface (SSI) bus, which utilizes an inter-block gap (IBG) to delineate complete messages from one another. The DPU hardware produces an interrupt when it detects an IBG, and the SSI Driver provides a mechanism by which an application can install an interrupt hook routine to respond to an IBG interrupt. Upon initialization, the ICUI CSC installs a hook routine into the SSI Driver called icuiCommandReceiveISR(), which verifies the checksum of an incoming command, transmits an ACK/NAK message to the ICU, and then enqueues the command for later processing by calling ccmCmdEnq()."
+line_19,trace,trace,"trace
+
+Here is the classification of the",five_shot,9,9,659,False,"It shall be possible to collect arbitrary web content, such as html files, images etc. (for example from a web server document root directory), and write the data to WARC files","A set of command line tools and an API incorporating libwarc shall enable the collection of online documents, such as html and embedded files, etc., and write them to valid WARC- records."
+line_20,trace,trace,"trace
+
+Here is the classification of the",five_shot,9,9,615,False,The system shall provide an option to so a user can quickly set up orders for frequently placed orders,The system shall provide the ability for a clinician to save frequently used
+line_21,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,691,False,"The DPU-BOOT CSC shall complete Stage 1 BIT, and load DPU-RTOS in less than A seconds following a hardware reset if CTS is not asserted.","Built-In TestThere are two stages of Built-In Tests (BIT) for the DPU. The Stage 1 BIT is included in the Bootstrap program and consists of Central Processing Unit (CPU) BIT, and Dynamic Random Access Memory (DRAM) BIT. The Stage 2 BIT is executed after the operating system is booted and is not part of the Bootstrap program."
+line_22,trace,trace,"trace
+
+Here is the classification of the",five_shot,9,9,664,False,"There shall be four engineering modes associated with the detector: raw event list mode, channel boundary mode, centroid confirmation mode, and intensifier characteristics mode.",Intensifier Characteristics (IC) Engineering ModeThe purpose of Intensifier Characteristics Engineering Mode is to assess detector health and performance. Detector events produced in Full Frame High Resolution detector format are collected and histogrammed for a commanded integration time to produce a pulse-height histogram.
+line_23,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,635,False,The DPU-BIT shall use the 1553 Driver CSC to perform MIL-STD-1553B internal BIT.,The load distribution class provides functions to calculate the distribution based on tasks and human resources. The functions uses the task manager.
+line_24,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,613,False,The system shall indicate problems with inactive codes have the ?#? symbol in the status column,The system shall provide the ability to display inactive and/or resolved problems
+line_25,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,627,False,The DPU-DPA shall be capable of providing DPA_HK on request.,The L1A/Geolocation software shall use all applicable mandatory SDPTK routines and any additional SDPTK routines that are useful.
+line_26,trace,trace,"trace
+
+Here is the classification for the",five_shot,9,9,676,False,"A MODIS Computer Software Configuration Item (CSCI) is any independently tracked and configured unit of software within the MODIS SDP S/W, including processes, scripts, and utility libraries. Each CSCI shall be coded according to thestandards specified in the MODIS Software Development Standards and Guidelines, SDST-022 .",The L1A/Geolocation software shall follow the coding standards established by the MODIS project in MODIS Software Development Standards and Guidelines
+line_27,trace,trace,"trace
+
+Here is the classification for the",five_shot,9,9,640,False,Change Task Begin/End Times manually with user changes; Change the start or end date either by editing its properties or by dragging-and-dropping the bar in the GUI.,Using GUI user should be able to change the length of a task by dragging-and-dropping the bar on the GUI.
+line_28,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,736,False,"The DPU-BOOT CSC shall complete Stage 1 BIT, and load DPU-RTOS in less than A seconds following a hardware reset if CTS is not asserted.","Startup Sequence On flight, a power cycle can only be effected by the SCU. A watchdog reset could be induced by the DPU FSW due to a detected, unrecoverable error, or it could occur as a by-product of the FSW entering a state in which it fails to strobe the watchdog timer. On boot, the bootstrap tests and clears DRAM, and then proceeds to load the DPU FSW from EEPROM and executes it. The DPU FSW then loads configuration information from EEPROM (which establishes various operational defaults) and spawns the various DPU FSW tasks."
+line_29,trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,673,False,"The DPU-ICUI shall install an ISR to be invoked on the SSI receiver interblock gap interrupt, for the receiving and processing of commands from the ICU.","Public FunctionsThis routine is called by the MIL-STD-1553 Command ISR and the SSI Interface ISR any time a command arrives from the SCU or the ICU, to enqueue the command and to wakeup the CCM Command Dispatch Task so that the command can be executed."
+line_30,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,734,False,"WARC Tools shall be highly portable, running on a range of Linux/Unix platforms and XP as a minimum, together with man pages, build and installation guides, developer guides, etc.","Ring buffer data structureThe CSC maintains a FIFO implemented as a ring buffer to temporarily store the data received from the DCI before it is processed. The ring buffer uses two pointers called pIn and pOut to keep track of the data in the buffer. The pointers were defined such that reading from the buffer is the simplest operation and only a single compare is needed to verify if the buffer is empty. The buffer only stores Events so the pointers point to these four byte entities. As the DCI specifies all data in bytes, sizes have to be converted before reading data."
+line_31,trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,677,False,"The DPU-DCI shall read from the DCI Memory in B-bit words only, using the load multiple/store multiple instructions.","Standard I/O InterfaceThe read() primitive does not block. The read() primitive is implemented by simply passing its parameters to the tyLib function tyRead().The size of the Rx ring buffer is specified in the call to ssiDevCreate() as part of the device instantiation.This routine returns either the number of bytes read, or ERROR."
+line_32,trace,trace,"trace
+
+Here is the analysis:",five_shot,9,9,791,False,"Image mode shall have the ability to produce a Parameterized Finding Chart, PROD_FINDING_CHART, of the image if commanded, using the algorithm described in Appendix C. The Parameterized Finding Chart shall consist of the brightest sources. Each source shall be parameterized by its position [X,Y] and Intensity/brightness.","Data Processing Algorithm CSCThe DPA CSC includes the following components:* Algorithms o Choose Guide Stars scans the bright stars in the reference frame, chooses guide stars and sets up tracking windows around the guide stars.o Drift Correction calculates the drift offset and roll of a just-completed tracking frame relative to the reference frame. o Create Finding Chart will use the above Choose Guide Stars Algorithm to find the brightest stars in the finding chart Instrument Y then creates a list of the brightest stars and their intensities.o Derive Channel Boundaries calculates a set of channel boundaries (18 numbers - 9X, 9Y) which are used by the centroiding software in the Blue Processing Electronics (BPE) in the Telescope Module."
+line_33,trace,no_trace,"no_trace
+
+Wait, I need to",five_shot,9,9,797,False,The DPU-BOOT CSC shall attempt to complete its normal execution sequence following detection of any failure.,"Exclude Failed DRAMThe Bootstrap performs a memory test before loading the operating system. The results of this test are stored in the EEPROM. The DPU-RTOS uses the results of the memory test to exclude memory segments with bit errors from the system memory pool. The Bootstrap constructs a bit map which effectively implements a list of failed memory blocks during the bootstrap built-in test. A set of functions have been created to utilize this bit map to exclude failed memory blocks from the VxWorks system memory pool. The system memory pool is used by VxWorks to allocate memory dynamically. In addition, a linked list of good memory segments is created for use by the EDAC Memory Scrubber. These functions are called from the usrInit() and usrRoot() functions in usrConfig.c. The dramInit() function must be called prior to kernelInit() in usrInit(). The dramBuildMemPool() function is called just prior to initialization of filesystems and drivers in usrRoot()."
+line_34,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,647,False,The DPU-DCI shall provide the capability for an application program to install a callback routine to respond to the DCI Error Interrupt (INTERR_EN).,"Major revisions to the WARC ISO standard may lead to revisions of libwarc, but these revisions should be isolated and not affect any tools developed incorporating libwarc"
+line_35,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,613,False,Operation Subsystem: Operation Thread The operation thread performs primary pump operation control,stop infusion. Upon the clinician's pressing of the stop button prescribed infusion shall halt
+line_36,trace,trace,"trace
+
+Here is the classification of the",five_shot,9,9,656,False,The system's design shall follow hospital work flow patterns and allow local site and individual customization to make it fit specific needs,The system shall have the ability to provide access to patient-specific test and procedure instructions that can be customized by the physician or health organization these instructions are to be given to the patient. These instructions may reside within the system or be provided through links to external sources
+line_37,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,643,False,"When observing a new GRB, and the XRT_POS becomes available from the ICU, the DPU-DPA shall shift and resize the image and event windows appropriately.","The payload (or the WARC-record document itself) are stored on disk, to avoid using memory heap, even for small objects."
+line_38,trace,trace,"trace
+
+Here is the classification for the",five_shot,9,9,707,False,"When commanded to event mode by the ICU, the DPU-DPA shall be capable of collecting time-tagged photon events and producing a PROD_EVENT.","Event ProcessingThe Event Processor Task, after receiving a Mode command from the ICU, configures the DPU DCI hardware, responds to the ICU with a Mode Ready message then receives detector events by calling functions tmaliWait() and tmaliNextEvent(). The Event Processor Task will collect detector events for the time period specified in the Mode command then issue a Mode Complete message to the ICU. After issuing the Mode Complete message, the Event Processor Task will enter the Idle state."
+line_39,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,619,False,"For each type of WARC-record, a set of functions shall be made available to create/modify the records properties.",Shall incorporate level1a_scan_flags into scan_quality flags.
+line_40,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,625,False,The system shall timeout after a period of inactivity,The system shall be able to detect security-relevant events that it mediates and generate audit records for them. At a minimum the events shall include: start/stop
+line_41,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,620,False,The final WARC API shall be coded in C with minimum dependencies or external libraries (e.g. GZIP). It must not include any assembly code.,If the system archives health record information
+line_42,no_trace,no_trace,"no_trace
+
+Here is the analysis for",five_shot,9,9,907,False,Add/Remove Resources to Tasks Dependencies;Dependencies between tasks and resources indicate the resources who are supposed to complete a task. Each task could be worked on by multiple persons and each person could work on multiple tasks. Dependencies may also be annotated to capture how many hours each person is supposed to work on a task on a daily basis.,"Sending Messages to the ICUSome special processing and checking is required in this function to handle the transmission of the ACK/NAK message. When a command arrives from the ICU, the icuiCmdReceiveISR() will verify the message checksum and then send an ACK/NAK message to the ICU. It is possible that an application is in the midst of sending a message to the ICU at the time a command interrupt occurs. However, since it is not possible for an ISR to take a semaphore, an additional mechanism is required in order to provide mutual exclusion between a task an the ISR. To accommodate this problem, the icuiEnq() function first determines whether it is being invoked from interrupt context. If so, it then tests the value of a static variable, icuiEnqBusy. If the variable is set, the function will save the given ACK/NAK message parameters in static variables and return. If the variable is not set, the function will continue as normal (avoiding the semTake() and semGive() calls). In normal execution, the icuiEnqBusy variable is set on entry and negated on exit, after which the static variables containing the ACK/NAK message parameters will be checked to determine whether an ACK/NAK is pending."
+line_43,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,735,False,"WARC extensions shall be released as a patch to each of the commands ""curl"", ""wget"", and ""httrack"" projects","Centroiding Confirmation (CC) Engineering ModeThe purpose of Centroiding Confirmation Engineering Mode is to determine the validity of derived channel boundaries. Detector events are collected and histogrammed for a commanded integration time. The full field is divided into 8x8 sub-Instrument Ys, each of ExEcentroided (by 8) pixels. These sub-Instrument Ys are then modulo binned to produce a set of 8x8 pixels pseudo-Instrument Ys. The Instrument Ys are column (y axis) ordered, as are the pixels within them. These pseudo Instrument Ys are transmitted to the ground."
+line_44,trace,trace,"trace
+
+Here is the classification of the",five_shot,9,9,641,False,"WARC files shall be validated using a command line tool, ""w-validator"", which will enable validation or rejection of WARC files.",A command line tool shall be implemented utilising libwarc to check the consistency of WARC-records and their conformance to the WARC ISO standard.
+line_45,trace,trace,"trace
+
+Here is the classification of the",five_shot,9,9,691,False,"The DPU-TIS shall provide the capability for an application program to set the value of the SC_TIME register(s) on the SCM and enable the 1PPS clock jam register, if automatic time synchronization is enabled.","Time Interface ConfigurationThe TIS CSC provides three functions for use by the CCM command dispatcher to control these values:* tis1ppsSet() select active A PPS signal,* tisSyncModeSet() set whether manual clock jamming is enabled, and tisTimeSet() manually jam a value into the DPU clock."
+line_46,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,616,False,The system shall include Standard Laboratory and Medication orderable files,The system shall provide a means to document a description of a medication and medication purpose when the medication name is unknown
+line_47,trace,trace,"trace
+
+Here is the classification of the",five_shot,9,9,635,False,Fluid Subsystem: Pump The pump moves fluid at specified rate primes itself announces if priming fails indicates when it's too hot and halts pumping when commanded,complete pump stroke. When the stop button is pressed the current pump stroke shall be completed prior to stopping the pump
+line_48,trace,trace,"trace
+
+Here is the classification of the",five_shot,9,9,634,False,The DPU-DCI shall report errors to an application program by setting the ERRNO task variable and returning ERROR.,"Public FunctionsThis routine returns OK, or ERROR and sets errno if the passed parameter is NULL. The following error codes may be returned in errno"
+line_49,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,609,False,It shall be possible to walk a wget mirror and write the data to WARC files,The system shall provide the ability to customize clinical templates
+line_50,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,617,False,The system shall require a user to review and sign changed if a user has just entered orders or documents that are unsigned,The system shall provide the ability to display for selection a secondary
+line_51,no_trace,no_trace,"no_trace
+
+Here is the thinking process",five_shot,9,9,647,False,The DPU-CCM shall strobe the Watchdog timer by writing to the SCM_WDR at an interval of 1 second.,"Libwarc and associated tools shall be shipped with installers to ""mod_warc"" for Apache (v2.X) and Lighttpd (v1.4.X) servers"
+line_52,trace,trace,"trace
+
+Here is the reasoning for the",five_shot,9,9,648,False,Create a new task which typically has a start date and an end date. Tasks are activities that one or more persons resources are expected to complete in the specified time frame.,The Task class provides a public method SetDuration() which allows to specify the duration of the task. As input argument the method takes an object of TaskLength class
+line_53,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,641,False,Safety Subsystem: Fault Logger The fault logger records all errors that are detected. As such it is pure hardware that does not depend on thread execution. It also maintains a hardware real-time clock used for timestamps,WARC files in various test-states shall be provided that test the Jhove deliverables
+line_54,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,700,False,The DPU-SSI shall provide the capability for an application program to set the Inter-Block Gap (IBG) Timeout for transmitted and received messages.,"Full-Frame (FF) Engineering ModeThe purpose of Full-Frame Engineering Mode is to monitor the health of the detector to locate hot spots and dead pixels. Detector events produced in Full Frame High Resolution detector format are received and histogrammed for a commanded integration time. The entire Instrument Y is transmitted to the ground. This mode can use high resolution (all pixels) or low resolution imaging (BxB , DxD pixel binning)."
+line_55,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,694,False,WARC Browser shall support a proxy-style interface,"Error RecoveryExcept for the modification described in Sections 5.2.3.6, no further modifications to the existing task error-handling mechanisms are required. VxWorks? uses a global mechanism for returning status codes when errors occur. This is accomplished by using the task variable, errno (stored in the task control block). Most VxWorks? functions return a STATUS value. This value can either be OK or ERROR. If a function returns ERROR, then the errno variable must indicate a specific error code."
+line_56,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,637,False,"The DPU-BOOT CSC shall include a CPU BIT consisting of a branch test, a fixed point test, a floating point test, an interrupt test, a timer test, and a register test.",alarm pump rate. Priority for alarms and warnings is shown in Table 4
+line_57,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,715,False,Safety Subsystem: Fault Logger The fault logger records all errors that are detected. As such it is pure hardware that does not depend on thread execution. It also maintains a hardware real-time clock used for timestamps,"Error Collection and ReportingAt boot time, no error queue exists because it has yet to be created. Errors that occur in this early stage of error reporting are assigned directly to the global task variable errno. The reader may refer to the VxWorks Programmers Guide, section 2.3.7 for more information on errno. If errno is set after the error queues are created, it is queued to the Error Queue by calling ccmErrEnq()."
+line_58,trace,no_trace,"no_trace
+
+Answer:
+no_trace",five_shot,9,9,932,False,"The DPU-CCM shall spawn tasks for DPU-CCM, DPU-DPA, DPU-DCX, DPU-SCUI, and DPU-TMALI at bootup.","Control and Monitoringthe CCM Control Task initializes the DPU FSW. It is the responsibility of the CCM Control Task to establish a successful boot. It does so by blocking on temporary semaphores, each with a 5 second timeout, after spawning the SCU Interface Task and the CCM Command Task. If both of these tasks report a successful initialization by giving the semaphore, the CCM Control Task toggles the BC_INDEX parameter in EEPROM to indicate a successful boot. If either task does not report a successful initialization, the CCM Control Task disables the watchdog strobe to effect a reboot of the DPU. The rationale for selecting the successful initialization of these two tasks as the definition of a successful boot is that the DPU FSW requires these tasks, as a minimum, to establish ground contact and provide commandability.Once this initialization is complete, the task blocks on a binary semaphore which is given by the SCUI Command ISR upon arrival of the 1 Hz Clock Message. In the event a Clock Message does not arrive, the semaphore will time out after 1.5 seconds. The CCM Control Task remains alive to create and transmit DPU housekeeping at the appropriate intervals, perform various periodic processing tasks, and to process memory dump commands.The final call to ccmErrEnq() is performed in order that if an error occurs in an interrupt service routine, a global variable is set to the value of the errno which is then enqueued into the Error/Event Queue as part of this tasks normal processing."
+line_59,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,634,False,Each software process shall trap and properly process all exceptions that may produce an abnormal terminationand report all such events using the SDPTK error message functions.,The system shall provide the ability to identify all users who have accessed an individual's chart over a given time period
+line_60,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,644,False,"It shall be possible to identify and validate WARC files using ""Jhove""","Time Synchronization CSCThe Time Synchronization (TIS) CSC is a new component which provides services to maintain time synchronization between the DPU and the spacecraft, and which provides an API for retrieval of the current system time."
+line_61,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,617,False,Dynamic memory management shall be hidden inside libwarc,Communication and support shall be provided to the open source community. This support must be provided for at least term of the project.
+line_62,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,627,False,"Maintain Resource Properties;A resource has a range of properties, including name and holidays",WARC browser shall not support CDX files because the CDX file format is not a standard at this time and is outside of scope.
+line_63,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,691,False,Safety Subsystem: Pump Fault Manager The pump fault manager determines if the measured upstream and downstream flow rates are within tolerance of the speci ed rate and aggregates other pump fault indications into a combined pump fault indication,square bolus under-infusion warning. If delivered clinician-requested bolus flow rate is less than the calculated square bolus rate by more than its allowed tolerance over a period of more than 5 minutes or immediately if the flow stops the pump shall issue a square bolus under-infusion warning. (EC3.2.8)
+line_64,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,765,False,The DPU-CCM shall process real-time non-deferred commands within B ms of receipt from the ICU or the SCU.,"Public FunctionsWhen no data is available in the TMALI queue this routine blocks on a semaphore awaiting availability of events on the TMALI queue as indicated by the ISR. When data is already available on the TMALI queue, or the semaphore is taken, the number of events on the TMALI queue is determined and returned to the caller. The parameter TickstoWait specifies the maximum time which the function can wait until data becomes available in kernel-ticks. The parameter may be set to a symbolic value FOREVER which causes the function only to return when data is available. When the function is called with a timeout value and no data becomes avialable within that period the function will return zero (events available).If the tmali task has not been initialized the function returns an error."
+line_65,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,651,False,"The Bootstrap Monitor of the DPU-BOOT CSC shall provide the capability to read from Dynamic Random Access Memory (DRAM), the VME bus, and the Input/Output Channel Controller (IOCC) on command.","Python scripts shall be implemented incorporating libwarc, and making all of the functionality of libwarc and API available in Python."
+line_66,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,620,False,The DPU-TIS shall provide the capability for application programs to access the current UT_DELTA.,Shall generate data_input_status_messages and set scan_quality_flags if corrupted data values are detected.
+line_67,trace,trace,"trace
+
+Here is the classification of the",five_shot,9,9,745,False,The DPU-ICUI shall provide an API for other CSCs to transmit messages to the ICU.,"Receiving Commands from the ICUThe interface to the ICU is via a synchronous serial interface (SSI) bus, which utilizes an inter-block gap (IBG) to delineate complete messages from one another. The DPU hardware produces an interrupt when it detects an IBG, and the SSI Driver provides a mechanism by which an application can install an interrupt hook routine to respond to an IBG interrupt. Upon initialization, the ICUI CSC installs a hook routine into the SSI Driver called icuiCommandReceiveISR(), which verifies the checksum of an incoming command, transmits an ACK/NAK message to the ICU, and then enqueues the command for later processing by calling ccmCmdEnq()."
+line_68,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,661,False,The system shall only auto-select(highlights in blue and places that entry in the field) a patient name if the user types enough characters to uniquely identify a name in the list,"Extensions to ""HTTrack"", ""wget"" and ""curl"" incorporating libwarc shall be provided as patches to recent and specific versions of each tool, to enable users of the tool to access functionality of libwarc"
+line_69,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,668,False,The DPU-DCI shall read from the DCI Registers in C-bit words only,"Standard I/O InterfaceThe read() primitive does not block. The read() primitive is implemented by simply passing its parameters to the tyLib function tyRead().The size of the Rx ring buffer is specified in the call to ssiDevCreate() as part of the device instantiation.This routine returns either the number of bytes read, or ERROR."
+line_70,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,614,False,The system shall include the ability to print prescriptions for signature and fax prescriptions to a local pharmacy with an electronic signature,The system shall provide the ability to submit prescriptions electronically
+line_71,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,632,False,An independent Java implementation of libwarc may be implemented,The class of dependency collection provides a function to check if the new dependency will cause a loop each time a object of dependency class is created. The function returns an exception if there is a loop.
+line_72,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,725,False,Add/Remove Resources to Tasks Dependencies;Dependencies between tasks and resources indicate the resources who are supposed to complete a task. Each task could be worked on by multiple persons and each person could work on multiple tasks. Dependencies may also be annotated to capture how many hours each person is supposed to work on a task on a daily basis.,"Standard I/O InterfaceThe write primitive does not block. The buffer passed to write is written directly to the active portion of the ping pong buffer by the driver. This primitive is valid only in TEST mode. The write call will set errno to S_dci_MODE_ERROR and return ERROR if the driver is in NORMAL mode. In TEST mode, the driver returns the number of bytes written."
+line_73,trace,trace,"trace
+
+Here is the classification for the",five_shot,9,9,686,False,"The DPU-CCM shall monitor the status of DPU-SCUI, DPU-CCM, DPU-DCX, DPU-TMALI, and DPU-DPA by examining their TASK_INFO and report this information in DPU_HK.",Public FunctionsThis routine provides a means for the CCM task to get the housekeeping info from the DPA software. The CCM task will call this function and pass a pointer to the location that DPA is to store its housekeeping.
+line_74,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,708,False,The system shall provide an option to so a user can quickly set up orders for frequently placed orders,"Command HandlingWhen a command arrives from the SCU (via the 1553 interface) or the ICU (via the SSI interface), the respective ISR will enqueue the command packet into a Command Queue, and then give the semaphore to awaken the ccmCmdTask(). Since it is possible for the DPU to send a command to itself, commands may arrive at interrupt context or task context. Therefore the CCM maintains two queues one for interrupt context which is not semaphore protected, and one for task context which is semaphore protected."
+line_75,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,765,False,"The DPU-BOOT CSC shall create a record of failed DRAM blocks, BIT_DRAM, in the SYSTEM_BLOCK.","Built-In Test CSCThe Built-In Test (BIT) CSC is a Level 2 reuse component from the SSFF and INSTRUMENT Y projects. The detailed design of the BIT CSC follows. The Built-In Tests CSC, identified DPU-BIT, performs the Stage 2 Built-In Tests (BIT). The Stage 2 BIT includes a test of the SCM EDAC circuit, a checksum test on SCM PROM, a MIL-STD-1553B internal BIT, and a memory test of the DCI Data Buffers. The results of the BIT are recorded in the SYS_CNFG_AREA in EEPROM and are also maintained in DRAM. If an error occurs in one of the functions performing the BIT, the test result will be reported as a failure in the test itself."
+line_76,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,733,False,It shall be possible to collect HTTrack data from the directories output by HTTrack and write the data to WARC files,"Transmitting Telemetry to the SpacecraftThe SCUI CSC receives telemetry as input Data Packages via queues populated by other tasksthe Science Data Processing Task, the Data Compression Task, and the Command and Control Task. The SCUI CSC has a High Priority Queue and a Low Priority Queue. The two queues are implemented in an identical manner with the exception that the scuiTask() gives processing preference to the High Priority Queue. The purpose of the High Priority Queue is to provide a means by which the Parameterized Finding Chart and DPU housekeeping can be transmitted to the SCU ahead of the potentially large amounts of buffered science data."
+line_77,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,727,False,The DPU-BOOT CSC shall include a DRAM BIT consisting of two write/read/compare tests. The first test shall write the address of each memory location to that location. The second test shall write the complement of each memory location to that location.,"Channel Boundary (CB) Engineering ModeThe purpose of Channel Boundary Mode is to derive the optimum channel boundary settings from a flat field. Detector events produced in the M,N detector mode are collected and histogrammed for a commanded integration time. The pseudo Instrument Y is transmitted to the ground. Channel boundaries are derived from the Instrument Y and transmitted to the ICU and the ground. Channel boundaries are sent by the ICU to the BPE and used in the detector event centroiding process."
+line_78,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,645,False,"The DPU-1553 CSC shall address hardware modules as defined in document 1400, Company X Specification for the Company X Communication/Memory Module.",The system shall provide the ability to permit an ordering clinician to forward all (current and future) expiring order notifications to another clinician
+line_79,trace,trace,"trace
+
+Here is the classification of the",five_shot,9,9,662,False,"Utility and application level functionality of WARC Tools shall be made available to end users as command line tools, extensions to existing tools, and simple web applications for accessing WARC content.","Extensions to ""HTTrack"", ""wget"" and ""curl"" incorporating libwarc shall be provided as patches to recent and specific versions of each tool, to enable users of the tool to access functionality of libwarc"
+line_80,trace,trace,"trace
+
+The lower-level requirement specifies the",five_shot,9,9,623,False,Dynamic memory management shall be hidden inside libwarc,"Developers using libwarc shall not be required to allocate/release memory directly, instead the developer shall use libwarc's object constructor and destructor functions."
+line_81,trace,trace,"trace
+
+Here is the classification for the",five_shot,9,9,703,False,The DPU-CCM shall collect DPU_HK and forward it to the DPU-SCUI.,"Error Collection and ReportingThe DPU-CCM CSC provides a centralized error reporting interface, ccmErrEnq(), that other FSW tasks use to report errors. Each time it wakes, ccmTask() checks to see if it is time to form an error/event packet for transmission to the ground. If so, ccmTask() calls ccmHkMkError() to actually create the packet and forward it to DPU-SCUI for transmission to the ground."
+line_82,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,643,False,The system shall use patient lists allow a person to quickly locate patients without going through all the patients in the list,basal flow rate. The basal flow rate Fbasal is prescribed by a physician and entered into the PCA pump by scanning the prescription from the drug container label as it is loaded into the reservoir
+line_83,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,671,False,Change Task Begin/End Times manually with user changes; Change the start or end date either by editing its properties or by dragging-and-dropping the bar in the GUI.,"Setting Frame Depth in DCIThe optimum frame depth will be determined with benchmark testing. The default frame depth is 10 frames. Given the above data, it will take approximately 24 msec to read 10 maximum-sized frames at the maximum data transfer rate."
+line_84,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,611,False,Operation Subsystem: Operation Thread The operation thread performs primary pump operation control,device parameters. The PCA pump shall use a physician's prescriptions as device parameters
+line_85,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,653,False,The DPU-BOOT CSC shall test and clear DRAM on power-on using the COLD_MEM_SIZE obtained from the SYSTEM_BLOCK.,"Time Interface ConfigurationThe DPU hardware provides two configuration options to the software:* selection of the active A PPS signal, and* the option to manually jam a value into the clock registers without the A PPS signal."
+line_86,trace,trace,"trace
+
+Here is the reasoning for the",five_shot,9,9,694,False,Any software tool or application based on libwarc shall require just a single header file.,"The universal header ""warc.h"" shall provide normalised interfaces to enable developers to create valid and compliant WARC-records, based on the definition in the ""ISO TC 46/SC 4 N 595"" standards document. The interfaces shall be made available to create WARC records of the following types:- ""warinfo""- ""response""- ""request""- ""metadata""- ""revisit""- ""conversion""- ""continuation""- ""resource"""
+line_87,trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,699,False,The DPU-BOOT CSC shall attempt to complete its normal execution sequence following detection of any failure.,Error Detection and Correction CSCThe Error Detection and Correction (EDAC) CSC is a Level 1 reuse component from the SSFF and INSTRUMENT Y projects. The EDAC CSC consists of a set of Interrupt Service Routines (ISRs) and a Memory Scrubber Task. The design of the INSTRUMENT Y EDAC CSC is described in document CIDPSDS-01.The only design change was to add logic to check for excessive external (SCM) EDAC interrupts.
+line_88,trace,trace,"trace
+
+Here is the classification for the",five_shot,9,9,654,False,The DPU-TMALI shall provide a function which sets the current event bit ordering mode in the DCI driver.,"Public FunctionsThis routine provides a means to set the bit arrangement used by the DCI. When bSpecialArrangement is TRUE, the DCI is set to special bit arrangement mode, otherwise the default mode of no rearrangement is set."
+line_89,trace,no_trace,"no_trace
+
+Here is the analysis for",five_shot,9,9,883,False,The DPU-CCM shall quietly discard any unrecognized observatory messages (I.e. messages which do not have a DPU command APID).,"Data Transfer to QueueWhen the tmaliTransferToQueueISR() ISR is invoked, it gives a semaphore to awaken tmaliTask() that will transfer data to the queue over the VME bus. The tmaliTask() uses the read() function in the DCI Driver, which implements a data transfer using a high speed assembly language routine. Because the TMALI ring buffer is implemented as an array, the tmaliTask() function must first examine the TMALI_EVENT_QUEUE to determine whether the data resident in the DCI buffer can be retrieved using a single read() call, or whether two calls are required in order to correctly handle the wrap-around case at the end of the ring buffer. In addition, the tmaliTask() function must perform an error check to verify that there is sufficient space to receive the data available in the Ping-Pong buffer. If there is insufficient space for the complete set of frames, the entire contents of the readable Ping-Pong buffer are discarded and the error S_TMALI_QUEUE_FULL is reported using ccmErrEnq mechanism. Such discarded data constitutes an integral number of CCD frames, since the DCI hardware design ensures that Ping-Pong transitions occur at CCD frame boundaries. This policy of discarding the newer data supports the scientific viewpoint that events collected right after a burst have more scientific value than events collected later."
+line_90,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,701,False,"The DPU-DPA shall produce a Parameterized Finding Chart, PROD_FINDING_CHART, that is so many bytes.","Channel Boundary (CB) Engineering ModeThe purpose of Channel Boundary Mode is to derive the optimum channel boundary settings from a flat field. Detector events produced in the M,N detector mode are collected and histogrammed for a commanded integration time. The pseudo Instrument Y is transmitted to the ground. Channel boundaries are derived from the Instrument Y and transmitted to the ICU and the ground. Channel boundaries are sent by the ICU to the BPE and used in the detector event centroiding process."
+line_91,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,660,False,The DPU-TMALI shall configure the ping-pong frame limit at startup as specified by TMALI_PP_LIMIT provided during initialization. The default value shall be M frames and shall be capable of being modified dynamically.,"It shall be possible to specify non-default operations of ""arc2warc"" using a named configuration file, which will describe the desired ARC-record to WARC-record conversion."
+line_92,trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,704,False,The DPU-ICUI shall report errors to DPU-CCM for inclusion in the DPU_HK.,"Error Collection and ReportingThe DPU-CCM CSC provides a centralized error reporting interface, ccmErrEnq(), that other FSW tasks use to report errors. Each time it wakes, ccmTask() checks to see if it is time to form an error/event packet for transmission to the ground. If so, ccmTask() calls ccmHkMkError() to actually create the packet and forward it to DPU-SCUI for transmission to the ground."
+line_93,trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,628,False,The DPU-ICUI shall report errors to DPU-CCM for inclusion in the DPU_HK.,External Program InterfacesThis routine copies the BIT Results into bitHk for inclusion in the DPU Housekeeping.
+line_94,trace,trace,"trace
+
+Here is the classification for the",five_shot,9,9,662,False,The Bootstrap Monitor of the DPU-BOOT CSC shall validate commands entered for syntax and number of arguments.,"Bootstrap MonitorThe Bootstrap Monitor checks entered commands for syntax and number of arguments, and displays an error message to the RS-232 interface if an invalid command or argument is entered. A complete listing of these messages is given in document 7384-BSPS-01."
+line_95,no_trace,trace,"trace
+
+Here is the reasoning for the",five_shot,9,9,632,False,Communication and support shall be provided to the open source community. This support must be provided for at least term of the project.,"Libwarc shall be made available as a binary for at least GNU/Linux, FreeBSD, Mac OS X and Windows XP."
+line_96,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,637,False,The DPU-CCM shall use DPU-EEPRM to access the EEPROM.,To create a new task an object of TaskManager class is passed to the class constructor. The TaskManager in its turn takes care of a resource allocation using ResourceAssignmentCollection class.
+line_97,no_trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,666,False,The DPU-SSI shall provide the capability for an application program to enable/disable the VME Slave Interrupt on the SCM for the SSI Interface.,The system shall have the ability to provide access to patient-specific test and procedure instructions that can be customized by the physician or health organization these instructions are to be given to the filler of the order. These instructions may reside within the system or be provided through links to external sources
+line_98,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,616,False,The system shall allow infinite hierarchies of subclasses to be created in the User Hierarchy Class structure,The system shall provide the ability for a clinician to save frequently used
+line_99,no_trace,no_trace,"no_trace
+
+Here is the reasoning for",five_shot,9,9,674,False,The DPU-BOOT CSC shall enable EDAC on the SCM.,"InitializationThe TMALI CSC is initialized by spawning the tmaliTask() with the startup default parameters. This task will allocate memory for the TMALI_EVENT_QUEUE, install DCI ISRs, initialize static variables and data structures, and then enter an end-less loop in which it transfers the data from the DCI to the TMALI queue, throttled by the semaphore semDciWait."
+line_100,trace,no_trace,"no_trace
+
+Here is the analysis:",five_shot,9,9,642,False,The DPU-TMALI shall place the starting address of the event ring buffer in TMALI_HK.,"Public FunctionsThis routine initializes the interface to the ICU. This routine opens SSI Driver port, installs the SSI interface interrupt callbacks, and enables Transmit Message Mode in the SSI Driver."
