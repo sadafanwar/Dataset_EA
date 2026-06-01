@@ -1,0 +1,2 @@
+method,run,seed,accuracy,trace_precision,trace_recall,trace_f1,no_trace_precision,no_trace_recall,no_trace_f1,valid_predictions,invalid_predictions,total_records,confusion_matrix
+zero_shot,0,42,0.51,1.0,0.02,0.0392156862745098,0.5050505050505051,1.0,0.6711409395973155,100,0,100,"[[1, 49], [0, 50]]"

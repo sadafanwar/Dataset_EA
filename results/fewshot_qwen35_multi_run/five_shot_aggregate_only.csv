@@ -1,0 +1,2 @@
+method,num_runs,accuracy_mean,accuracy_std,trace_precision_mean,trace_precision_std,trace_recall_mean,trace_recall_std,trace_f1_mean,trace_f1_std,no_trace_precision_mean,no_trace_precision_std,no_trace_recall_mean,no_trace_recall_std,no_trace_f1_mean,no_trace_f1_std,invalid_predictions_mean,invalid_predictions_std
+five_shot,10,0.749,0.0600832755431992,0.9849536067278002,0.0196921056950737,0.506,0.120756872360219,0.6607056602969278,0.1068854445367203,0.6715772488823191,0.0551086390164811,0.992,0.0103279555898864,0.7997476758974129,0.0390642146899795,0.0,0.0
