@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "EXP-18",
+  "experiment_name": "Qwen3.5 Label + Rationale, Multi-Template, 10-Fold CV",
+  "baseline_experiment": "EXP-17",
+  "development_branch": "exp18-development",
+  "status": {
+    "core_code": "ready",
+    "local_validation": "passed",
+    "documentation": "pending",
+    "server_preflight": "pending",
+    "server_diagnostic": "pending",
+    "final_execution": "pending",
+    "result_aggregation": "pending_results"
+  },
+  "research_design": {
+    "independent_variable": "instruction_template_strategy",
+    "exp17_condition": "single_template",
+    "exp18_condition": "multi_template",
+    "paired_fold_comparison": true,
+    "controlled_factors": [
+      "base_model",
+      "dataset_records",
+      "fold_assignments",
+      "validation_assignments",
+      "QLoRA_configuration",
+      "training_hyperparameters",
+      "primary_test_instruction",
+      "generation_policy"
+    ]
+  },
+  "model": {
+    "path": "Qwen/Qwen3.5-9B",
+    "method": "qlora",
+    "training": {
+      "learning_rate": 5e-05,
+      "batch_size": 1,
+      "gradient_accumulation_steps": 8,
+      "num_epochs": 2,
+      "max_steps": null,
+      "warmup_steps": 20,
+      "max_grad_norm": 1.0,
+      "weight_decay": 0.01,
+      "fp16": false,
+      "bf16": true,
+      "gradient_checkpointing": true
+    },
+    "lora": {
+      "enabled": true,
+      "r": 16,
+      "alpha": 32,
+      "dropout": 0.1,
+      "target_modules": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj"
+      ]
+    },
+    "quantization": {
+      "enabled": true,
+      "type": "nf4",
+      "compute_dtype": "bfloat16",
+      "double_quant": true
+    }
+  },
+  "dataset": {
+    "source": "data/traceability_dataset/traceability_pairs_with_rationale.jsonl",
+    "records": 1887,
+    "trace_records": 757,
+    "no_trace_records": 1130,
+    "fold_root": "data/exp17_qwen35_9b_rationale_single_template/folds",
+    "reuse_exp17_folds": true,
+    "permanent_formatted_dataset": false
+  },
+  "cross_validation": {
+    "outer_folds": 10,
+    "inner_validation": true,
+    "fold_range": "fold_01-fold_10"
+  },
+  "templates": {
+    "version": "exp18_templates_v1",
+    "count": 5,
+    "ids": [
+      "template_01",
+      "template_02",
+      "template_03",
+      "template_04",
+      "template_05"
+    ],
+    "assignment_method": "sha256_pair_id_seed_modulo",
+    "assignment_seed": 42,
+    "one_template_per_record": true,
+    "dataset_expansion": false,
+    "primary_test_template": "template_01",
+    "robustness_protocol": "all_five_template_robustness"
+  },
+  "evaluation": {
+    "primary": {
+      "protocol": "primary_canonical_template",
+      "template": "template_01",
+      "directly_comparable_with_exp17": true
+    },
+    "robustness": {
+      "protocol": "all_five_template_robustness",
+      "secondary_analysis": true
+    },
+    "generation": {
+      "do_sample": false,
+      "num_beams": 1,
+      "default_max_new_tokens": 256
+    }
+  },
+  "execution": {
+    "per_fold_runner": "scripts/exp18/run_exp18_fold.py",
+    "all_fold_orchestrator": "scripts/exp18/run_exp18_all_folds.py",
+    "primary_evaluator": "scripts/exp18/evaluate_exp18.py",
+    "robustness_evaluator": "scripts/exp18/evaluate_exp18_robustness.py",
+    "server_execution_policy": "sequential_single_gpu"
+  },
+  "analysis": {
+    "aggregation_script": "scripts/analysis/aggregate_exp17_exp18.py",
+    "paired_fold_analysis": true,
+    "mean_and_standard_deviation": true,
+    "class_wise_metrics": true,
+    "robustness_aggregation": true,
+    "actual_analysis_pending_results": true
+  }
+}
