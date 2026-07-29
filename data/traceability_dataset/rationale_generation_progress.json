@@ -1,0 +1,11 @@
+{
+  "status": "completed_and_validated",
+  "model": "gpt-5.5-2026-04-23",
+  "input_path": "C:\\Users\\sadaf.anwar\\Documents\\Experiments\\Dataset_EA\\transformed_data\\cross_dataset_pattern1.jsonl",
+  "output_path": "C:\\Users\\sadaf.anwar\\Documents\\Experiments\\Dataset_EA\\data\\traceability_dataset\\traceability_pairs_with_rationale.jsonl",
+  "source_sha256": "7d3de4c2cee1adf2e67393d334ce9f825c5181c87d13266172b655ba5c64f649",
+  "total_source_records": 1887,
+  "completed_records": 1887,
+  "failed_records": 0,
+  "remaining_records": 0
+}

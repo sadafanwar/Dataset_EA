@@ -35,3 +35,5 @@ scripts/run_qwen35_train_size_undersampling_10fold_cv_tracked.py
 
 # Legacy non-v2 train-size configs
 src/integration/training_scripts/ft/config_qwen35_9b_train_size_undersampling_size_*.yaml
+
+.env
