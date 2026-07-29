@@ -721,6 +721,7 @@ def corrected_training_loop(
 
     global_step = 0
     best_validation_perplexity = float("inf")
+    best_validation_loss = float("inf")
     stop_training = False
 
     optimizer.zero_grad(set_to_none=True)
@@ -966,6 +967,7 @@ def corrected_training_loop(
             best_validation_perplexity = (
                 validation_perplexity
             )
+            best_validation_loss = validation_loss
 
             best_model_dir = (
                 output_dir / "best_model"
@@ -986,6 +988,10 @@ def corrected_training_loop(
     history[
         "best_validation_perplexity"
     ] = best_validation_perplexity
+
+    history[
+        "best_validation_loss"
+    ] = best_validation_loss
 
     return history
 
@@ -1270,6 +1276,12 @@ def main() -> int:
         "best_validation_perplexity"
     ] = history[
         "best_validation_perplexity"
+    ]
+
+    run_metadata[
+        "best_validation_loss"
+    ] = history[
+        "best_validation_loss"
     ]
 
     save_json(
