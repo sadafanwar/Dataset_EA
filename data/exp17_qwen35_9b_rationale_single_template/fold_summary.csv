@@ -1,0 +1,11 @@
+fold,train_records,validation_records,test_records,train_trace,train_no_trace,validation_trace,validation_no_trace,test_trace,test_no_trace,status
+fold_01,1528,170,189,613,915,68,102,76,113,validated
+fold_02,1528,170,189,613,915,68,102,76,113,validated
+fold_03,1528,170,189,613,915,68,102,76,113,validated
+fold_04,1528,170,189,613,915,68,102,76,113,validated
+fold_05,1528,170,189,613,915,68,102,76,113,validated
+fold_06,1528,170,189,613,915,68,102,76,113,validated
+fold_07,1528,170,189,613,915,68,102,76,113,validated
+fold_08,1529,170,188,614,915,68,102,75,113,validated
+fold_09,1529,170,188,614,915,68,102,75,113,validated
+fold_10,1529,170,188,614,915,68,102,75,113,validated

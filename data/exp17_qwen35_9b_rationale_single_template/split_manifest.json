@@ -1,0 +1,20 @@
+{
+  "experiment_id": "EXP-17",
+  "source_dataset": "data\\traceability_dataset\\traceability_pairs_with_rationale.jsonl",
+  "total_records": 1887,
+  "outer_folds": 10,
+  "validation_fraction": 0.1,
+  "random_seed": 42,
+  "stratified_outer_cv": true,
+  "stratified_inner_validation": true,
+  "balancing": "none_original_imbalanced",
+  "id_field": "pair_id",
+  "label_field": "label",
+  "rationale_field": "rationale",
+  "label_counts": {
+    "trace": 757,
+    "no_trace": 1130
+  },
+  "outer_test_coverage_verified": true,
+  "split_overlap_verified": true
+}

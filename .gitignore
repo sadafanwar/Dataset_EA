@@ -37,3 +37,9 @@ scripts/run_qwen35_train_size_undersampling_10fold_cv_tracked.py
 src/integration/training_scripts/ft/config_qwen35_9b_train_size_undersampling_size_*.yaml
 
 .env
+
+# EXP-17 generated model artifacts
+results/exp17_qwen35_9b_rationale_single_template/fold_*/checkpoint-*/
+results/exp17_qwen35_9b_rationale_single_template/fold_*/epoch-*/
+results/exp17_qwen35_9b_rationale_single_template/fold_*/best_model/
+results/exp17_qwen35_9b_rationale_single_template/fold_*/final_model/
