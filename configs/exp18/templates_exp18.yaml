@@ -1,0 +1,34 @@
+version: "exp18_templates_v1"
+
+task:
+  name: "requirements_traceability_classification"
+  direction: "lower_level_to_higher_level"
+  valid_labels:
+    - "trace"
+    - "no_trace"
+
+output_contract:
+  first_line: "Label: <trace|no_trace>"
+  second_line: "Rationale: <concise explanation>"
+  rationale_required: true
+
+templates:
+  - id: "template_01"
+    role: "canonical_primary_test"
+    instruction: "Determine whether the lower-level requirement is traceable to the higher-level requirement. Return the label as either 'trace' or 'no_trace', followed by a concise rationale explaining the decision."
+
+  - id: "template_02"
+    role: "training_and_validation"
+    instruction: "Assess whether the lower-level requirement can be traced to the higher-level requirement. Return the label as either 'trace' or 'no_trace', followed by a concise rationale supporting the classification."
+
+  - id: "template_03"
+    role: "training_and_validation"
+    instruction: "Classify the relationship between the lower-level and higher-level requirements as 'trace' or 'no_trace'. Follow the label with a concise rationale explaining the classification."
+
+  - id: "template_04"
+    role: "training_and_validation"
+    instruction: "Decide whether the lower-level requirement is traceable to the higher-level requirement. Respond with the label 'trace' or 'no_trace', then provide a concise rationale for the decision."
+
+  - id: "template_05"
+    role: "training_and_validation"
+    instruction: "Review the two requirements and determine whether a traceability link exists from the lower-level requirement to the higher-level requirement. Give the label 'trace' or 'no_trace' followed by a concise rationale."

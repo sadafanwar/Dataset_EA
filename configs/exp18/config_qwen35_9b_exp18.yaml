@@ -1,0 +1,98 @@
+experiment:
+  id: "EXP-18"
+  name: "Qwen3.5 Label + Rationale, Multi-Template, 10-Fold CV"
+  baseline_experiment: "EXP-17"
+  model: "Qwen/Qwen3.5-9B"
+  method: "QLoRA"
+  template_strategy: "multi_template"
+  balancing: "none_original_imbalanced"
+  training_target: "label_and_rationale"
+  cross_validation: "outer_10_fold_with_inner_validation"
+
+model_path: "Qwen/Qwen3.5-9B"
+method: "qlora"
+
+training:
+  learning_rate: 0.00005
+  batch_size: 1
+  gradient_accumulation_steps: 8
+  num_epochs: 2
+  max_steps:
+  warmup_steps: 20
+  max_grad_norm: 1.0
+  weight_decay: 0.01
+  fp16: false
+  bf16: true
+  gradient_checkpointing: true
+
+lora:
+  enabled: true
+  r: 16
+  alpha: 32
+  dropout: 0.1
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+
+quantization:
+  enabled: true
+  type: "nf4"
+  compute_dtype: "bfloat16"
+  double_quant: true
+
+data:
+  dataset_split: "train"
+  max_samples:
+  max_length: 1024
+  num_workers: 0
+
+evaluation:
+  eval_split: "validation"
+  eval_steps: 50
+  eval_samples: 170
+  compute_perplexity: true
+
+checkpointing:
+  save_steps: 100
+  save_total_limit: 3
+  resume_from_checkpoint:
+
+logging:
+  logging_steps: 10
+  log_level: "INFO"
+
+device:
+  device: "cuda"
+
+advanced:
+  seed: 42
+
+multi_template:
+  template_file: "configs/exp18/templates_exp18.yaml"
+  template_count: 5
+
+  assignment:
+    method: "sha256_pair_id_seed_modulo"
+    seed: 42
+    dataset_expansion: false
+    one_template_per_record: true
+    stable_across_folds: true
+
+  usage:
+    training: "deterministic_assigned_template"
+    validation: "deterministic_assigned_template"
+    primary_test: "template_01"
+    robustness_test: "all_five_templates"
+
+  comparison_policy:
+    same_source_records_as_exp17: true
+    same_fold_assignments_as_exp17: true
+    same_training_hyperparameters_as_exp17: true
+    same_primary_test_prompt_as_exp17: true
+    only_main_factor_changed: "instruction_template_strategy"
+
+  folds:
+    source_root: "data/exp17_qwen35_9b_rationale_single_template/folds"
+    target_root: "data/exp18_qwen35_9b_rationale_multi_template/folds"
