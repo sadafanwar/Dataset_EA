@@ -1,0 +1,153 @@
+{
+  "fold_count": 10,
+  "folds": [
+    "fold_01",
+    "fold_02",
+    "fold_03",
+    "fold_04",
+    "fold_05",
+    "fold_06",
+    "fold_07",
+    "fold_08",
+    "fold_09",
+    "fold_10"
+  ],
+  "metrics": {
+    "accuracy": {
+      "count": 10,
+      "mean": 0.8993020375999099,
+      "standard_deviation": 0.020638643271600404,
+      "minimum": 0.873015873015873,
+      "maximum": 0.9312169312169312,
+      "median": 0.8968253968253967
+    },
+    "macro_precision": {
+      "count": 10,
+      "mean": 0.8977500605685458,
+      "standard_deviation": 0.02224927306082492,
+      "minimum": 0.8679552864462039,
+      "maximum": 0.9324866310160428,
+      "median": 0.8954770397554999
+    },
+    "macro_recall": {
+      "count": 10,
+      "mean": 0.8923834808259588,
+      "standard_deviation": 0.02186698956270608,
+      "minimum": 0.8646017699115045,
+      "maximum": 0.9252445272473219,
+      "median": 0.8889438751746623
+    },
+    "macro_f1": {
+      "count": 10,
+      "mean": 0.8945459336615855,
+      "standard_deviation": 0.021699474060274483,
+      "minimum": 0.8679552864462039,
+      "maximum": 0.927991559450192,
+      "median": 0.8918555330719585
+    },
+    "weighted_f1": {
+      "count": 10,
+      "mean": 0.8989610187486177,
+      "standard_deviation": 0.02073535626289806,
+      "minimum": 0.873015873015873,
+      "maximum": 0.9309750283344259,
+      "median": 0.8963937083436359
+    },
+    "format_valid_rate": {
+      "count": 10,
+      "mean": 1.0,
+      "standard_deviation": 0.0,
+      "minimum": 1.0,
+      "maximum": 1.0,
+      "median": 1.0
+    },
+    "trace_precision": {
+      "count": 10,
+      "mean": 0.888588361513183,
+      "standard_deviation": 0.033299118770832,
+      "minimum": 0.8421052631578947,
+      "maximum": 0.9558823529411765,
+      "median": 0.8831168831168831
+    },
+    "trace_recall": {
+      "count": 10,
+      "mean": 0.8573333333333333,
+      "standard_deviation": 0.03464790631269398,
+      "minimum": 0.8,
+      "maximum": 0.9066666666666666,
+      "median": 0.8552631578947368
+    },
+    "trace_f1": {
+      "count": 10,
+      "mean": 0.8722233942568255,
+      "standard_deviation": 0.0265950005620978,
+      "minimum": 0.8391608391608392,
+      "maximum": 0.912751677852349,
+      "median": 0.8686740431706875
+    },
+    "no_trace_precision": {
+      "count": 10,
+      "mean": 0.9069117596239085,
+      "standard_deviation": 0.020837528202650956,
+      "minimum": 0.875,
+      "maximum": 0.9369369369369369,
+      "median": 0.9071316614420062
+    },
+    "no_trace_recall": {
+      "count": 10,
+      "mean": 0.927433628318584,
+      "standard_deviation": 0.023152114301296274,
+      "minimum": 0.8938053097345132,
+      "maximum": 0.9734513274336283,
+      "median": 0.9247787610619469
+    },
+    "no_trace_f1": {
+      "count": 10,
+      "mean": 0.9168684730663457,
+      "standard_deviation": 0.016983331299191634,
+      "minimum": 0.8938053097345132,
+      "maximum": 0.943231441048035,
+      "median": 0.9150370229732294
+    },
+    "rationale_present_rate": {
+      "count": 10,
+      "mean": 1.0,
+      "standard_deviation": 0.0,
+      "minimum": 1.0,
+      "maximum": 1.0,
+      "median": 1.0
+    },
+    "rationale_lexical_token_f1": {
+      "count": 10,
+      "mean": 0.6354572850453543,
+      "standard_deviation": 0.007454210622348755,
+      "minimum": 0.6227806882684788,
+      "maximum": 0.6509558556673164,
+      "median": 0.6340556381456449
+    },
+    "rationale_rouge_l_f1": {
+      "count": 10,
+      "mean": 0.5081161063318882,
+      "standard_deviation": 0.010523081131427548,
+      "minimum": 0.4952431985318661,
+      "maximum": 0.5231246228654928,
+      "median": 0.5045987798449563
+    },
+    "best_validation_loss": {
+      "count": 10,
+      "mean": 0.6873498810010626,
+      "standard_deviation": 0.016824833875797952,
+      "minimum": 0.6639467508767496,
+      "maximum": 0.7157940306031806,
+      "median": 0.6891423951940417
+    },
+    "best_validation_perplexity": {
+      "count": 10,
+      "mean": 1.9886922307280963,
+      "standard_deviation": 0.03345530877001406,
+      "minimum": 1.9424435665659527,
+      "maximum": 2.04581047362759,
+      "median": 1.9920119171299357
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "experiments": [
+    "EXP-17",
+    "EXP-18"
+  ],
+  "comparison_protocol": "paired identical-fold comparison using EXP-18 template_01 primary evaluation",
+  "folds": [
+    "fold_01",
+    "fold_02",
+    "fold_03",
+    "fold_04",
+    "fold_05",
+    "fold_06",
+    "fold_07",
+    "fold_08",
+    "fold_09",
+    "fold_10"
+  ],
+  "fold_count": 10,
+  "allow_incomplete": false,
+  "robustness_included": false,
+  "files": {
+    "fold_metrics": "fold_level_metrics.csv",
+    "paired_folds": "paired_fold_comparison.csv",
+    "exp17_summary": "exp17_summary.json",
+    "exp18_summary": "exp18_summary.json",
+    "paired_summary": "paired_comparison_summary.json"
+  }
+}

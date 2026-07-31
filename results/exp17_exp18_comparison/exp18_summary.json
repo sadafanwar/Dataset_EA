@@ -1,0 +1,153 @@
+{
+  "fold_count": 10,
+  "folds": [
+    "fold_01",
+    "fold_02",
+    "fold_03",
+    "fold_04",
+    "fold_05",
+    "fold_06",
+    "fold_07",
+    "fold_08",
+    "fold_09",
+    "fold_10"
+  ],
+  "metrics": {
+    "accuracy": {
+      "count": 10,
+      "mean": 0.9009062253743104,
+      "standard_deviation": 0.019637251802424146,
+      "minimum": 0.8783068783068783,
+      "maximum": 0.9312169312169312,
+      "median": 0.8991894630192503
+    },
+    "macro_precision": {
+      "count": 10,
+      "mean": 0.9002455843250623,
+      "standard_deviation": 0.0201599546259087,
+      "minimum": 0.8740350877192983,
+      "maximum": 0.9312706660368446,
+      "median": 0.9008764914039677
+    },
+    "macro_recall": {
+      "count": 10,
+      "mean": 0.8930734358018941,
+      "standard_deviation": 0.021875840548488106,
+      "minimum": 0.8659175593851887,
+      "maximum": 0.9252445272473219,
+      "median": 0.891750892718522
+    },
+    "macro_f1": {
+      "count": 10,
+      "mean": 0.8959636456381269,
+      "standard_deviation": 0.020800211634948766,
+      "minimum": 0.8713334319964483,
+      "maximum": 0.927991559450192,
+      "median": 0.8943157688581029
+    },
+    "weighted_f1": {
+      "count": 10,
+      "mean": 0.9004308162144603,
+      "standard_deviation": 0.019828322621123582,
+      "minimum": 0.8771974663938553,
+      "maximum": 0.9309750283344259,
+      "median": 0.8988339351015235
+    },
+    "format_valid_rate": {
+      "count": 10,
+      "mean": 1.0,
+      "standard_deviation": 0.0,
+      "minimum": 1.0,
+      "maximum": 1.0,
+      "median": 1.0
+    },
+    "trace_precision": {
+      "count": 10,
+      "mean": 0.8952988965703809,
+      "standard_deviation": 0.02768398640468416,
+      "minimum": 0.8533333333333334,
+      "maximum": 0.9402985074626866,
+      "median": 0.8954203691045797
+    },
+    "trace_recall": {
+      "count": 10,
+      "mean": 0.8534035087719298,
+      "standard_deviation": 0.03853239405674747,
+      "minimum": 0.8026315789473685,
+      "maximum": 0.92,
+      "median": 0.8477192982456141
+    },
+    "trace_f1": {
+      "count": 10,
+      "mean": 0.873359932418205,
+      "standard_deviation": 0.025844208126820034,
+      "minimum": 0.8413793103448277,
+      "maximum": 0.912751677852349,
+      "median": 0.8716216216216215
+    },
+    "no_trace_precision": {
+      "count": 10,
+      "mean": 0.9051922720797436,
+      "standard_deviation": 0.023094120175615716,
+      "minimum": 0.875,
+      "maximum": 0.9459459459459459,
+      "median": 0.8995423340961098
+    },
+    "no_trace_recall": {
+      "count": 10,
+      "mean": 0.9327433628318584,
+      "standard_deviation": 0.01920804790100261,
+      "minimum": 0.9026548672566371,
+      "maximum": 0.9646017699115044,
+      "median": 0.9292035398230089
+    },
+    "no_trace_f1": {
+      "count": 10,
+      "mean": 0.918567358858049,
+      "standard_deviation": 0.015929556949537696,
+      "minimum": 0.8986784140969163,
+      "maximum": 0.943231441048035,
+      "median": 0.9181345224823486
+    },
+    "rationale_present_rate": {
+      "count": 10,
+      "mean": 1.0,
+      "standard_deviation": 0.0,
+      "minimum": 1.0,
+      "maximum": 1.0,
+      "median": 1.0
+    },
+    "rationale_lexical_token_f1": {
+      "count": 10,
+      "mean": 0.6357273045285754,
+      "standard_deviation": 0.008341103791018692,
+      "minimum": 0.6259587968561354,
+      "maximum": 0.6538591199274465,
+      "median": 0.6332158199641778
+    },
+    "rationale_rouge_l_f1": {
+      "count": 10,
+      "mean": 0.5083790649081267,
+      "standard_deviation": 0.010587472897366794,
+      "minimum": 0.4958852630938274,
+      "maximum": 0.5242488377516031,
+      "median": 0.5058474508808196
+    },
+    "best_validation_loss": {
+      "count": 10,
+      "mean": 0.693054652194202,
+      "standard_deviation": 0.016418489671965533,
+      "minimum": 0.6692516528579836,
+      "maximum": 0.720024727483081,
+      "median": 0.6959732977843931
+    },
+    "best_validation_perplexity": {
+      "count": 10,
+      "mean": 2.0000573697855715,
+      "standard_deviation": 0.03280124418442889,
+      "minimum": 1.9527754197951028,
+      "maximum": 2.05448401223444,
+      "median": 2.005660881061277
+    }
+  }
+}

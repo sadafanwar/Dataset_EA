@@ -1,0 +1,346 @@
+{
+  "paired_fold_count": 10,
+  "metrics": {
+    "accuracy": {
+      "exp17": {
+        "count": 10,
+        "mean": 0.8993020375999099,
+        "standard_deviation": 0.020638643271600404,
+        "minimum": 0.873015873015873,
+        "maximum": 0.9312169312169312,
+        "median": 0.8968253968253967
+      },
+      "exp18": {
+        "count": 10,
+        "mean": 0.9009062253743104,
+        "standard_deviation": 0.019637251802424146,
+        "minimum": 0.8783068783068783,
+        "maximum": 0.9312169312169312,
+        "median": 0.8991894630192503
+      },
+      "paired_effect": {
+        "paired_fold_count": 10,
+        "mean_difference_exp18_minus_exp17": 0.0016041877744005228,
+        "standard_deviation_of_difference": 0.01031860309395531,
+        "median_difference": 0.005291005291005291,
+        "minimum_difference": -0.015873015873015928,
+        "maximum_difference": 0.015957446808510634,
+        "exp18_better_folds": 6,
+        "exp17_better_folds": 2,
+        "tied_folds": 2,
+        "cohen_dz": 0.15546559546807884,
+        "interpretation_note": "Cohen's dz is descriptive. Formal inference should be selected and reported separately after confirming assumptions and analysis policy."
+      }
+    },
+    "macro_precision": {
+      "exp17": {
+        "count": 10,
+        "mean": 0.8977500605685458,
+        "standard_deviation": 0.02224927306082492,
+        "minimum": 0.8679552864462039,
+        "maximum": 0.9324866310160428,
+        "median": 0.8954770397554999
+      },
+      "exp18": {
+        "count": 10,
+        "mean": 0.9002455843250623,
+        "standard_deviation": 0.0201599546259087,
+        "minimum": 0.8740350877192983,
+        "maximum": 0.9312706660368446,
+        "median": 0.9008764914039677
+      },
+      "paired_effect": {
+        "paired_fold_count": 10,
+        "mean_difference_exp18_minus_exp17": 0.0024955237565165156,
+        "standard_deviation_of_difference": 0.011278192410768766,
+        "median_difference": 0.006102918196537244,
+        "minimum_difference": -0.017690026605945208,
+        "maximum_difference": 0.01869617033935822,
+        "exp18_better_folds": 7,
+        "exp17_better_folds": 2,
+        "tied_folds": 1,
+        "cohen_dz": 0.22126983346495424,
+        "interpretation_note": "Cohen's dz is descriptive. Formal inference should be selected and reported separately after confirming assumptions and analysis policy."
+      }
+    },
+    "macro_recall": {
+      "exp17": {
+        "count": 10,
+        "mean": 0.8923834808259588,
+        "standard_deviation": 0.02186698956270608,
+        "minimum": 0.8646017699115045,
+        "maximum": 0.9252445272473219,
+        "median": 0.8889438751746623
+      },
+      "exp18": {
+        "count": 10,
+        "mean": 0.8930734358018941,
+        "standard_deviation": 0.021875840548488106,
+        "minimum": 0.8659175593851887,
+        "maximum": 0.9252445272473219,
+        "median": 0.891750892718522
+      },
+      "paired_effect": {
+        "paired_fold_count": 10,
+        "mean_difference_exp18_minus_exp17": 0.0006899549759354251,
+        "standard_deviation_of_difference": 0.010404825924568656,
+        "median_difference": 0.003303834808259576,
+        "minimum_difference": -0.0175826734979041,
+        "maximum_difference": 0.015516224188790506,
+        "exp18_better_folds": 6,
+        "exp17_better_folds": 3,
+        "tied_folds": 1,
+        "cohen_dz": 0.06631105421055164,
+        "interpretation_note": "Cohen's dz is descriptive. Formal inference should be selected and reported separately after confirming assumptions and analysis policy."
+      }
+    },
+    "macro_f1": {
+      "exp17": {
+        "count": 10,
+        "mean": 0.8945459336615855,
+        "standard_deviation": 0.021699474060274483,
+        "minimum": 0.8679552864462039,
+        "maximum": 0.927991559450192,
+        "median": 0.8918555330719585
+      },
+      "exp18": {
+        "count": 10,
+        "mean": 0.8959636456381269,
+        "standard_deviation": 0.020800211634948766,
+        "minimum": 0.8713334319964483,
+        "maximum": 0.927991559450192,
+        "median": 0.8943157688581029
+      },
+      "paired_effect": {
+        "paired_fold_count": 10,
+        "mean_difference_exp18_minus_exp17": 0.0014177119765414025,
+        "standard_deviation_of_difference": 0.01077103339600373,
+        "median_difference": 0.005000427011127406,
+        "minimum_difference": -0.017085131180875957,
+        "maximum_difference": 0.016618225649235763,
+        "exp18_better_folds": 6,
+        "exp17_better_folds": 3,
+        "tied_folds": 1,
+        "cohen_dz": 0.131622651645236,
+        "interpretation_note": "Cohen's dz is descriptive. Formal inference should be selected and reported separately after confirming assumptions and analysis policy."
+      }
+    },
+    "weighted_f1": {
+      "exp17": {
+        "count": 10,
+        "mean": 0.8989610187486177,
+        "standard_deviation": 0.02073535626289806,
+        "minimum": 0.873015873015873,
+        "maximum": 0.9309750283344259,
+        "median": 0.8963937083436359
+      },
+      "exp18": {
+        "count": 10,
+        "mean": 0.9004308162144603,
+        "standard_deviation": 0.019828322621123582,
+        "minimum": 0.8771974663938553,
+        "maximum": 0.9309750283344259,
+        "median": 0.8988339351015235
+      },
+      "paired_effect": {
+        "paired_fold_count": 10,
+        "mean_difference_exp18_minus_exp17": 0.0014697974658425927,
+        "standard_deviation_of_difference": 0.010336457580313162,
+        "median_difference": 0.005050691925617856,
+        "minimum_difference": -0.01618973793914702,
+        "maximum_difference": 0.015935870004763375,
+        "exp18_better_folds": 6,
+        "exp17_better_folds": 3,
+        "tied_folds": 1,
+        "cohen_dz": 0.14219547213563494,
+        "interpretation_note": "Cohen's dz is descriptive. Formal inference should be selected and reported separately after confirming assumptions and analysis policy."
+      }
+    },
+    "format_valid_rate": {
+      "exp17": {
+        "count": 10,
+        "mean": 1.0,
+        "standard_deviation": 0.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "median": 1.0
+      },
+      "exp18": {
+        "count": 10,
+        "mean": 1.0,
+        "standard_deviation": 0.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "median": 1.0
+      },
+      "paired_effect": {
+        "paired_fold_count": 10,
+        "mean_difference_exp18_minus_exp17": 0.0,
+        "standard_deviation_of_difference": 0.0,
+        "median_difference": 0.0,
+        "minimum_difference": 0.0,
+        "maximum_difference": 0.0,
+        "exp18_better_folds": 0,
+        "exp17_better_folds": 0,
+        "tied_folds": 10,
+        "cohen_dz": null,
+        "interpretation_note": "Cohen's dz is descriptive. Formal inference should be selected and reported separately after confirming assumptions and analysis policy."
+      }
+    },
+    "trace_f1": {
+      "exp17": {
+        "count": 10,
+        "mean": 0.8722233942568255,
+        "standard_deviation": 0.0265950005620978,
+        "minimum": 0.8391608391608392,
+        "maximum": 0.912751677852349,
+        "median": 0.8686740431706875
+      },
+      "exp18": {
+        "count": 10,
+        "mean": 0.873359932418205,
+        "standard_deviation": 0.025844208126820034,
+        "minimum": 0.8413793103448277,
+        "maximum": 0.912751677852349,
+        "median": 0.8716216216216215
+      },
+      "paired_effect": {
+        "paired_fold_count": 10,
+        "mean_difference_exp18_minus_exp17": 0.0011365381613794856,
+        "standard_deviation_of_difference": 0.012991401192020849,
+        "median_difference": 0.004757284297193631,
+        "minimum_difference": -0.021658896658896643,
+        "maximum_difference": 0.0199940904166257,
+        "exp18_better_folds": 6,
+        "exp17_better_folds": 3,
+        "tied_folds": 1,
+        "cohen_dz": 0.08748387834235562,
+        "interpretation_note": "Cohen's dz is descriptive. Formal inference should be selected and reported separately after confirming assumptions and analysis policy."
+      }
+    },
+    "no_trace_f1": {
+      "exp17": {
+        "count": 10,
+        "mean": 0.9168684730663457,
+        "standard_deviation": 0.016983331299191634,
+        "minimum": 0.8938053097345132,
+        "maximum": 0.943231441048035,
+        "median": 0.9150370229732294
+      },
+      "exp18": {
+        "count": 10,
+        "mean": 0.918567358858049,
+        "standard_deviation": 0.015929556949537696,
+        "minimum": 0.8986784140969163,
+        "maximum": 0.943231441048035,
+        "median": 0.9181345224823486
+      },
+      "paired_effect": {
+        "paired_fold_count": 10,
+        "mean_difference_exp18_minus_exp17": 0.0016988857917033529,
+        "standard_deviation_of_difference": 0.008597679737370037,
+        "median_difference": 0.004733829063878814,
+        "minimum_difference": -0.013480159483576948,
+        "maximum_difference": 0.013242360881845827,
+        "exp18_better_folds": 7,
+        "exp17_better_folds": 2,
+        "tied_folds": 1,
+        "cohen_dz": 0.19759817108784616,
+        "interpretation_note": "Cohen's dz is descriptive. Formal inference should be selected and reported separately after confirming assumptions and analysis policy."
+      }
+    },
+    "rationale_present_rate": {
+      "exp17": {
+        "count": 10,
+        "mean": 1.0,
+        "standard_deviation": 0.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "median": 1.0
+      },
+      "exp18": {
+        "count": 10,
+        "mean": 1.0,
+        "standard_deviation": 0.0,
+        "minimum": 1.0,
+        "maximum": 1.0,
+        "median": 1.0
+      },
+      "paired_effect": {
+        "paired_fold_count": 10,
+        "mean_difference_exp18_minus_exp17": 0.0,
+        "standard_deviation_of_difference": 0.0,
+        "median_difference": 0.0,
+        "minimum_difference": 0.0,
+        "maximum_difference": 0.0,
+        "exp18_better_folds": 0,
+        "exp17_better_folds": 0,
+        "tied_folds": 10,
+        "cohen_dz": null,
+        "interpretation_note": "Cohen's dz is descriptive. Formal inference should be selected and reported separately after confirming assumptions and analysis policy."
+      }
+    },
+    "rationale_lexical_token_f1": {
+      "exp17": {
+        "count": 10,
+        "mean": 0.6354572850453543,
+        "standard_deviation": 0.007454210622348755,
+        "minimum": 0.6227806882684788,
+        "maximum": 0.6509558556673164,
+        "median": 0.6340556381456449
+      },
+      "exp18": {
+        "count": 10,
+        "mean": 0.6357273045285754,
+        "standard_deviation": 0.008341103791018692,
+        "minimum": 0.6259587968561354,
+        "maximum": 0.6538591199274465,
+        "median": 0.6332158199641778
+      },
+      "paired_effect": {
+        "paired_fold_count": 10,
+        "mean_difference_exp18_minus_exp17": 0.0002700194832211067,
+        "standard_deviation_of_difference": 0.0029678252278913532,
+        "median_difference": 0.0007342851631857439,
+        "minimum_difference": -0.004914777545235616,
+        "maximum_difference": 0.003367639405006173,
+        "exp18_better_folds": 5,
+        "exp17_better_folds": 5,
+        "tied_folds": 0,
+        "cohen_dz": 0.0909822723668119,
+        "interpretation_note": "Cohen's dz is descriptive. Formal inference should be selected and reported separately after confirming assumptions and analysis policy."
+      }
+    },
+    "rationale_rouge_l_f1": {
+      "exp17": {
+        "count": 10,
+        "mean": 0.5081161063318882,
+        "standard_deviation": 0.010523081131427548,
+        "minimum": 0.4952431985318661,
+        "maximum": 0.5231246228654928,
+        "median": 0.5045987798449563
+      },
+      "exp18": {
+        "count": 10,
+        "mean": 0.5083790649081267,
+        "standard_deviation": 0.010587472897366794,
+        "minimum": 0.4958852630938274,
+        "maximum": 0.5242488377516031,
+        "median": 0.5058474508808196
+      },
+      "paired_effect": {
+        "paired_fold_count": 10,
+        "mean_difference_exp18_minus_exp17": 0.00026295857623850893,
+        "standard_deviation_of_difference": 0.003440529429648914,
+        "median_difference": 0.0003683610955430572,
+        "minimum_difference": -0.005614000398227237,
+        "maximum_difference": 0.0057794041576393895,
+        "exp18_better_folds": 6,
+        "exp17_better_folds": 4,
+        "tied_folds": 0,
+        "cohen_dz": 0.07642968374938224,
+        "interpretation_note": "Cohen's dz is descriptive. Formal inference should be selected and reported separately after confirming assumptions and analysis policy."
+      }
+    }
+  }
+}
