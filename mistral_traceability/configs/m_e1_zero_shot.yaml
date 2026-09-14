@@ -1,0 +1,39 @@
+experiment_id: M-E1
+task: requirements_traceability
+condition: zero_shot_no_finetuning
+
+model:
+  id: mistralai/Ministral-3-8B-Instruct-2512-BF16
+  type: instruct
+  task_specific_finetuning: false
+
+data:
+  folds_dir: mistral_traceability/data/folds
+  n_folds: 10
+  test_only: true
+  source_records: 1887
+
+prompt:
+  protocol: identical_to_qwen35_zero_shot_baseline
+  chat_template: false
+  labels:
+    - trace
+    - no_trace
+
+inference:
+  max_length: 1024
+  max_new_tokens: 5
+  do_sample: false
+  quantization: 4bit
+  quant_type: nf4
+  double_quant: true
+  compute_dtype: bfloat16
+
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1
+  save_raw_predictions: true
+  save_fold_metrics: true

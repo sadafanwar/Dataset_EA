@@ -1,0 +1,163 @@
+{
+  "experiment": "M-E1: Ministral-3-8B-Instruct-2512-BF16, zero-shot, no task-specific fine-tuning, evaluated on the same 10 frozen held-out test folds",
+  "folds": [
+    {
+      "fold": "fold_01",
+      "accuracy": 0.40425531914893614,
+      "trace_precision": 0.40106951871657753,
+      "trace_recall": 1.0,
+      "trace_f1": 0.5725190839694656,
+      "no_trace_precision": 1.0,
+      "no_trace_recall": 0.008849557522123894,
+      "no_trace_f1": 0.017543859649122806
+    },
+    {
+      "fold": "fold_02",
+      "accuracy": 0.40860215053763443,
+      "trace_precision": 0.40860215053763443,
+      "trace_recall": 1.0,
+      "trace_f1": 0.5801526717557252,
+      "no_trace_precision": 0.0,
+      "no_trace_recall": 0.0,
+      "no_trace_f1": 0.0
+    },
+    {
+      "fold": "fold_03",
+      "accuracy": 0.4032258064516129,
+      "trace_precision": 0.4032258064516129,
+      "trace_recall": 1.0,
+      "trace_f1": 0.5747126436781609,
+      "no_trace_precision": 0.0,
+      "no_trace_recall": 0.0,
+      "no_trace_f1": 0.0
+    },
+    {
+      "fold": "fold_04",
+      "accuracy": 0.4074074074074074,
+      "trace_precision": 0.40425531914893614,
+      "trace_recall": 1.0,
+      "trace_f1": 0.5757575757575758,
+      "no_trace_precision": 1.0,
+      "no_trace_recall": 0.008849557522123894,
+      "no_trace_f1": 0.017543859649122806
+    },
+    {
+      "fold": "fold_05",
+      "accuracy": 0.4117647058823529,
+      "trace_precision": 0.40860215053763443,
+      "trace_recall": 1.0,
+      "trace_f1": 0.5801526717557252,
+      "no_trace_precision": 1.0,
+      "no_trace_recall": 0.009009009009009009,
+      "no_trace_f1": 0.017857142857142856
+    },
+    {
+      "fold": "fold_06",
+      "accuracy": 0.4095744680851064,
+      "trace_precision": 0.40641711229946526,
+      "trace_recall": 1.0,
+      "trace_f1": 0.5779467680608364,
+      "no_trace_precision": 1.0,
+      "no_trace_recall": 0.008928571428571428,
+      "no_trace_f1": 0.017699115044247787
+    },
+    {
+      "fold": "fold_07",
+      "accuracy": 0.40106951871657753,
+      "trace_precision": 0.40106951871657753,
+      "trace_recall": 1.0,
+      "trace_f1": 0.5725190839694656,
+      "no_trace_precision": 0.0,
+      "no_trace_recall": 0.0,
+      "no_trace_f1": 0.0
+    },
+    {
+      "fold": "fold_08",
+      "accuracy": 0.4032258064516129,
+      "trace_precision": 0.4032258064516129,
+      "trace_recall": 1.0,
+      "trace_f1": 0.5747126436781609,
+      "no_trace_precision": 0.0,
+      "no_trace_recall": 0.0,
+      "no_trace_f1": 0.0
+    },
+    {
+      "fold": "fold_09",
+      "accuracy": 0.40106951871657753,
+      "trace_precision": 0.40106951871657753,
+      "trace_recall": 1.0,
+      "trace_f1": 0.5725190839694656,
+      "no_trace_precision": 0.0,
+      "no_trace_recall": 0.0,
+      "no_trace_f1": 0.0
+    },
+    {
+      "fold": "fold_10",
+      "accuracy": 0.40425531914893614,
+      "trace_precision": 0.40106951871657753,
+      "trace_recall": 1.0,
+      "trace_f1": 0.5725190839694656,
+      "no_trace_precision": 1.0,
+      "no_trace_recall": 0.008849557522123894,
+      "no_trace_f1": 0.017543859649122806
+    }
+  ],
+  "summary": {
+    "accuracy": {
+      "mean": 0.40544500205467543,
+      "std": 0.0036784632274843563,
+      "min": 0.40106951871657753,
+      "max": 0.4117647058823529
+    },
+    "trace_precision": {
+      "mean": 0.4038606420293206,
+      "std": 0.003048180257663848,
+      "min": 0.40106951871657753,
+      "max": 0.40860215053763443
+    },
+    "trace_recall": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "trace_f1": {
+      "mean": 0.5753511310564047,
+      "std": 0.00308957764109633,
+      "min": 0.5725190839694656,
+      "max": 0.5801526717557252
+    },
+    "no_trace_precision": {
+      "mean": 0.5,
+      "std": 0.5270462766947299,
+      "min": 0.0,
+      "max": 1.0
+    },
+    "no_trace_recall": {
+      "mean": 0.004448625300395212,
+      "std": 0.004689503236644373,
+      "min": 0.0,
+      "max": 0.009009009009009009
+    },
+    "no_trace_f1": {
+      "mean": 0.008818783684875906,
+      "std": 0.009296282421412396,
+      "min": 0.0,
+      "max": 0.017857142857142856
+    }
+  },
+  "summed_confusion_matrix_labels": [
+    "trace",
+    "no_trace"
+  ],
+  "summed_confusion_matrix": [
+    [
+      754,
+      0
+    ],
+    [
+      1113,
+      5
+    ]
+  ]
+}

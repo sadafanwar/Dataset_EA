@@ -1,0 +1,27 @@
+Experiment: M-E1
+Condition: Zero-shot, no task-specific fine-tuning
+Model: mistralai/Ministral-3-8B-Instruct-2512-BF16
+
+Total examples: 1887
+True trace: 757
+True no_trace: 1130
+
+Predicted trace: 1867
+Predicted no_trace: 5
+Invalid predictions: 15
+Format-valid rate: 0.9921
+
+10-fold mean accuracy: 0.4054 ± 0.0037
+Trace precision: 0.4039 ± 0.0030
+Trace recall: 1.0000 ± 0.0000
+Trace F1: 0.5754 ± 0.0031
+No-trace precision: 0.5000 ± 0.5270
+No-trace recall: 0.0044 ± 0.0047
+No-trace F1: 0.0088 ± 0.0093
+
+Summed valid-prediction confusion matrix:
+[[754, 0],
+ [1113, 5]]
+
+Coverage check: PASS
+Status: VERIFIED

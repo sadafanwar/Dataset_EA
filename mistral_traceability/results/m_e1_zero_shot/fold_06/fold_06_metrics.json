@@ -1,0 +1,59 @@
+{
+  "model": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+  "experiment": "base_no_finetuning_zero_shot",
+  "fold": "fold_06",
+  "test_file": "mistral_traceability/data/folds/fold_06/test.jsonl",
+  "total_records": 189,
+  "valid_predictions": 188,
+  "invalid_predictions": 1,
+  "accuracy": 0.4095744680851064,
+  "labels_order": [
+    "trace",
+    "no_trace"
+  ],
+  "trace_precision": 0.40641711229946526,
+  "trace_recall": 1.0,
+  "trace_f1": 0.5779467680608364,
+  "trace_support": 76,
+  "no_trace_precision": 1.0,
+  "no_trace_recall": 0.008928571428571428,
+  "no_trace_f1": 0.017699115044247787,
+  "no_trace_support": 112,
+  "confusion_matrix": [
+    [
+      76,
+      0
+    ],
+    [
+      111,
+      1
+    ]
+  ],
+  "classification_report": {
+    "trace": {
+      "precision": 0.40641711229946526,
+      "recall": 1.0,
+      "f1-score": 0.5779467680608364,
+      "support": 76.0
+    },
+    "no_trace": {
+      "precision": 1.0,
+      "recall": 0.008928571428571428,
+      "f1-score": 0.017699115044247787,
+      "support": 112.0
+    },
+    "accuracy": 0.4095744680851064,
+    "macro avg": {
+      "precision": 0.7032085561497327,
+      "recall": 0.5044642857142857,
+      "f1-score": 0.29782294155254213,
+      "support": 188.0
+    },
+    "weighted avg": {
+      "precision": 0.7600409602912731,
+      "recall": 0.4095744680851064,
+      "f1-score": 0.2441822088169113,
+      "support": 188.0
+    }
+  }
+}
