@@ -1,0 +1,96 @@
+experiment_id: "mistral_8b_qlora_unbalanced"
+experiment_name: "Ministral 3 8B QLoRA original imbalanced 10-fold CV"
+
+model:
+  id: "mistralai/Ministral-3-8B-Instruct-2512-BF16"
+  revision: "f6fae9795746f63c9be8344932f01275f3c63734"
+  class_name: "Mistral3ForConditionalGeneration"
+  local_files_only: true
+  fix_mistral_regex: true
+
+data:
+  balancing: "none_original_imbalanced_inner_train"
+  qwen_data_root: "data/qwen35_oversampling_10fold_cv"
+  mistral_test_root: "mistral_traceability/data/folds"
+  manifest_file: "mistral_traceability/data/manifests/mistral_8b_qlora_unbalanced_folds.json"
+  recreate_splits: false
+
+prompt:
+  protocol: "exact_qwen35_exp08_pattern1_no_chat_template"
+  chat_template: false
+  loss_scope: "full_prompt_and_label"
+  labels:
+    - "trace"
+    - "no_trace"
+
+training:
+  learning_rate: 0.00005
+  batch_size: 1
+  gradient_accumulation_steps: 8
+  effective_batch_size: 8
+  num_epochs: 2
+  max_steps: null
+  warmup_steps: 20
+  max_grad_norm: 1.0
+  weight_decay: 0.01
+  fp16: false
+  bf16: true
+  gradient_checkpointing: true
+  gradient_checkpointing_use_reentrant: false
+  max_length: 1024
+  num_workers: 0
+  seed: 42
+  optimizer: "AdamW"
+  scheduler: "linear_with_warmup"
+  dataloader_shuffle: false
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.1
+  bias: "none"
+  task_type: "CAUSAL_LM"
+  target_modules_regex: '.*language_model\.layers\.\d+\.self_attn\.(q_proj|k_proj|v_proj|o_proj)'
+  expected_adapter_modules: 136
+  expected_trainable_parameters: 14483456
+
+quantization:
+  load_in_4bit: true
+  quant_type: "nf4"
+  compute_dtype: "bfloat16"
+  double_quant: true
+
+validation:
+  eval_steps: 50
+  eval_samples: 100
+  compute_perplexity: true
+
+evaluation:
+  base_model_precision: "bfloat16"
+  max_new_tokens: 5
+  max_length: 1024
+  do_sample: false
+  labels_order:
+    - "trace"
+    - "no_trace"
+  invalid_prediction_policy: "exclude_from_classification_metrics"
+
+checkpointing:
+  save_steps: 100
+  save_total_limit: 3
+  best_model_criterion: "lowest_epoch_training_loss_historical_exp08"
+  resume_from_checkpoint: null
+
+logging:
+  logging_steps: 10
+  log_root: "mistral_traceability/logs/mistral_8b_qlora_unbalanced"
+
+paths:
+  output_root: "mistral_traceability/outputs/mistral_8b_qlora_unbalanced"
+  result_root: "mistral_traceability/results/mistral_8b_qlora_unbalanced"
+
+protocol_provenance:
+  qwen_experiment: "EXP-08 Qwen3.5-9B QLoRA imbalanced training"
+  qwen_reference_commit: "6ab46f20d351a1a4a4bb616875ad04cd8205fa4a"
+  qwen_reference_runner: "scripts/run_qwen35_unbalanced_10fold_cv_tracked.py"
+  frozen_split_policy: "validate_existing_files_never_regenerate"

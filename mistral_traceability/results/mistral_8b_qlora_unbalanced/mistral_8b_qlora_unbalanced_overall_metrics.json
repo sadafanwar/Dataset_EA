@@ -1,0 +1,37 @@
+{
+  "experiment": "Ministral 3 8B QLoRA original imbalanced 10-fold CV",
+  "model": "mistralai/Ministral-3-8B-Instruct-2512-BF16",
+  "model_revision": "f6fae9795746f63c9be8344932f01275f3c63734",
+  "balancing": "none_original_imbalanced_inner_train",
+  "fold_mean_metrics": {
+    "accuracy": {"mean": 0.7403524932877971, "std": 0.0475859812002438},
+    "trace_precision": {"mean": 0.6858789122758687, "std": 0.0680231020822682},
+    "trace_recall": {"mean": 0.7006827880512091, "std": 0.21920229455350135},
+    "trace_f1": {"mean": 0.6709359614378837, "std": 0.11827493733516138},
+    "no_trace_precision": {"mean": 0.8116989983690819, "std": 0.09958528499450443},
+    "no_trace_recall": {"mean": 0.7683559886978183, "std": 0.1186410684215501},
+    "no_trace_f1": {"mean": 0.7766402716147335, "std": 0.0407643128625118}
+  },
+  "pooled_valid_prediction_metrics": {
+    "accuracy": 0.7398153177620859,
+    "trace_precision": 0.6726572528883183,
+    "trace_recall": 0.7005347593582888,
+    "trace_f1": 0.6863130320890635,
+    "no_trace_precision": 0.7890772128060264,
+    "no_trace_recall": 0.7666971637694419,
+    "no_trace_f1": 0.7777262180974479,
+    "macro_precision": 0.7308672328471724,
+    "macro_recall": 0.7336159615638653,
+    "macro_f1": 0.7320196250932557
+  },
+  "prediction_accounting": {
+    "total_test_examples": 1887,
+    "valid_predictions": 1841,
+    "invalid_predictions": 46,
+    "invalid_prediction_rate": 0.024377318494965553,
+    "invalid_prediction_policy": "exclude_from_classification_metrics"
+  },
+  "summed_confusion_matrix_labels": ["trace", "no_trace"],
+  "summed_confusion_matrix": [[524, 224], [255, 838]],
+  "source_summary_created_at_utc": "2026-09-15T17:31:22.933710+00:00"
+}
