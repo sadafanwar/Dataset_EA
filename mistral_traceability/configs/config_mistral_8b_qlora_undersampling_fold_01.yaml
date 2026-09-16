@@ -1,0 +1,134 @@
+# Fold 01 preflight configuration for the separate Ministral undersampling experiment.
+# Authority: Qwen EXP-07 inner-validation undersampling at commit 55c82a5.
+# Only architecture-required Mistral changes are the model class, tokenizer fix,
+# gradient-checkpointing mode, and text-decoder-only LoRA target regex.
+
+experiment_id: "mistral_8b_qlora_undersampling"
+experiment_name: "Ministral QLoRA random undersampling without replacement"
+fold: 1
+
+model:
+  id: "mistralai/Ministral-3-8B-Instruct-2512-BF16"
+  revision: "f6fae9795746f63c9be8344932f01275f3c63734"
+  class_name: "Mistral3ForConditionalGeneration"
+  local_files_only: true
+  fix_mistral_regex: true
+
+data:
+  balancing: "random_undersampling_without_replacement"
+  source_inner_train_file: "data/qwen35_oversampling_10fold_cv/inner_splits/fold_01/inner_train.jsonl"
+  train_file: "data/qwen35_oversampling_10fold_cv/inner_splits/fold_01/train_undersampled.jsonl"
+  validation_file: "data/qwen35_oversampling_10fold_cv/inner_splits/fold_01/validation.jsonl"
+  test_file: "mistral_traceability/data/folds/fold_01/test.jsonl"
+  qwen_reference_test_file: "data/qwen35_oversampling_10fold_cv/folds/fold_01/test.jsonl"
+  undersampling:
+    method: "random_sample_without_replacement"
+    majority_class: "no_trace"
+    target_rule: "match_inner_train_minority_count"
+    seed_base: 42
+    fold_seed: 43
+    seed_rule: "seed_base_plus_fold_number"
+    shuffle_after_resampling: true
+    use_frozen_file: true
+    regenerate: false
+  expected:
+    source_inner_train:
+      records: 1528
+      trace: 613
+      no_trace: 915
+      unique_example_ids: 1528
+      duplicate_rows: 0
+      sha256: "36bcf24b7669d744e93b41449da8ea608bc87c72ea2663e9a842928f689dd34d"
+    train:
+      records: 1226
+      trace: 613
+      no_trace: 613
+      unique_example_ids: 1226
+      duplicate_rows: 0
+      sha256: "4bd7a1ee78cfc914a4855b80649853410a3ee47a3401980249afe27456fee5cc"
+    validation:
+      records: 170
+      trace: 68
+      no_trace: 102
+      unique_example_ids: 170
+      duplicate_rows: 0
+      sha256: "c665db59d17a69f0fa56b1760eb0f46f3dd6ec396047b0ec6a7aae0bb7aaad4c"
+    test:
+      records: 189
+      trace: 76
+      no_trace: 113
+      unique_example_ids: 189
+      duplicate_rows: 0
+      sha256: "69d14e206beb6d32842297ad63e73ac55b412251a8a32c36cb03db7afbb50977"
+
+prompt:
+  protocol: "exact_qwen35_exp07_pattern1_no_chat_template"
+  chat_template: false
+  loss_scope: "full_prompt_and_label"
+  labels:
+    - "trace"
+    - "no_trace"
+
+training:
+  learning_rate: 0.00005
+  batch_size: 1
+  gradient_accumulation_steps: 8
+  num_epochs: 2
+  max_steps: null
+  warmup_steps: 20
+  max_grad_norm: 1.0
+  weight_decay: 0.01
+  fp16: false
+  bf16: true
+  gradient_checkpointing: true
+  gradient_checkpointing_use_reentrant: false
+  max_length: 1024
+  num_workers: 0
+  seed: 42
+  optimizer: "AdamW"
+  scheduler: "linear_with_warmup"
+  dataloader_shuffle: false
+  partial_accumulation_policy: "discard_incomplete_accumulation_at_each_epoch_historical_exp07"
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.1
+  bias: "none"
+  task_type: "CAUSAL_LM"
+  target_modules_regex: '.*language_model\.layers\.\d+\.self_attn\.(q_proj|k_proj|v_proj|o_proj)'
+  expected_adapter_modules: 136
+  expected_trainable_parameters: 14483456
+
+quantization:
+  load_in_4bit: true
+  quant_type: "nf4"
+  compute_dtype: "bfloat16"
+  double_quant: true
+
+evaluation:
+  eval_steps: 50
+  eval_samples: 100
+  compute_perplexity: true
+  max_new_tokens: 5
+  do_sample: false
+
+checkpointing:
+  save_steps: 100
+  save_total_limit: 3
+
+logging:
+  logging_steps: 10
+  log_file: "mistral_traceability/logs/mistral_8b_qlora_undersampling/preflight_fold_01.log"
+  report_file: "mistral_traceability/results/mistral_8b_qlora_undersampling/preflight/fold_01/preflight_report.json"
+
+preflight:
+  run_one_optimizer_step: true
+  stress_longest_training_sequence: true
+  save_adapter: false
+
+protocol_provenance:
+  qwen_experiment: "EXP-07 Qwen3.5-9B QLoRA undersampling"
+  experiment_commit: "55c82a5"
+  training_implementation_commit: "198fc2f"
+  evaluation_implementation_commit: "a99a99f"

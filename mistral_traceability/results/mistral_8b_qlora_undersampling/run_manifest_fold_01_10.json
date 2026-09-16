@@ -1,0 +1,19 @@
+{
+  "experiment_id": "mistral_8b_qlora_undersampling",
+  "config_file": "mistral_traceability/configs/config_mistral_8b_qlora_undersampling_10fold.yaml",
+  "config_sha256": "d3109e59c9e3dc05d85b29b555a4d5c6be2897fe6eff97ccfa3f4a6efc0a6168",
+  "data_manifest_file": "mistral_traceability/data/manifests/mistral_8b_qlora_undersampling_folds.json",
+  "data_manifest_sha256": "c7025141e5a3dd8c7a5ad1befea59f3e8f2ed58a553d06f6153507968390af83",
+  "started_at_utc": "2026-09-16T11:39:46.387902+00:00",
+  "fold_range": [
+    1,
+    10
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.11.0+cu130",
+    "cuda_runtime": "13.0",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "hf_hub_cache": "/data/caches/huggingface/hub"
+  }
+}

@@ -1,0 +1,11 @@
+fold,status,start_time_utc,end_time_utc,duration_minutes,metrics_path
+fold_01,completed,2026-09-16T11:39:46.388013+00:00,2026-09-16T11:48:39.423230+00:00,8.884,mistral_traceability/results/mistral_8b_qlora_undersampling/fold_01/fold_01_metrics.json
+fold_02,completed,2026-09-16T11:48:39.424287+00:00,2026-09-16T11:57:33.901946+00:00,8.908,mistral_traceability/results/mistral_8b_qlora_undersampling/fold_02/fold_02_metrics.json
+fold_03,completed,2026-09-16T11:57:33.902932+00:00,2026-09-16T12:06:27.028761+00:00,8.885,mistral_traceability/results/mistral_8b_qlora_undersampling/fold_03/fold_03_metrics.json
+fold_04,completed,2026-09-16T12:06:27.029763+00:00,2026-09-16T12:15:21.893279+00:00,8.914,mistral_traceability/results/mistral_8b_qlora_undersampling/fold_04/fold_04_metrics.json
+fold_05,completed,2026-09-16T12:15:21.894315+00:00,2026-09-16T12:24:19.490134+00:00,8.96,mistral_traceability/results/mistral_8b_qlora_undersampling/fold_05/fold_05_metrics.json
+fold_06,completed,2026-09-16T12:24:19.491116+00:00,2026-09-16T12:33:18.447523+00:00,8.983,mistral_traceability/results/mistral_8b_qlora_undersampling/fold_06/fold_06_metrics.json
+fold_07,completed,2026-09-16T12:33:18.448520+00:00,2026-09-16T12:42:14.582247+00:00,8.936,mistral_traceability/results/mistral_8b_qlora_undersampling/fold_07/fold_07_metrics.json
+fold_08,completed,2026-09-16T12:42:14.583251+00:00,2026-09-16T12:51:12.448445+00:00,8.964,mistral_traceability/results/mistral_8b_qlora_undersampling/fold_08/fold_08_metrics.json
+fold_09,completed,2026-09-16T12:51:12.449434+00:00,2026-09-16T13:00:11.431691+00:00,8.983,mistral_traceability/results/mistral_8b_qlora_undersampling/fold_09/fold_09_metrics.json
+fold_10,completed,2026-09-16T13:00:11.432723+00:00,2026-09-16T13:09:09.893343+00:00,8.974,mistral_traceability/results/mistral_8b_qlora_undersampling/fold_10/fold_10_metrics.json
