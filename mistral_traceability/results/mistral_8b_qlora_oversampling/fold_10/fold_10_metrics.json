@@ -1,0 +1,59 @@
+{
+  "model_dir": "mistral_traceability/outputs/mistral_8b_qlora_oversampling/fold_10/best_model",
+  "test_file": "mistral_traceability/data/folds/fold_10/test.jsonl",
+  "total_records": 188,
+  "valid_predictions": 187,
+  "invalid_predictions": 1,
+  "accuracy": 0.732620320855615,
+  "labels_order": [
+    "trace",
+    "no_trace"
+  ],
+  "trace_precision": 0.6086956521739131,
+  "trace_recall": 0.9333333333333333,
+  "trace_f1": 0.7368421052631579,
+  "trace_support": 75,
+  "no_trace_precision": 0.9305555555555556,
+  "no_trace_recall": 0.5982142857142857,
+  "no_trace_f1": 0.7282608695652174,
+  "no_trace_support": 112,
+  "confusion_matrix": [
+    [
+      70,
+      5
+    ],
+    [
+      45,
+      67
+    ]
+  ],
+  "classification_report": {
+    "trace": {
+      "precision": 0.6086956521739131,
+      "recall": 0.9333333333333333,
+      "f1-score": 0.7368421052631579,
+      "support": 75.0
+    },
+    "no_trace": {
+      "precision": 0.9305555555555556,
+      "recall": 0.5982142857142857,
+      "f1-score": 0.7282608695652174,
+      "support": 112.0
+    },
+    "accuracy": 0.732620320855615,
+    "macro avg": {
+      "precision": 0.7696256038647343,
+      "recall": 0.7657738095238096,
+      "f1-score": 0.7325514874141876,
+      "support": 187.0
+    },
+    "weighted avg": {
+      "precision": 0.8014673590121162,
+      "recall": 0.732620320855615,
+      "f1-score": 0.7317025416365839,
+      "support": 187.0
+    }
+  },
+  "invalid_prediction_policy": "exclude_from_classification_metrics",
+  "completed_at_utc": "2026-09-15T20:40:27.349250+00:00"
+}

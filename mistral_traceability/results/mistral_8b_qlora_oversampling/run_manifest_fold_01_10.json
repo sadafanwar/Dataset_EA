@@ -1,0 +1,19 @@
+{
+  "experiment_id": "mistral_8b_qlora_oversampling",
+  "config_file": "mistral_traceability/configs/config_mistral_8b_qlora_oversampling_10fold.yaml",
+  "config_sha256": "7143dc882fbf349e2817a1882161bbdd4b3ef0a79841a912a695ea90cc260f8b",
+  "data_manifest_file": "mistral_traceability/data/manifests/mistral_8b_qlora_oversampling_folds.json",
+  "data_manifest_sha256": "d58921fbcda497d961b20860898f9cc4aa2d1d48e16aba81b7f5e0e741c10667",
+  "started_at_utc": "2026-09-15T18:31:02.623545+00:00",
+  "fold_range": [
+    1,
+    10
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.11.0+cu130",
+    "cuda_runtime": "13.0",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "hf_hub_cache": "/data/caches/huggingface/hub"
+  }
+}
