@@ -1,0 +1,536 @@
+{
+  "experiment": {
+    "name": "gemma_2_9b_it_no_finetuning",
+    "task": "requirements_traceability_classification",
+    "protocol": "qwen35_prompting_protocol_with_gemma_chat_template"
+  },
+  "model": {
+    "model_id": "google/gemma-2-9b-it",
+    "revision": "11c9b309abf73637e4b6f9a3fa1e92e615547819",
+    "cache_dir": "/data/caches/huggingface/hub",
+    "local_files_only": true,
+    "load_in_4bit": true,
+    "quant_type": "nf4",
+    "compute_dtype": "bfloat16",
+    "double_quant": true,
+    "device_map": "auto"
+  },
+  "inference": {
+    "seed": 42,
+    "max_prompt_tokens": 8192,
+    "max_new_tokens": 8,
+    "do_sample": false,
+    "batch_size": 1,
+    "prompt_content": "exact_qwen35_requirements_traceability_prompt",
+    "prompt_wrapper": "gemma_model_chat_template",
+    "invalid_prediction_policy": "exclude_from_classification_metrics"
+  },
+  "started_at_utc": "2026-09-17T07:09:42.468879+00:00",
+  "status": "failed",
+  "errors": [
+    {
+      "type": "RuntimeError",
+      "message": "Frozen data audit failed",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/sadaf/traceability_experiments/Dataset_EA/gemma_traceability/scripts/preflight_gemma_2_9b_it_no_finetuning.py\", line 71, in main\n    raise RuntimeError(\"Frozen data audit failed\")\nRuntimeError: Frozen data audit failed\n"
+    }
+  ],
+  "warnings": [],
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.11.0+cu130",
+    "transformers": "5.8.0",
+    "accelerate": "1.13.0",
+    "bitsandbytes": "0.49.2",
+    "datasets": "4.8.5",
+    "peft": "0.19.1",
+    "cuda_runtime": "13.0",
+    "cuda_available": true,
+    "bf16_supported": true
+  },
+  "data_audit": {
+    "simple": {
+      "copy_dir": "gemma_traceability/data/no_finetuning/simple",
+      "reference_dir": "data/fewshot_qwen35",
+      "same_file_names": true,
+      "files": {
+        "five_shot_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/simple/five_shot_examples.jsonl",
+            "records": 5,
+            "trace": 3,
+            "no_trace": 2,
+            "unique_examples": 5,
+            "duplicate_rows": 0,
+            "sha256": "506b29ee16041ac391dc2d61499fc633d10bca2b9fd61ea7bfb07df1eb23bea9"
+          },
+          "reference_sha256": "71e4032674c0bc5e08e77f4c58a0f66009e6d4763136294b00e449ae0300212a",
+          "exact_copy": false
+        },
+        "ten_shot_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/simple/ten_shot_examples.jsonl",
+            "records": 10,
+            "trace": 5,
+            "no_trace": 5,
+            "unique_examples": 10,
+            "duplicate_rows": 0,
+            "sha256": "391fec27beaf90eadd65f5bb2771f6451a63a9a1c72de4cd2a0af39da2cd2bb1"
+          },
+          "reference_sha256": "2133892e09ebcc58ad08a8ff655aaaca4cd7cc654517749b0017f6e921d9232d",
+          "exact_copy": false
+        },
+        "test_100.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/simple/test_100.jsonl",
+            "records": 100,
+            "trace": 50,
+            "no_trace": 50,
+            "unique_examples": 100,
+            "duplicate_rows": 0,
+            "sha256": "64d54f5d7b1475e85aabee7d787c7da6980c820fa90a6939fdaf07667eafc0f0"
+          },
+          "reference_sha256": "4188c84fe104d76e42d5be798d5e55007a340ba3c9c96863a145f86852f91212",
+          "exact_copy": false
+        },
+        "zero_shot_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/simple/zero_shot_examples.jsonl",
+            "records": 0,
+            "trace": 0,
+            "no_trace": 0,
+            "unique_examples": 0,
+            "duplicate_rows": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "reference_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "exact_copy": true
+        }
+      },
+      "all_exact_copies": false
+    },
+    "multi_run": {
+      "copy_dir": "gemma_traceability/data/no_finetuning/multi_run",
+      "reference_dir": "data/fewshot_qwen35_multi_run",
+      "same_file_names": true,
+      "files": {
+        "available_prompt_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/available_prompt_examples.jsonl",
+            "records": 1787,
+            "trace": 707,
+            "no_trace": 1080,
+            "unique_examples": 1787,
+            "duplicate_rows": 0,
+            "sha256": "d4774d485772730a53fdda74137f7b3955f81984d1cd716ee246b0b459fa4bb9"
+          },
+          "reference_sha256": "4eab29a1c32172d7c36712f4d012cc3ea5f5fffecfd67fb0ae63b30006c11c52",
+          "exact_copy": false
+        },
+        "five_shot_run_01_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/five_shot_run_01_examples.jsonl",
+            "records": 5,
+            "trace": 3,
+            "no_trace": 2,
+            "unique_examples": 5,
+            "duplicate_rows": 0,
+            "sha256": "d01818a69d78828cc4f6ee8042177140a8e0068e6c1fc373e280c52f904d141f"
+          },
+          "reference_sha256": "7d3ae9b2308efd94a3026ebf2b3d257307a4be110ce87cedfaa95fdbce847ee0",
+          "exact_copy": false
+        },
+        "five_shot_run_02_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/five_shot_run_02_examples.jsonl",
+            "records": 5,
+            "trace": 3,
+            "no_trace": 2,
+            "unique_examples": 5,
+            "duplicate_rows": 0,
+            "sha256": "eb99e49745c037985050f1ddb63b7c7a797993d293a0ae007a2a77052d1f2a1b"
+          },
+          "reference_sha256": "1fccbee26cf18645c614e06ad30a8b07aa6983605e0c5385240bb92d1cc65368",
+          "exact_copy": false
+        },
+        "five_shot_run_03_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/five_shot_run_03_examples.jsonl",
+            "records": 5,
+            "trace": 3,
+            "no_trace": 2,
+            "unique_examples": 5,
+            "duplicate_rows": 0,
+            "sha256": "82ac70c641ada76ec65f081c16246a426a23941345cb7e3983b5457683a5c8e7"
+          },
+          "reference_sha256": "1c5b947ee6faf8c913d33aacf510cac3636d9a83c6090ad22ffa4ee71cd4f185",
+          "exact_copy": false
+        },
+        "five_shot_run_04_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/five_shot_run_04_examples.jsonl",
+            "records": 5,
+            "trace": 3,
+            "no_trace": 2,
+            "unique_examples": 5,
+            "duplicate_rows": 0,
+            "sha256": "87320f81bebda46ef11adf8f4eae0e34ebac09ec50a18952c5af0831e7102f70"
+          },
+          "reference_sha256": "8bc74d7d66ea22c3c3b0ec20e07a511e895ae39eb1ece8bc18d2c44fd4b3814e",
+          "exact_copy": false
+        },
+        "five_shot_run_05_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/five_shot_run_05_examples.jsonl",
+            "records": 5,
+            "trace": 3,
+            "no_trace": 2,
+            "unique_examples": 5,
+            "duplicate_rows": 0,
+            "sha256": "7d86a000ae21e75b64d5a5a07007f2c3acaff8ededadf0b24739a672473d85fe"
+          },
+          "reference_sha256": "b2f2dfdda40e257738c36a2225127f9cf41c3f713b65c265f769c1dd49229aac",
+          "exact_copy": false
+        },
+        "five_shot_run_06_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/five_shot_run_06_examples.jsonl",
+            "records": 5,
+            "trace": 3,
+            "no_trace": 2,
+            "unique_examples": 5,
+            "duplicate_rows": 0,
+            "sha256": "6cb7f8d416961980407653cf27d198c96ada664f4d77b5d4089e59314fa3dd0f"
+          },
+          "reference_sha256": "d7eecb666a3a5517594cec75cc20c5be6d6a08d705ca0b669f4325555aeb6468",
+          "exact_copy": false
+        },
+        "five_shot_run_07_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/five_shot_run_07_examples.jsonl",
+            "records": 5,
+            "trace": 3,
+            "no_trace": 2,
+            "unique_examples": 5,
+            "duplicate_rows": 0,
+            "sha256": "71ab411f2cf305fd01df7be1cbe375bdfc00ada3d7cf55f395133fc434fc28f5"
+          },
+          "reference_sha256": "38040e96ef7f9400645cf084c1d51b1fd2cd271a9f6ee2d9e9c5cd44e94c955e",
+          "exact_copy": false
+        },
+        "five_shot_run_08_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/five_shot_run_08_examples.jsonl",
+            "records": 5,
+            "trace": 3,
+            "no_trace": 2,
+            "unique_examples": 5,
+            "duplicate_rows": 0,
+            "sha256": "6c78f57f20811813b0e1db7e216514672b14f02a842de0293388aa7d06574ce4"
+          },
+          "reference_sha256": "fda0a6a3cbb4680144c909c0e0979a9a105e3cf6247ea6d3a1faffce0d95bc45",
+          "exact_copy": false
+        },
+        "five_shot_run_09_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/five_shot_run_09_examples.jsonl",
+            "records": 5,
+            "trace": 3,
+            "no_trace": 2,
+            "unique_examples": 5,
+            "duplicate_rows": 0,
+            "sha256": "cbe143e430c6638e1fe71e514df6b3b6f6a1832b59836afa793f792be76f1797"
+          },
+          "reference_sha256": "e7ebb6257a9f944d455f2ce0a931285b70d72f7422b533df967d1c2a480b369d",
+          "exact_copy": false
+        },
+        "five_shot_run_10_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/five_shot_run_10_examples.jsonl",
+            "records": 5,
+            "trace": 3,
+            "no_trace": 2,
+            "unique_examples": 5,
+            "duplicate_rows": 0,
+            "sha256": "0774ce573cdaea70f0ed1b892ad6bbb0e94a8f6184bbd0174f93adc3657f4395"
+          },
+          "reference_sha256": "a9420f13d760e75ab19cb61a2781a1be94b933064088de56e5ba8e1499c50b6a",
+          "exact_copy": false
+        },
+        "ten_shot_run_01_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/ten_shot_run_01_examples.jsonl",
+            "records": 10,
+            "trace": 5,
+            "no_trace": 5,
+            "unique_examples": 10,
+            "duplicate_rows": 0,
+            "sha256": "cecaf9ef26ed3f283cddfb4048cf5feab1fcb09932f87353ad18f3f91ba03c5d"
+          },
+          "reference_sha256": "b4c51fc37d95a219298b842510440d71feac5084fc07e9d75fb1f731b9fabfdc",
+          "exact_copy": false
+        },
+        "ten_shot_run_02_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/ten_shot_run_02_examples.jsonl",
+            "records": 10,
+            "trace": 5,
+            "no_trace": 5,
+            "unique_examples": 10,
+            "duplicate_rows": 0,
+            "sha256": "340089a24fec7635fc50fd810951928c0da841acb24c489a5b613b4d1267e565"
+          },
+          "reference_sha256": "db6b941a9f3754c6cf90f415c4e169fa8135c79ae6faf0956b6bd48f27de4391",
+          "exact_copy": false
+        },
+        "ten_shot_run_03_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/ten_shot_run_03_examples.jsonl",
+            "records": 10,
+            "trace": 5,
+            "no_trace": 5,
+            "unique_examples": 10,
+            "duplicate_rows": 0,
+            "sha256": "132cbe23ecc7ce40c794e11d6cdd63bab6c125ae918c98006676b65729ed4285"
+          },
+          "reference_sha256": "d978686968c4354e1e4180948f92bce37f3bc3aff38797c3253668000273e127",
+          "exact_copy": false
+        },
+        "ten_shot_run_04_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/ten_shot_run_04_examples.jsonl",
+            "records": 10,
+            "trace": 5,
+            "no_trace": 5,
+            "unique_examples": 10,
+            "duplicate_rows": 0,
+            "sha256": "d5da3e5803d7c01050e6cf897f16cffa993b7058e97ab1819b88cca6f1eb4e10"
+          },
+          "reference_sha256": "c046b32642996b4e52dc5f198cfeb114b02967f52d5c475c46f66b2dd7b53e78",
+          "exact_copy": false
+        },
+        "ten_shot_run_05_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/ten_shot_run_05_examples.jsonl",
+            "records": 10,
+            "trace": 5,
+            "no_trace": 5,
+            "unique_examples": 10,
+            "duplicate_rows": 0,
+            "sha256": "66e2777405be6a4db369653e7e356d32347e7486ecddf02132e81405b93a0d72"
+          },
+          "reference_sha256": "ae460f78408e7079075cddfc1096b6ff2f48395db3a131afb8bcd75c35b21a48",
+          "exact_copy": false
+        },
+        "ten_shot_run_06_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/ten_shot_run_06_examples.jsonl",
+            "records": 10,
+            "trace": 5,
+            "no_trace": 5,
+            "unique_examples": 10,
+            "duplicate_rows": 0,
+            "sha256": "b77968496eff56b621886b82ea56f36db941273204038269b24fc422292c2cbf"
+          },
+          "reference_sha256": "08722a6b21461dca6ffbd75bf23abf23f0d316c74521349ed136554095a33e87",
+          "exact_copy": false
+        },
+        "ten_shot_run_07_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/ten_shot_run_07_examples.jsonl",
+            "records": 10,
+            "trace": 5,
+            "no_trace": 5,
+            "unique_examples": 10,
+            "duplicate_rows": 0,
+            "sha256": "215be4ed905f784733f5ed8d463d791028dbb26105ae07b92bcbbe98924b5777"
+          },
+          "reference_sha256": "258fa5f7f5d27c9290dababea96aa1e08b9519465b413c506c8cb10df654892b",
+          "exact_copy": false
+        },
+        "ten_shot_run_08_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/ten_shot_run_08_examples.jsonl",
+            "records": 10,
+            "trace": 5,
+            "no_trace": 5,
+            "unique_examples": 10,
+            "duplicate_rows": 0,
+            "sha256": "28cb7bdf1e1bdff10593d8800b5e493e6827020714b63a9747c9a29a2c88d7e6"
+          },
+          "reference_sha256": "d2b6609e769f05869dec50185ebfa1cc988384f907f4e6a28536a517e0e501b4",
+          "exact_copy": false
+        },
+        "ten_shot_run_09_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/ten_shot_run_09_examples.jsonl",
+            "records": 10,
+            "trace": 5,
+            "no_trace": 5,
+            "unique_examples": 10,
+            "duplicate_rows": 0,
+            "sha256": "4f8c2d1c76124c2790a303027eb182d54c387d7ebf1552b509753fba06968932"
+          },
+          "reference_sha256": "c0b24a70cc91b61440a2d1b7e971779bd2caae98da94d9516a8efa00aad659d2",
+          "exact_copy": false
+        },
+        "ten_shot_run_10_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/ten_shot_run_10_examples.jsonl",
+            "records": 10,
+            "trace": 5,
+            "no_trace": 5,
+            "unique_examples": 10,
+            "duplicate_rows": 0,
+            "sha256": "0fe8e019fe3b3612e7d42ef6792a92f469b72ca14ae67f7133915a3278d07bf9"
+          },
+          "reference_sha256": "645efeb96b73340259c278fd9f6a701083309a68b04eae804216cc0219e1412b",
+          "exact_copy": false
+        },
+        "test_100.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/test_100.jsonl",
+            "records": 100,
+            "trace": 50,
+            "no_trace": 50,
+            "unique_examples": 100,
+            "duplicate_rows": 0,
+            "sha256": "b2e2406941c4ed83e7bb10ecc72263587769dbd092807c60fd267d4dbcc1d560"
+          },
+          "reference_sha256": "a9841685799575436dd955746e11cc005469018111326c57fd59697c14b234fb",
+          "exact_copy": false
+        },
+        "zero_shot_examples.jsonl": {
+          "copy_exists": true,
+          "reference_exists": true,
+          "copy": {
+            "path": "gemma_traceability/data/no_finetuning/multi_run/zero_shot_examples.jsonl",
+            "records": 0,
+            "trace": 0,
+            "no_trace": 0,
+            "unique_examples": 0,
+            "duplicate_rows": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "reference_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "exact_copy": true
+        }
+      },
+      "all_exact_copies": false
+    },
+    "overlap_checks": {
+      "simple": {
+        "five_vs_test": 0,
+        "ten_vs_test": 0,
+        "five_vs_ten": 0
+      },
+      "run_01": {
+        "five_vs_test": 0,
+        "ten_vs_test": 0,
+        "five_vs_ten": 0
+      },
+      "run_02": {
+        "five_vs_test": 0,
+        "ten_vs_test": 0,
+        "five_vs_ten": 0
+      },
+      "run_03": {
+        "five_vs_test": 0,
+        "ten_vs_test": 0,
+        "five_vs_ten": 0
+      },
+      "run_04": {
+        "five_vs_test": 0,
+        "ten_vs_test": 0,
+        "five_vs_ten": 0
+      },
+      "run_05": {
+        "five_vs_test": 0,
+        "ten_vs_test": 0,
+        "five_vs_ten": 0
+      },
+      "run_06": {
+        "five_vs_test": 0,
+        "ten_vs_test": 0,
+        "five_vs_ten": 0
+      },
+      "run_07": {
+        "five_vs_test": 0,
+        "ten_vs_test": 0,
+        "five_vs_ten": 0
+      },
+      "run_08": {
+        "five_vs_test": 0,
+        "ten_vs_test": 0,
+        "five_vs_ten": 0
+      },
+      "run_09": {
+        "five_vs_test": 0,
+        "ten_vs_test": 0,
+        "five_vs_ten": 0
+      },
+      "run_10": {
+        "five_vs_test": 0,
+        "ten_vs_test": 0,
+        "five_vs_ten": 0
+      }
+    },
+    "errors": [
+      "Simple prompting files are not exact historical copies",
+      "Multi-run prompting files are not exact historical copies"
+    ],
+    "status": "failed"
+  },
+  "completed_at_utc": "2026-09-17T07:09:46.059415+00:00"
+}

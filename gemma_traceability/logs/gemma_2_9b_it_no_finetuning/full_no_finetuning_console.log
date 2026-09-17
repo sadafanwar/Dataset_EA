@@ -1,0 +1,330 @@
+nohup: ignoring input
+Auditing frozen prompting data...
+Loading Gemma 2 9B Instruct once for all requested settings...
+Loading weights:   0%|          | 0/464 [00:00<?, ?it/s]Loading weights:   0%|          | 1/464 [00:00<02:07,  3.63it/s]/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   3%|▎         | 14/464 [00:00<00:09, 45.49it/s]Loading weights:   7%|▋         | 32/464 [00:00<00:04, 87.71it/s]Loading weights:  10%|█         | 48/464 [00:00<00:03, 109.12it/s]Loading weights:  15%|█▍        | 69/464 [00:00<00:02, 135.46it/s]Loading weights:  19%|█▉        | 87/464 [00:00<00:02, 147.12it/s]Loading weights:  22%|██▏       | 104/464 [00:00<00:02, 145.48it/s]Loading weights:  27%|██▋       | 125/464 [00:01<00:02, 158.87it/s]Loading weights:  31%|███▏      | 146/464 [00:01<00:01, 168.13it/s]Loading weights:  35%|███▌      | 164/464 [00:01<00:01, 169.78it/s]Loading weights:  39%|███▉      | 182/464 [00:01<00:01, 163.51it/s]Loading weights:  44%|████▎     | 202/464 [00:01<00:01, 168.58it/s]Loading weights:  48%|████▊     | 223/464 [00:01<00:01, 174.74it/s]Loading weights:  52%|█████▏    | 241/464 [00:01<00:01, 174.47it/s]Loading weights:  56%|█████▌    | 259/464 [00:01<00:01, 166.82it/s]Loading weights:  60%|██████    | 279/464 [00:01<00:01, 170.81it/s]Loading weights:  65%|██████▍   | 300/464 [00:02<00:00, 175.92it/s]Loading weights:  69%|██████▊   | 318/464 [00:02<00:00, 174.36it/s]Loading weights:  72%|███████▏  | 336/464 [00:02<00:00, 165.89it/s]Loading weights:  77%|███████▋  | 356/464 [00:02<00:00, 169.33it/s]Loading weights:  81%|████████▏ | 377/464 [00:02<00:00, 174.36it/s]Loading weights:  85%|████████▌ | 395/464 [00:02<00:00, 173.32it/s]Loading weights:  89%|████████▉ | 413/464 [00:02<00:00, 165.22it/s]Loading weights:  93%|█████████▎| 433/464 [00:02<00:00, 168.85it/s]Loading weights:  98%|█████████▊| 454/464 [00:02<00:00, 173.97it/s]Loading weights: 100%|██████████| 464/464 [00:02<00:00, 155.10it/s]
+Starting zero_shot run=1: demos=0 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+zero_shot run=1: evaluated 10/100
+zero_shot run=1: evaluated 20/100
+zero_shot run=1: evaluated 30/100
+zero_shot run=1: evaluated 40/100
+zero_shot run=1: evaluated 50/100
+zero_shot run=1: evaluated 60/100
+zero_shot run=1: evaluated 70/100
+zero_shot run=1: evaluated 80/100
+zero_shot run=1: evaluated 90/100
+zero_shot run=1: evaluated 100/100
+Completed zero_shot run=1: accuracy=0.8800
+Starting five_shot run=1: demos=5 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+five_shot run=1: evaluated 10/100
+five_shot run=1: evaluated 20/100
+five_shot run=1: evaluated 30/100
+five_shot run=1: evaluated 40/100
+five_shot run=1: evaluated 50/100
+five_shot run=1: evaluated 60/100
+five_shot run=1: evaluated 70/100
+five_shot run=1: evaluated 80/100
+five_shot run=1: evaluated 90/100
+five_shot run=1: evaluated 100/100
+Completed five_shot run=1: accuracy=0.8200
+Starting ten_shot run=1: demos=10 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+ten_shot run=1: evaluated 10/100
+ten_shot run=1: evaluated 20/100
+ten_shot run=1: evaluated 30/100
+ten_shot run=1: evaluated 40/100
+ten_shot run=1: evaluated 50/100
+ten_shot run=1: evaluated 60/100
+ten_shot run=1: evaluated 70/100
+ten_shot run=1: evaluated 80/100
+ten_shot run=1: evaluated 90/100
+ten_shot run=1: evaluated 100/100
+Completed ten_shot run=1: accuracy=0.8200
+Starting five_shot run=1: demos=5 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+five_shot run=1: evaluated 10/100
+five_shot run=1: evaluated 20/100
+five_shot run=1: evaluated 30/100
+five_shot run=1: evaluated 40/100
+five_shot run=1: evaluated 50/100
+five_shot run=1: evaluated 60/100
+five_shot run=1: evaluated 70/100
+five_shot run=1: evaluated 80/100
+five_shot run=1: evaluated 90/100
+five_shot run=1: evaluated 100/100
+Completed five_shot run=1: accuracy=0.8600
+Starting ten_shot run=1: demos=10 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+ten_shot run=1: evaluated 10/100
+ten_shot run=1: evaluated 20/100
+ten_shot run=1: evaluated 30/100
+ten_shot run=1: evaluated 40/100
+ten_shot run=1: evaluated 50/100
+ten_shot run=1: evaluated 60/100
+ten_shot run=1: evaluated 70/100
+ten_shot run=1: evaluated 80/100
+ten_shot run=1: evaluated 90/100
+ten_shot run=1: evaluated 100/100
+Completed ten_shot run=1: accuracy=0.8800
+Starting five_shot run=2: demos=5 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+five_shot run=2: evaluated 10/100
+five_shot run=2: evaluated 20/100
+five_shot run=2: evaluated 30/100
+five_shot run=2: evaluated 40/100
+five_shot run=2: evaluated 50/100
+five_shot run=2: evaluated 60/100
+five_shot run=2: evaluated 70/100
+five_shot run=2: evaluated 80/100
+five_shot run=2: evaluated 90/100
+five_shot run=2: evaluated 100/100
+Completed five_shot run=2: accuracy=0.8700
+Starting ten_shot run=2: demos=10 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+ten_shot run=2: evaluated 10/100
+ten_shot run=2: evaluated 20/100
+ten_shot run=2: evaluated 30/100
+ten_shot run=2: evaluated 40/100
+ten_shot run=2: evaluated 50/100
+ten_shot run=2: evaluated 60/100
+ten_shot run=2: evaluated 70/100
+ten_shot run=2: evaluated 80/100
+ten_shot run=2: evaluated 90/100
+ten_shot run=2: evaluated 100/100
+Completed ten_shot run=2: accuracy=0.8800
+Starting five_shot run=3: demos=5 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+five_shot run=3: evaluated 10/100
+five_shot run=3: evaluated 20/100
+five_shot run=3: evaluated 30/100
+five_shot run=3: evaluated 40/100
+five_shot run=3: evaluated 50/100
+five_shot run=3: evaluated 60/100
+five_shot run=3: evaluated 70/100
+five_shot run=3: evaluated 80/100
+five_shot run=3: evaluated 90/100
+five_shot run=3: evaluated 100/100
+Completed five_shot run=3: accuracy=0.8900
+Starting ten_shot run=3: demos=10 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+ten_shot run=3: evaluated 10/100
+ten_shot run=3: evaluated 20/100
+ten_shot run=3: evaluated 30/100
+ten_shot run=3: evaluated 40/100
+ten_shot run=3: evaluated 50/100
+ten_shot run=3: evaluated 60/100
+ten_shot run=3: evaluated 70/100
+ten_shot run=3: evaluated 80/100
+ten_shot run=3: evaluated 90/100
+ten_shot run=3: evaluated 100/100
+Completed ten_shot run=3: accuracy=0.8700
+Starting five_shot run=4: demos=5 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+five_shot run=4: evaluated 10/100
+five_shot run=4: evaluated 20/100
+five_shot run=4: evaluated 30/100
+five_shot run=4: evaluated 40/100
+five_shot run=4: evaluated 50/100
+five_shot run=4: evaluated 60/100
+five_shot run=4: evaluated 70/100
+five_shot run=4: evaluated 80/100
+five_shot run=4: evaluated 90/100
+five_shot run=4: evaluated 100/100
+Completed five_shot run=4: accuracy=0.8400
+Starting ten_shot run=4: demos=10 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+ten_shot run=4: evaluated 10/100
+ten_shot run=4: evaluated 20/100
+ten_shot run=4: evaluated 30/100
+ten_shot run=4: evaluated 40/100
+ten_shot run=4: evaluated 50/100
+ten_shot run=4: evaluated 60/100
+ten_shot run=4: evaluated 70/100
+ten_shot run=4: evaluated 80/100
+ten_shot run=4: evaluated 90/100
+ten_shot run=4: evaluated 100/100
+Completed ten_shot run=4: accuracy=0.8200
+Starting five_shot run=5: demos=5 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+five_shot run=5: evaluated 10/100
+five_shot run=5: evaluated 20/100
+five_shot run=5: evaluated 30/100
+five_shot run=5: evaluated 40/100
+five_shot run=5: evaluated 50/100
+five_shot run=5: evaluated 60/100
+five_shot run=5: evaluated 70/100
+five_shot run=5: evaluated 80/100
+five_shot run=5: evaluated 90/100
+five_shot run=5: evaluated 100/100
+Completed five_shot run=5: accuracy=0.9000
+Starting ten_shot run=5: demos=10 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+ten_shot run=5: evaluated 10/100
+ten_shot run=5: evaluated 20/100
+ten_shot run=5: evaluated 30/100
+ten_shot run=5: evaluated 40/100
+ten_shot run=5: evaluated 50/100
+ten_shot run=5: evaluated 60/100
+ten_shot run=5: evaluated 70/100
+ten_shot run=5: evaluated 80/100
+ten_shot run=5: evaluated 90/100
+ten_shot run=5: evaluated 100/100
+Completed ten_shot run=5: accuracy=0.8500
+Starting five_shot run=6: demos=5 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+five_shot run=6: evaluated 10/100
+five_shot run=6: evaluated 20/100
+five_shot run=6: evaluated 30/100
+five_shot run=6: evaluated 40/100
+five_shot run=6: evaluated 50/100
+five_shot run=6: evaluated 60/100
+five_shot run=6: evaluated 70/100
+five_shot run=6: evaluated 80/100
+five_shot run=6: evaluated 90/100
+five_shot run=6: evaluated 100/100
+Completed five_shot run=6: accuracy=0.8800
+Starting ten_shot run=6: demos=10 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+ten_shot run=6: evaluated 10/100
+ten_shot run=6: evaluated 20/100
+ten_shot run=6: evaluated 30/100
+ten_shot run=6: evaluated 40/100
+ten_shot run=6: evaluated 50/100
+ten_shot run=6: evaluated 60/100
+ten_shot run=6: evaluated 70/100
+ten_shot run=6: evaluated 80/100
+ten_shot run=6: evaluated 90/100
+ten_shot run=6: evaluated 100/100
+Completed ten_shot run=6: accuracy=0.8700
+Starting five_shot run=7: demos=5 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+five_shot run=7: evaluated 10/100
+five_shot run=7: evaluated 20/100
+five_shot run=7: evaluated 30/100
+five_shot run=7: evaluated 40/100
+five_shot run=7: evaluated 50/100
+five_shot run=7: evaluated 60/100
+five_shot run=7: evaluated 70/100
+five_shot run=7: evaluated 80/100
+five_shot run=7: evaluated 90/100
+five_shot run=7: evaluated 100/100
+Completed five_shot run=7: accuracy=0.8500
+Starting ten_shot run=7: demos=10 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+ten_shot run=7: evaluated 10/100
+ten_shot run=7: evaluated 20/100
+ten_shot run=7: evaluated 30/100
+ten_shot run=7: evaluated 40/100
+ten_shot run=7: evaluated 50/100
+ten_shot run=7: evaluated 60/100
+ten_shot run=7: evaluated 70/100
+ten_shot run=7: evaluated 80/100
+ten_shot run=7: evaluated 90/100
+ten_shot run=7: evaluated 100/100
+Completed ten_shot run=7: accuracy=0.8900
+Starting five_shot run=8: demos=5 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+five_shot run=8: evaluated 10/100
+five_shot run=8: evaluated 20/100
+five_shot run=8: evaluated 30/100
+five_shot run=8: evaluated 40/100
+five_shot run=8: evaluated 50/100
+five_shot run=8: evaluated 60/100
+five_shot run=8: evaluated 70/100
+five_shot run=8: evaluated 80/100
+five_shot run=8: evaluated 90/100
+five_shot run=8: evaluated 100/100
+Completed five_shot run=8: accuracy=0.8700
+Starting ten_shot run=8: demos=10 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+ten_shot run=8: evaluated 10/100
+ten_shot run=8: evaluated 20/100
+ten_shot run=8: evaluated 30/100
+ten_shot run=8: evaluated 40/100
+ten_shot run=8: evaluated 50/100
+ten_shot run=8: evaluated 60/100
+ten_shot run=8: evaluated 70/100
+ten_shot run=8: evaluated 80/100
+ten_shot run=8: evaluated 90/100
+ten_shot run=8: evaluated 100/100
+Completed ten_shot run=8: accuracy=0.8900
+Starting five_shot run=9: demos=5 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+five_shot run=9: evaluated 10/100
+five_shot run=9: evaluated 20/100
+five_shot run=9: evaluated 30/100
+five_shot run=9: evaluated 40/100
+five_shot run=9: evaluated 50/100
+five_shot run=9: evaluated 60/100
+five_shot run=9: evaluated 70/100
+five_shot run=9: evaluated 80/100
+five_shot run=9: evaluated 90/100
+five_shot run=9: evaluated 100/100
+Completed five_shot run=9: accuracy=0.8600
+Starting ten_shot run=9: demos=10 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+ten_shot run=9: evaluated 10/100
+ten_shot run=9: evaluated 20/100
+ten_shot run=9: evaluated 30/100
+ten_shot run=9: evaluated 40/100
+ten_shot run=9: evaluated 50/100
+ten_shot run=9: evaluated 60/100
+ten_shot run=9: evaluated 70/100
+ten_shot run=9: evaluated 80/100
+ten_shot run=9: evaluated 90/100
+ten_shot run=9: evaluated 100/100
+Completed ten_shot run=9: accuracy=0.8800
+Starting five_shot run=10: demos=5 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+five_shot run=10: evaluated 10/100
+five_shot run=10: evaluated 20/100
+five_shot run=10: evaluated 30/100
+five_shot run=10: evaluated 40/100
+five_shot run=10: evaluated 50/100
+five_shot run=10: evaluated 60/100
+five_shot run=10: evaluated 70/100
+five_shot run=10: evaluated 80/100
+five_shot run=10: evaluated 90/100
+five_shot run=10: evaluated 100/100
+Completed five_shot run=10: accuracy=0.8500
+Starting ten_shot run=10: demos=10 test=100 resume_rows=0
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+ten_shot run=10: evaluated 10/100
+ten_shot run=10: evaluated 20/100
+ten_shot run=10: evaluated 30/100
+ten_shot run=10: evaluated 40/100
+ten_shot run=10: evaluated 50/100
+ten_shot run=10: evaluated 60/100
+ten_shot run=10: evaluated 70/100
+ten_shot run=10: evaluated 80/100
+ten_shot run=10: evaluated 90/100
+ten_shot run=10: evaluated 100/100
+Completed ten_shot run=10: accuracy=0.8900
+Run manifest: /home/sadaf/traceability_experiments/Dataset_EA/gemma_traceability/results/gemma_2_9b_it_no_finetuning/run_manifest_all.json
+Run status: completed

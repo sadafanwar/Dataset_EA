@@ -1,0 +1,8 @@
+Auditing frozen prompting data...
+Traceback (most recent call last):
+  File "/home/sadaf/traceability_experiments/Dataset_EA/gemma_traceability/scripts/preflight_gemma_2_9b_it_no_finetuning.py", line 71, in main
+    raise RuntimeError("Frozen data audit failed")
+RuntimeError: Frozen data audit failed
+
+Preflight report: /home/sadaf/traceability_experiments/Dataset_EA/gemma_traceability/results/gemma_2_9b_it_no_finetuning/preflight/preflight_report.json
+Preflight status: failed

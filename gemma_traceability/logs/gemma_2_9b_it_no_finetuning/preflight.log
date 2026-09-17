@@ -1,0 +1,15 @@
+Auditing frozen prompting data...
+Loading Gemma tokenizer and 4-bit base model...
+Loading weights:   0%|          | 0/464 [00:00<?, ?it/s]Loading weights:   0%|          | 1/464 [00:00<02:07,  3.63it/s]/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   3%|▎         | 14/464 [00:00<00:09, 46.14it/s]Loading weights:   7%|▋         | 32/464 [00:00<00:04, 88.54it/s]Loading weights:  10%|█         | 48/464 [00:00<00:03, 109.84it/s]Loading weights:  15%|█▍        | 69/464 [00:00<00:02, 136.10it/s]Loading weights:  19%|█▉        | 87/464 [00:00<00:02, 147.62it/s]Loading weights:  22%|██▏       | 104/464 [00:00<00:02, 145.85it/s]Loading weights:  27%|██▋       | 125/464 [00:01<00:02, 159.19it/s]Loading weights:  31%|███▏      | 146/464 [00:01<00:01, 168.41it/s]Loading weights:  35%|███▌      | 164/464 [00:01<00:01, 170.02it/s]Loading weights:  39%|███▉      | 182/464 [00:01<00:01, 163.71it/s]Loading weights:  44%|████▎     | 202/464 [00:01<00:01, 168.75it/s]Loading weights:  48%|████▊     | 223/464 [00:01<00:01, 174.89it/s]Loading weights:  52%|█████▏    | 241/464 [00:01<00:01, 174.60it/s]Loading weights:  56%|█████▌    | 259/464 [00:01<00:01, 166.94it/s]Loading weights:  60%|██████    | 279/464 [00:01<00:01, 170.90it/s]Loading weights:  65%|██████▍   | 300/464 [00:02<00:00, 176.35it/s]Loading weights:  69%|██████▊   | 318/464 [00:02<00:00, 175.67it/s]Loading weights:  72%|███████▏  | 336/464 [00:02<00:00, 167.69it/s]Loading weights:  77%|███████▋  | 356/464 [00:02<00:00, 171.51it/s]Loading weights:  81%|████████▏ | 377/464 [00:02<00:00, 176.83it/s]Loading weights:  85%|████████▌ | 395/464 [00:02<00:00, 175.98it/s]Loading weights:  89%|████████▉ | 413/464 [00:02<00:00, 167.89it/s]Loading weights:  93%|█████████▎| 433/464 [00:02<00:00, 171.60it/s]Loading weights:  98%|█████████▊| 454/464 [00:02<00:00, 176.85it/s]Loading weights: 100%|██████████| 464/464 [00:02<00:00, 156.26it/s]
+Running one-example zero_shot preflight...
+/home/sadaf/traceability_experiments/Dataset_EA/.venv/lib/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+zero_shot: gold=no_trace raw='no_trace' parsed=no_trace
+Running one-example five_shot preflight...
+five_shot: gold=no_trace raw='no_trace' parsed=no_trace
+Running one-example ten_shot preflight...
+ten_shot: gold=no_trace raw='no_trace' parsed=no_trace
+Preflight report: /home/sadaf/traceability_experiments/Dataset_EA/gemma_traceability/results/gemma_2_9b_it_no_finetuning/preflight/preflight_report.json
+Preflight status: passed

@@ -1,0 +1,86 @@
+{
+  "experiment": {
+    "name": "gemma_2_9b_it_no_finetuning",
+    "task": "requirements_traceability_classification",
+    "protocol": "qwen35_prompting_protocol_with_gemma_chat_template"
+  },
+  "model": {
+    "model_id": "google/gemma-2-9b-it",
+    "revision": "11c9b309abf73637e4b6f9a3fa1e92e615547819",
+    "cache_dir": "/data/caches/huggingface/hub",
+    "local_files_only": true,
+    "load_in_4bit": true,
+    "quant_type": "nf4",
+    "compute_dtype": "bfloat16",
+    "double_quant": true,
+    "device_map": "auto"
+  },
+  "inference": {
+    "seed": 42,
+    "max_prompt_tokens": 8192,
+    "max_new_tokens": 8,
+    "do_sample": false,
+    "batch_size": 1,
+    "prompt_content": "exact_qwen35_requirements_traceability_prompt",
+    "prompt_wrapper": "gemma_model_chat_template",
+    "invalid_prediction_policy": "exclude_from_classification_metrics"
+  },
+  "phase": "all",
+  "started_at_utc": "2026-09-17T07:25:13.783840+00:00",
+  "status": "completed",
+  "errors": [],
+  "data_audit_status": "passed",
+  "gpu_before_load_mib": {
+    "cuda_available": true,
+    "device": "NVIDIA GeForce RTX 4090",
+    "free_mib": 23674.06,
+    "total_mib": 24082.88,
+    "global_used_mib": 408.81,
+    "process_allocated_mib": 0.0,
+    "process_reserved_mib": 0.0,
+    "process_peak_allocated_mib": 0.0,
+    "process_peak_reserved_mib": 0.0
+  },
+  "model_loaded": {
+    "model_id": "google/gemma-2-9b-it",
+    "revision": "11c9b309abf73637e4b6f9a3fa1e92e615547819",
+    "model_class": "Gemma2ForCausalLM",
+    "model_type": "gemma2",
+    "architectures": [
+      "Gemma2ForCausalLM"
+    ],
+    "max_position_embeddings": 8192,
+    "loaded_parameter_elements": 5079907840,
+    "trainable_parameters_before_explicit_freeze": 918109696,
+    "trainable_parameters": 0,
+    "all_parameters_explicitly_frozen": true,
+    "quantized_4bit": true,
+    "tokenizer_class": "GemmaTokenizer",
+    "chat_template_used": true,
+    "cache_dir": "/data/caches/huggingface/hub"
+  },
+  "gpu_after_load_mib": {
+    "cuda_available": true,
+    "device": "NVIDIA GeForce RTX 4090",
+    "free_mib": 17662.06,
+    "total_mib": 24082.88,
+    "global_used_mib": 6420.81,
+    "process_allocated_mib": 5846.75,
+    "process_reserved_mib": 5950.0,
+    "process_peak_allocated_mib": 5929.61,
+    "process_peak_reserved_mib": 5950.0
+  },
+  "gpu_after_evaluation_mib": {
+    "cuda_available": true,
+    "device": "NVIDIA GeForce RTX 4090",
+    "free_mib": 16390.06,
+    "total_mib": 24082.88,
+    "global_used_mib": 7692.81,
+    "process_allocated_mib": 5854.88,
+    "process_reserved_mib": 7206.0,
+    "process_peak_allocated_mib": 6913.07,
+    "process_peak_reserved_mib": 7206.0
+  },
+  "elapsed_seconds": 758.9949185420119,
+  "completed_at_utc": "2026-09-17T07:37:52.778770+00:00"
+}
