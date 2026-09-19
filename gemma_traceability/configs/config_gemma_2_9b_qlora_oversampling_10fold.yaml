@@ -1,0 +1,116 @@
+# Full 10-fold configuration. Full training is permitted only after the separate
+# Fold 01 preflight report has status=passed and no errors.
+
+experiment_id: "gemma_2_9b_qlora_oversampling"
+experiment_name: "Gemma 2 9B QLoRA random oversampling 10-fold CV"
+
+model:
+  id: "google/gemma-2-9b-it"
+  revision: "11c9b309abf73637e4b6f9a3fa1e92e615547819"
+  class_name: "Gemma2ForCausalLM"
+  local_files_only: true
+
+data:
+  balancing: "random_oversampling_with_replacement"
+  qwen_data_root: "data/qwen35_oversampling_10fold_cv"
+  gemma_test_root: "gemma_traceability/data/folds"
+  manifest_file: "gemma_traceability/data/manifests/gemma_2_9b_qlora_oversampling_folds.json"
+  recreate_splits: false
+  oversampling:
+    method: "random_choices_with_replacement"
+    minority_class: "trace"
+    target_rule: "match_inner_train_majority_count"
+    seed_base: 42
+    seed_rule: "seed_base_plus_fold_number"
+    shuffle_after_resampling: true
+    use_frozen_files: true
+    regenerate: false
+
+prompt:
+  protocol: "exact_qwen35_exp06_pattern1_no_chat_template"
+  chat_template: false
+  loss_scope: "full_prompt_and_label"
+  labels:
+    - "trace"
+    - "no_trace"
+
+training:
+  learning_rate: 0.00005
+  batch_size: 1
+  gradient_accumulation_steps: 8
+  effective_batch_size: 8
+  num_epochs: 2
+  max_steps: null
+  warmup_steps: 20
+  max_grad_norm: 1.0
+  weight_decay: 0.01
+  fp16: false
+  bf16: true
+  gradient_checkpointing: true
+  gradient_checkpointing_use_reentrant: false
+  max_length: 1024
+  num_workers: 0
+  seed: 42
+  optimizer: "AdamW"
+  scheduler: "linear_with_warmup"
+  dataloader_shuffle: false
+  partial_accumulation_policy: "discard_incomplete_accumulation_at_each_epoch_historical_exp06"
+  expected_train_microbatches_per_fold: 1830
+  expected_optimizer_steps_per_epoch: 228
+  expected_completed_optimizer_steps_per_fold: 456
+  scheduler_total_steps_per_fold: 457
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.1
+  bias: "none"
+  task_type: "CAUSAL_LM"
+  target_modules_regex: '.*model\.layers\.\d+\.self_attn\.(q_proj|k_proj|v_proj|o_proj)'
+  expected_adapter_modules: 168
+  expected_trainable_parameters: 17891328
+
+quantization:
+  load_in_4bit: true
+  quant_type: "nf4"
+  compute_dtype: "bfloat16"
+  double_quant: true
+
+validation:
+  eval_steps: 50
+  eval_samples: 100
+  compute_perplexity: true
+
+evaluation:
+  base_model_precision: "bfloat16"
+  max_new_tokens: 5
+  max_length: 1024
+  do_sample: false
+  labels_order:
+    - "trace"
+    - "no_trace"
+  invalid_prediction_policy: "exclude_from_classification_metrics"
+
+checkpointing:
+  save_steps: 100
+  save_total_limit: 3
+  best_model_criterion: "lowest_epoch_training_loss_historical_exp06"
+  resume_from_checkpoint: null
+
+logging:
+  logging_steps: 10
+  log_root: "gemma_traceability/logs/gemma_2_9b_qlora_oversampling"
+
+paths:
+  output_root: "gemma_traceability/outputs/gemma_2_9b_qlora_oversampling"
+  result_root: "gemma_traceability/results/gemma_2_9b_qlora_oversampling"
+
+protocol_provenance:
+  qwen_experiment: "EXP-06 Qwen3.5-9B QLoRA oversampling"
+  qwen_reference_commit: "c3ae63b"
+  qwen_training_implementation_commit: "198fc2f"
+  qwen_evaluation_implementation_commit: "8ee202f"
+  qwen_config_generator: "scripts/create_qwen35_inner_val_fold_config.py"
+  qwen_oversampling_implementation: "scripts/create_oversampled_inner_train_fold.py"
+  frozen_split_policy: "validate_existing_files_never_regenerate"
+

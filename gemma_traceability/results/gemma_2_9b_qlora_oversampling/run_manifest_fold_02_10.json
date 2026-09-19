@@ -1,0 +1,19 @@
+{
+  "experiment_id": "gemma_2_9b_qlora_oversampling",
+  "config_file": "gemma_traceability/configs/config_gemma_2_9b_qlora_oversampling_10fold.yaml",
+  "config_sha256": "cca40458e081450bdadd1b38151313383d49ae08d594f0a2b42a14c87bada23b",
+  "data_manifest_file": "gemma_traceability/data/manifests/gemma_2_9b_qlora_oversampling_folds.json",
+  "data_manifest_sha256": "d58921fbcda497d961b20860898f9cc4aa2d1d48e16aba81b7f5e0e741c10667",
+  "started_at_utc": "2026-09-19T11:40:58.746921+00:00",
+  "fold_range": [
+    2,
+    10
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.11.0+cu130",
+    "cuda_runtime": "13.0",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "hf_hub_cache": "/data/caches/huggingface/hub"
+  }
+}

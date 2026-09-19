@@ -1,0 +1,11 @@
+fold,status,start_time_utc,end_time_utc,duration_minutes,metrics_path
+fold_01,completed,2026-09-19T09:53:13.148902+00:00,2026-09-19T10:10:40.847753+00:00,17.462,gemma_traceability/results/gemma_2_9b_qlora_oversampling/fold_01/fold_01_metrics.json
+fold_02,completed,2026-09-19T11:40:58.747032+00:00,2026-09-19T11:58:25.520661+00:00,17.446,gemma_traceability/results/gemma_2_9b_qlora_oversampling/fold_02/fold_02_metrics.json
+fold_03,completed,2026-09-19T11:58:25.521899+00:00,2026-09-19T12:15:57.166090+00:00,17.527,gemma_traceability/results/gemma_2_9b_qlora_oversampling/fold_03/fold_03_metrics.json
+fold_04,completed,2026-09-19T12:15:57.167471+00:00,2026-09-19T12:33:28.395605+00:00,17.52,gemma_traceability/results/gemma_2_9b_qlora_oversampling/fold_04/fold_04_metrics.json
+fold_05,completed,2026-09-19T12:33:28.396904+00:00,2026-09-19T12:50:57.247737+00:00,17.481,gemma_traceability/results/gemma_2_9b_qlora_oversampling/fold_05/fold_05_metrics.json
+fold_06,completed,2026-09-19T12:50:57.249133+00:00,2026-09-19T13:08:28.479296+00:00,17.521,gemma_traceability/results/gemma_2_9b_qlora_oversampling/fold_06/fold_06_metrics.json
+fold_07,completed,2026-09-19T13:08:28.480709+00:00,2026-09-19T13:25:59.511609+00:00,17.517,gemma_traceability/results/gemma_2_9b_qlora_oversampling/fold_07/fold_07_metrics.json
+fold_08,completed,2026-09-19T13:25:59.512906+00:00,2026-09-19T13:43:27.662013+00:00,17.469,gemma_traceability/results/gemma_2_9b_qlora_oversampling/fold_08/fold_08_metrics.json
+fold_09,completed,2026-09-19T13:43:27.663321+00:00,2026-09-19T14:00:56.675398+00:00,17.484,gemma_traceability/results/gemma_2_9b_qlora_oversampling/fold_09/fold_09_metrics.json
+fold_10,completed,2026-09-19T14:00:56.676707+00:00,2026-09-19T14:18:24.060129+00:00,17.456,gemma_traceability/results/gemma_2_9b_qlora_oversampling/fold_10/fold_10_metrics.json

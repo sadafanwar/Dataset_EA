@@ -1,0 +1,134 @@
+# Fold 01 preflight configuration for the separate Gemma oversampling experiment.
+# Authority: corrected Qwen EXP-06 inner-validation config at commit c3ae63b.
+# Only architecture-required Gemma changes are the model class, tokenizer fix,
+# gradient-checkpointing mode, and text-decoder-only LoRA target regex.
+
+experiment_id: "gemma_2_9b_qlora_oversampling"
+experiment_name: "Gemma QLoRA random oversampling with replacement"
+fold: 1
+
+model:
+  id: "google/gemma-2-9b-it"
+  revision: "11c9b309abf73637e4b6f9a3fa1e92e615547819"
+  class_name: "Gemma2ForCausalLM"
+  local_files_only: true
+
+data:
+  balancing: "random_oversampling_with_replacement"
+  source_inner_train_file: "data/qwen35_oversampling_10fold_cv/inner_splits/fold_01/inner_train.jsonl"
+  train_file: "data/qwen35_oversampling_10fold_cv/inner_splits/fold_01/train_oversampled.jsonl"
+  validation_file: "data/qwen35_oversampling_10fold_cv/inner_splits/fold_01/validation.jsonl"
+  test_file: "gemma_traceability/data/folds/fold_01/test.jsonl"
+  qwen_reference_test_file: "data/qwen35_oversampling_10fold_cv/folds/fold_01/test.jsonl"
+  oversampling:
+    method: "random_choices_with_replacement"
+    minority_class: "trace"
+    target_rule: "match_inner_train_majority_count"
+    seed_base: 42
+    fold_seed: 43
+    seed_rule: "seed_base_plus_fold_number"
+    shuffle_after_resampling: true
+    use_frozen_file: true
+    regenerate: false
+  expected:
+    source_inner_train:
+      records: 1528
+      trace: 613
+      no_trace: 915
+      unique_example_ids: 1528
+      duplicate_rows: 0
+      sha256: "36bcf24b7669d744e93b41449da8ea608bc87c72ea2663e9a842928f689dd34d"
+    train:
+      records: 1830
+      trace: 915
+      no_trace: 915
+      unique_example_ids: 1386
+      duplicate_rows: 444
+      sha256: "2d29b5bd28b6f9b3452943e27812ec655244f4943034309fce380541aedddfad"
+    validation:
+      records: 170
+      trace: 68
+      no_trace: 102
+      unique_example_ids: 170
+      duplicate_rows: 0
+      sha256: "c665db59d17a69f0fa56b1760eb0f46f3dd6ec396047b0ec6a7aae0bb7aaad4c"
+    test:
+      records: 189
+      trace: 76
+      no_trace: 113
+      unique_example_ids: 189
+      duplicate_rows: 0
+      sha256: "69d14e206beb6d32842297ad63e73ac55b412251a8a32c36cb03db7afbb50977"
+
+prompt:
+  protocol: "exact_qwen35_exp06_pattern1_no_chat_template"
+  chat_template: false
+  loss_scope: "full_prompt_and_label"
+  labels:
+    - "trace"
+    - "no_trace"
+
+training:
+  learning_rate: 0.00005
+  batch_size: 1
+  gradient_accumulation_steps: 8
+  num_epochs: 2
+  max_steps: null
+  warmup_steps: 20
+  max_grad_norm: 1.0
+  weight_decay: 0.01
+  fp16: false
+  bf16: true
+  gradient_checkpointing: true
+  gradient_checkpointing_use_reentrant: false
+  max_length: 1024
+  num_workers: 0
+  seed: 42
+  optimizer: "AdamW"
+  scheduler: "linear_with_warmup"
+  dataloader_shuffle: false
+  partial_accumulation_policy: "discard_incomplete_accumulation_at_each_epoch_historical_exp06"
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.1
+  bias: "none"
+  task_type: "CAUSAL_LM"
+  target_modules_regex: '.*model\.layers\.\d+\.self_attn\.(q_proj|k_proj|v_proj|o_proj)'
+  expected_adapter_modules: 168
+  expected_trainable_parameters: 17891328
+
+quantization:
+  load_in_4bit: true
+  quant_type: "nf4"
+  compute_dtype: "bfloat16"
+  double_quant: true
+
+evaluation:
+  eval_steps: 50
+  eval_samples: 100
+  compute_perplexity: true
+  max_new_tokens: 5
+  do_sample: false
+
+checkpointing:
+  save_steps: 100
+  save_total_limit: 3
+
+logging:
+  logging_steps: 10
+  log_file: "gemma_traceability/logs/gemma_2_9b_qlora_oversampling/preflight_fold_01.log"
+  report_file: "gemma_traceability/results/gemma_2_9b_qlora_oversampling/preflight/fold_01/preflight_report.json"
+
+preflight:
+  run_one_optimizer_step: true
+  stress_longest_training_sequence: true
+  save_adapter: false
+
+protocol_provenance:
+  qwen_experiment: "EXP-06 Qwen3.5-9B QLoRA oversampling"
+  corrected_split_and_config_commit: "c3ae63b"
+  training_implementation_commit: "198fc2f"
+  evaluation_implementation_commit: "8ee202f"
+

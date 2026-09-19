@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "folds": {
+    "fold_01": {
+      "source_train": {
+        "path": "data/qwen35_oversampling_10fold_cv/inner_splits/fold_01/inner_train.jsonl",
+        "records": 1528,
+        "trace": 613,
+        "no_trace": 915,
+        "other_labels": {},
+        "unique_example_ids": 1528,
+        "duplicate_rows": 0,
+        "sha256": "36bcf24b7669d744e93b41449da8ea608bc87c72ea2663e9a842928f689dd34d",
+        "raw_sha256": "36bcf24b7669d744e93b41449da8ea608bc87c72ea2663e9a842928f689dd34d"
+      },
+      "train": {
+        "path": "data/qwen35_oversampling_10fold_cv/inner_splits/fold_01/train_oversampled.jsonl",
+        "records": 1830,
+        "trace": 915,
+        "no_trace": 915,
+        "other_labels": {},
+        "unique_example_ids": 1386,
+        "duplicate_rows": 444,
+        "sha256": "2d29b5bd28b6f9b3452943e27812ec655244f4943034309fce380541aedddfad",
+        "raw_sha256": "2d29b5bd28b6f9b3452943e27812ec655244f4943034309fce380541aedddfad"
+      },
+      "validation": {
+        "path": "data/qwen35_oversampling_10fold_cv/inner_splits/fold_01/validation.jsonl",
+        "records": 170,
+        "trace": 68,
+        "no_trace": 102,
+        "other_labels": {},
+        "unique_example_ids": 170,
+        "duplicate_rows": 0,
+        "sha256": "c665db59d17a69f0fa56b1760eb0f46f3dd6ec396047b0ec6a7aae0bb7aaad4c",
+        "raw_sha256": "c665db59d17a69f0fa56b1760eb0f46f3dd6ec396047b0ec6a7aae0bb7aaad4c"
+      },
+      "test": {
+        "path": "gemma_traceability/data/folds/fold_01/test.jsonl",
+        "records": 189,
+        "trace": 76,
+        "no_trace": 113,
+        "other_labels": {},
+        "unique_example_ids": 189,
+        "duplicate_rows": 0,
+        "sha256": "69d14e206beb6d32842297ad63e73ac55b412251a8a32c36cb03db7afbb50977",
+        "raw_sha256": "69d14e206beb6d32842297ad63e73ac55b412251a8a32c36cb03db7afbb50977"
+      },
+      "qwen_reference_test": {
+        "path": "data/qwen35_oversampling_10fold_cv/folds/fold_01/test.jsonl",
+        "records": 189,
+        "trace": 76,
+        "no_trace": 113,
+        "other_labels": {},
+        "unique_example_ids": 189,
+        "duplicate_rows": 0,
+        "sha256": "69d14e206beb6d32842297ad63e73ac55b412251a8a32c36cb03db7afbb50977",
+        "raw_sha256": "69d14e206beb6d32842297ad63e73ac55b412251a8a32c36cb03db7afbb50977"
+      },
+      "gemma_test_matches_qwen_test": true,
+      "exact_historical_oversampling": true,
+      "oversampling_seed": 43,
+      "no_example_id_overlap": true
+    }
+  },
+  "balancing": "random_oversampling_with_replacement",
+  "completed_at_utc": "2026-09-19T09:53:13.058595+00:00"
+}
