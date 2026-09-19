@@ -1,0 +1,31 @@
+{
+  "method": "five_shot",
+  "run": 4,
+  "seed": 4,
+  "accuracy": 0.84,
+  "trace_precision": 0.9473684210526315,
+  "trace_recall": 0.72,
+  "trace_f1": 0.8181818181818182,
+  "trace_support": 50,
+  "no_trace_precision": 0.7741935483870968,
+  "no_trace_recall": 0.96,
+  "no_trace_f1": 0.8571428571428571,
+  "no_trace_support": 50,
+  "valid_predictions": 100,
+  "invalid_predictions": 0,
+  "total_records": 100,
+  "confusion_matrix": [
+    [
+      36,
+      14
+    ],
+    [
+      2,
+      48
+    ]
+  ],
+  "prediction_file": "gemma_traceability/results/gemma_2_9b_it_no_finetuning/multi_run/five_shot_run_04_predictions.csv",
+  "demo_file": "gemma_traceability/data/no_finetuning/multi_run/five_shot_run_04_examples.jsonl",
+  "test_file": "gemma_traceability/data/no_finetuning/multi_run/test_100.jsonl",
+  "completed_at_utc": "2026-09-17T07:30:38.091001+00:00"
+}

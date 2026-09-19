@@ -1,0 +1,37 @@
+experiment:
+  name: gemma_2_9b_it_no_finetuning
+  task: requirements_traceability_classification
+  protocol: qwen35_prompting_protocol_with_gemma_chat_template
+
+model:
+  model_id: google/gemma-2-9b-it
+  revision: 11c9b309abf73637e4b6f9a3fa1e92e615547819
+  cache_dir: /data/caches/huggingface/hub
+  local_files_only: true
+  load_in_4bit: true
+  quant_type: nf4
+  compute_dtype: bfloat16
+  double_quant: true
+  device_map: auto
+
+data:
+  simple_dir: gemma_traceability/data/no_finetuning/simple
+  simple_reference_dir: data/fewshot_qwen35
+  multi_run_dir: gemma_traceability/data/no_finetuning/multi_run
+  multi_run_reference_dir: data/fewshot_qwen35_multi_run
+  run_seeds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  test_seed: 42
+
+inference:
+  seed: 42
+  max_prompt_tokens: 8192
+  max_new_tokens: 8
+  do_sample: false
+  batch_size: 1
+  prompt_content: exact_qwen35_requirements_traceability_prompt
+  prompt_wrapper: gemma_model_chat_template
+  invalid_prediction_policy: exclude_from_classification_metrics
+
+outputs:
+  results_dir: gemma_traceability/results/gemma_2_9b_it_no_finetuning
+  logs_dir: gemma_traceability/logs/gemma_2_9b_it_no_finetuning

@@ -1,0 +1,19 @@
+{
+  "experiment_id": "gemma_2_9b_qlora_unbalanced",
+  "config_file": "gemma_traceability/configs/config_gemma_2_9b_qlora_unbalanced_10fold.yaml",
+  "config_sha256": "881a368f6b24ebaae8ab76c57e95f3fa584c08b616144ed1e3b2af658b9398c9",
+  "data_manifest_file": "gemma_traceability/data/manifests/gemma_2_9b_qlora_unbalanced_folds.json",
+  "data_manifest_sha256": "5768606ed1e7b87e022192e3046a2d6eaf296a6d343bbf7000591568775018d1",
+  "started_at_utc": "2026-09-17T10:56:18.060274+00:00",
+  "fold_range": [
+    1,
+    1
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.11.0+cu130",
+    "cuda_runtime": "13.0",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "hf_hub_cache": "/data/caches/huggingface/hub"
+  }
+}

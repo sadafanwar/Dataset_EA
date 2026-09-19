@@ -1,0 +1,59 @@
+{
+  "model_dir": "gemma_traceability/outputs/gemma_2_9b_qlora_unbalanced/fold_04/best_model",
+  "test_file": "gemma_traceability/data/folds/fold_04/test.jsonl",
+  "total_records": 189,
+  "valid_predictions": 189,
+  "invalid_predictions": 0,
+  "accuracy": 0.9259259259259259,
+  "labels_order": [
+    "trace",
+    "no_trace"
+  ],
+  "trace_precision": 0.8780487804878049,
+  "trace_recall": 0.9473684210526315,
+  "trace_f1": 0.9113924050632911,
+  "trace_support": 76,
+  "no_trace_precision": 0.9626168224299065,
+  "no_trace_recall": 0.911504424778761,
+  "no_trace_f1": 0.9363636363636364,
+  "no_trace_support": 113,
+  "confusion_matrix": [
+    [
+      72,
+      4
+    ],
+    [
+      10,
+      103
+    ]
+  ],
+  "classification_report": {
+    "trace": {
+      "precision": 0.8780487804878049,
+      "recall": 0.9473684210526315,
+      "f1-score": 0.9113924050632911,
+      "support": 76.0
+    },
+    "no_trace": {
+      "precision": 0.9626168224299065,
+      "recall": 0.911504424778761,
+      "f1-score": 0.9363636363636364,
+      "support": 113.0
+    },
+    "accuracy": 0.9259259259259259,
+    "macro avg": {
+      "precision": 0.9203328014588557,
+      "recall": 0.9294364229156963,
+      "f1-score": 0.9238780207134638,
+      "support": 189.0
+    },
+    "weighted avg": {
+      "precision": 0.9286106256701196,
+      "recall": 0.9259259259259259,
+      "f1-score": 0.9263222946767251,
+      "support": 189.0
+    }
+  },
+  "invalid_prediction_policy": "exclude_from_classification_metrics",
+  "completed_at_utc": "2026-09-17T11:59:27.506551+00:00"
+}

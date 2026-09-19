@@ -1,0 +1,67 @@
+[
+  {
+    "experiment": "Zero Shot",
+    "few_shot": "zero shot",
+    "runs": 1,
+    "accuracy": 0.88,
+    "trace_precision": 0.9318181818181818,
+    "trace_recall": 0.82,
+    "trace_f1": 0.8723404255319149,
+    "no_trace_precision": 0.8392857142857143,
+    "no_trace_recall": 0.94,
+    "no_trace_f1": 0.8867924528301887,
+    "invalid_predictions": 0
+  },
+  {
+    "experiment": "Five Shot",
+    "few_shot": "five shot",
+    "runs": 1,
+    "accuracy": 0.82,
+    "trace_precision": 0.9444444444444444,
+    "trace_recall": 0.68,
+    "trace_f1": 0.7906976744186046,
+    "no_trace_precision": 0.75,
+    "no_trace_recall": 0.96,
+    "no_trace_f1": 0.8421052631578947,
+    "invalid_predictions": 0
+  },
+  {
+    "experiment": "Ten Shot",
+    "few_shot": "ten shot",
+    "runs": 1,
+    "accuracy": 0.82,
+    "trace_precision": 0.9444444444444444,
+    "trace_recall": 0.68,
+    "trace_f1": 0.7906976744186046,
+    "no_trace_precision": 0.75,
+    "no_trace_recall": 0.96,
+    "no_trace_f1": 0.8421052631578947,
+    "invalid_predictions": 0
+  },
+  {
+    "experiment": "Multi-Run Five Shot",
+    "few_shot": "five shot multi-run",
+    "runs": 10,
+    "accuracy": 0.867,
+    "trace_precision": 0.9701690051497497,
+    "trace_recall": 0.758,
+    "trace_f1": 0.8503427567637043,
+    "no_trace_precision": 0.8020784260151826,
+    "no_trace_recall": 0.976,
+    "no_trace_f1": 0.8802128644588625,
+    "invalid_predictions": 0
+  },
+  {
+    "experiment": "Multi-Run Ten Shot",
+    "few_shot": "ten shot multi-run",
+    "runs": 10,
+    "accuracy": 0.872,
+    "trace_precision": 0.9733774742935265,
+    "trace_recall": 0.766,
+    "trace_f1": 0.8559691373261855,
+    "no_trace_precision": 0.8083337716442588,
+    "no_trace_recall": 0.978,
+    "no_trace_f1": 0.8845832000161984,
+    "invalid_predictions": 0
+  }
+]
